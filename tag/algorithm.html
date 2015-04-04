@@ -52,13 +52,67 @@
     <div class="row">
 
         <div class="span9">
-<ul>
-	<li><a href="/category/algorithm.html">algorithm</li>
-	<li><a href="/category/data-structures.html">data structures</li>
-	<li><a href="/category/os.html">OS</li>
-	<li><a href="/category/personal.html">Personal</li>
-</ul>
+        
 
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="/quicksort.html"><h1>The Dinning Philosophers Problem</h1></a>
+周三 01 四月 2015
+
+by <a class="url fn" href="/author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><h1>排序算法之快速排序</h1>
+<p>from 《数据结构与算法分析——c语言描述》</p>
+<h2></h2>
+<h3>一、思路</h3>
+<p><strong>快速排序（quicksort）</strong>是实践中最快的已知排序算法。之所以快，是因为非常精炼和高度优化的内部循环。快速排序是一种分治的递归算法。</p>
+<p>将数组<em>S</em>排序的基本算法由下列四步组成：</p>
+<ol>
+<li>如果<em>S</em>中元素个数是1或0，则返回；</li>
+<li>取<em>S</em>中任一元素<em>v</em> ，称之为<strong>枢纽元（pivot）</strong>；</li>
+<li>将<em>S - {v}</em>（<em>S</em>中其余元素）分成两个不想交的集合： <em>S<sub>1</sub> = {x ∈ S - {v} | x≤v}</em> 和 <em>S<sub>2</sub> = {x ∈ S - {v} | x≥v}</em>；</li>
+<li>返回{quicksort（<em>S<sub>1</sub></em>）后，继随<em>v</em>，继而quicksort（<em>S<sub>2</sub></em>）}。</li>
+</ol>
+<p>下图为一个示例，其中65为随机选取的枢纽元。
+<img alt="1" src="jpgs/quicksort.jpg" /></p>
+<p>快排更快的原因，在于第3步分割成两组实际上是在适当的位置进行并且非常有效，它的高效弥补了大小不等的递归调用的缺憾而且还有超出。</p>
+<h3>二、细节</h3>
+<h4>1. 选取枢纽元</h4>
+<ul>
+<li>
+<p><strong>一种错误的方法</strong>：选取第一个元素。如果输入是预排序或者是反序的，花费时间将是O(n<sup>2</sup>)。另一种选取前两个互易的较大者作为枢纽元的想法，和选取第一个具有相同的错误。</p>
+</li>
+<li>
+<p><strong>一种安全的做法</strong>：随机选取。一方面随机数生成器可能有问题，另一方面随机数生成昂贵的。</p>
+</li>
+<li>
+<p><strong>三数中值分割法（Median-of-Three Partitioning）</strong>：左端、右端和中心位置的三个元素的中值作为枢纽元。*使用三数中值分割法减少了快速排序大约5%的运行时间。</p>
+</li>
+</ul>
+<h4>2. 分割策略</h4></div>
+        <hr />
+    </div>
+		
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="/tag/algorithm.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
         </div>
         
         <div class="span3">
