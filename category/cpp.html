@@ -59,8 +59,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="../start.html"><h1>Blog on GitHub Pages，using Pelican</h1></a>
-周六 21 三月 2015
+            <a href="../shared_ptr.html"><h1>动态内存与智能指针</h1></a>
+周二 07 四月 2015
 
 by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
  
@@ -69,21 +69,52 @@ by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
  
         </div>
         
-        <div><h2></h2>
-<ul>
-<li>Python3</li>
-<li>Pelican</li>
-<li>Markdown</li>
-<li>GitHub</li>
-</ul></div>
+        <div></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../reference.html"><h2>C++中的引用</h2></a>
+        <div class= "well small"> 周二 07 四月 2015
+
+by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>from 《C++ Primer》</p>
+<h2></h2>
+<h3>一、概念</h3>
+<p><strong>引用（reference）</strong>的符号为&amp;，一般指“左值引用”，作用是为对象起一个别名。</p>
+<blockquote>
+<p>C++11引入了一种“右值引用”</p>
+</blockquote>
+<p>定义引用时，程序把初始值和对象绑定在一次。之后，这种绑定关系会一直存在，所以引用必须初始化。
+引用本身不是对象。</p>
+<h3>二、示例</h3>
+<div class="highlight"><pre>int ival = 1024;
+int &amp;refVal = ival; //引用，即refVal是ival的别名
+int &amp;refVal2; //报错，引用必须被初始化
+int &amp;refVal3 = 10; //报错，引用的初始值必须是对象
+double dval = 3.14;
+int &amp;refVal4 = dval; //报错，类型不一致
+</pre></div>
+
+
+<h3>三、有用的地方 ...</h3> <a class="btn btn-info xsmall" href="../reference.html">read more</a></div>
+    </div>	
+				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="../tag/test.html">1</a></li>
+    <li class="active"><a href="../category/cpp.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 

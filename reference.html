@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lhqqqqq's BLOG</title>
+    <meta name="description" content="">
+    <meta name="author" content="lh901124@126.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="./theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="./theme/bootstrap.min.css" rel="stylesheet">
+    <link href="./theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="./theme/local.css" rel="stylesheet">
+    <link href="./theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href=".">lhqqqqq's BLOG</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+            <li><a href="./pages/lhqqqqq.html">About Me</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>C++中的引用</h1>
+周二 07 四月 2015
+
+by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+        </div>
+	
+        <div><p>from 《C++ Primer》</p>
+<h2></h2>
+<h3>一、概念</h3>
+<p><strong>引用（reference）</strong>的符号为&amp;，一般指“左值引用”，作用是为对象起一个别名。</p>
+<blockquote>
+<p>C++11引入了一种“右值引用”</p>
+</blockquote>
+<p>定义引用时，程序把初始值和对象绑定在一次。之后，这种绑定关系会一直存在，所以引用必须初始化。
+引用本身不是对象。</p>
+<h3>二、示例</h3>
+<div class="highlight"><pre>int ival = 1024;
+int &amp;refVal = ival; //引用，即refVal是ival的别名
+int &amp;refVal2; //报错，引用必须被初始化
+int &amp;refVal3 = 10; //报错，引用的初始值必须是对象
+double dval = 3.14;
+int &amp;refVal4 = dval; //报错，类型不一致
+</pre></div>
+
+
+<h3>三、有用的地方</h3>
+<ol>
+<li>
+<p>数据交换，传递引用参数，可以改变原值</p>
+<div class="highlight"><pre>int swap(int &amp;a, int &amp;b)
+{
+    int tmp = a;
+    a = b;
+    b = tmp;    
+}
+</pre></div>
+
+
+</li>
+<li>
+<p>拷贝构造函数传递的参数必须为引用形式，否则会循环调用；
+    &gt;《C++ Primer》 P442</p>
+</li>
+<li>传入参数为引用类型，可以避免从形参到实参的一次复制构造函数，减少无谓的消耗，提高代码效率
+    &gt;《剑指offer》 P25</li>
+<li>未完待续</li>
+</ol>
+<h3>四、弱引用与强引用</h3>
+<p>C语言中有<a href="http://blog.csdn.net/astrotycoon/article/details/8008629">强符号与弱符号</a>的概念。</p>
+<blockquote>
+<p>有用的命令:nm，列出指定文件的所有符号（包括静态和动态链接库）
+<a href="http://www.cnblogs.com/itech/archive/2012/09/16/2687423.html">参考链接</a></p>
+</blockquote>
+<h4>1.为什么有引用计数</h4>
+<p>C++中存在两种语义：值语义（value sematics）和对象语义（object sematic），对象语义也可以叫做引用语义（reference sematics）。</p>
+<p>值语义，指的是对象的拷贝与原对象无关，就像拷贝int一样，C++的常用类型数据等都是值语义。</p>
+<p>对象语义，指的是面向对象意义下的对象，是禁止拷贝的。
+在设计一个类的时候该类是否可以被拷贝（即具备拷贝构造函数），取决于拷贝后的语义是否成立，比如一个Thread类，拷贝后系统中并不会启动另外一个线程，所以拷贝是禁止的。同样类似于Employee雇员类也是。
+这么设计起码有两个好处：</p>
+<ol>
+<li>语义合理，有些对象复制是不符合常理的</li>
+<li>节省内存。</li>
+</ol>
+<p>在多线程程序中，一个对象如果被多个线程访问，一般使用shared_ptr，通过引用计数来保证对象不被错误的释放导致其他线程访问出现问题。</p>
+<blockquote>
+<p>shared_ptr：<a href="shared_ptr.html" title="智能指针">智能指针</a></p>
+</blockquote>
+<h4>2.强引用</h4>
+<p>当对象被创建时，计数为1；每创建一个变量引用该对象时，该对象的计数就增加1；当上述变量销毁时，对象的计数减1，当计数为0时，这个对象也就被析构了。</p>
+<p>强引用：即当至少有一个强引用时，对象就不能被释放。shared_ptr就是如此。</p>
+<p>强引用计数在很多种情况下都是可以正常工作的，但是也有不凑效的时候，当出现循环引用时，就会出现严重的问题，以至于出现内存泄露。</p>
+<div class="highlight"><pre>Class Parent  
+{  
+public:  
+    // ...  
+private:  
+    shared_ptr&lt;Child&gt; m_child;  
+}
+
+Class Child  
+{  
+public:  
+    // ...  
+private:  
+    shared_ptr&lt;Parent&gt; m_parent;  
+}
+</pre></div>
+
+
+<p>由于两个类之间互相引用，它们的计数都是1，最后谁也不会被释放，就导致了内存泄漏。</p>
+<p>一般解除循环引用有三种办法：</p>
+<ol>
+<li>手动释放</li>
+<li>如果Parent拥有Child，即Parent的生存期比Child大，那么Child就使用一个普通的指针</li>
+<li>使用弱引用的智能指针打破循环引用。</li>
+</ol>
+<p>虽然这三种方法都可行，但方法1和方法2都需要程序员手动控制，麻烦且容易出错。</p>
+<h4>3.弱引用</h4>
+<p>弱引用：它仅仅是对象存在时候的引用，当对象不存在时弱引用能够检测到，从而避免非法访问，弱引用也不会修改对象的引用计数。</p>
+<div class="highlight"><pre>template&lt;typename T&gt; class weak_ptr  
+{  
+    public:  
+        template &lt;typename Y&gt;  
+        weak_ptr(const shared_ptr&lt;Y&gt;&amp; r);
+
+        weak_ptr(const weak_ptr&amp; r);
+
+        ~weak_ptr();
+
+        T* get() const;   
+        bool expired() const;   
+        shared_ptr&lt;T&gt; lock() const;  
+};
+</pre></div>
+
+
+<p>定义变量：</p>
+<div class="highlight"><pre>shared_ptr&lt;T&gt; t(new T);
+weak_ptr&lt;T&gt; ptr(t); // t为一个T对象
+</pre></div>
+
+
+<p>则当t被销毁时，ptr 被自动置为无效。使用方法如下：</p>
+<div class="highlight"><pre>if ( shard_ptr&lt;T&gt; safePtr = ptr.lock() )  safePtr-&gt;Fun();
+</pre></div>
+
+
+<p>weak_ptr必须从一个share_ptr或另一个weak_ptr转换而来，这也说明，进行该对象的内存管理的是那个强引用的share_ptr。weak_ptr只是提供了对管理对象的一个访问手段。</p>
+<p>弱引用指针可以有效的解除循环引用，但这种方式必须在程序员能预见会出现循环引用的情况下才能使用，也可以是说这个仅仅是一种编译期的解决方案，如果程序在运行过程中出现了循环引用，还是会造成内存泄漏的。</p></div>
+	
+        <hr>
+
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="./archives.html">Archives</a>
+                <li><a href="./tags.html">Tags</a>
+
+
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="./category/algorithm.html">algorithm</a></li>
+                <li><a href="./category/cpp.html">cpp</a></li>
+                <li><a href="./category/data-structures.html">data structures</a></li>
+                <li><a href="./category/os.html">OS</a></li>
+                <li><a href="./category/personal.html">Personal</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="http://getpelican.com/">Pelican</a></li>
+                <li><a href="http://python.org/">Python.org</a></li>
+                <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://github.com/lhqqqqq">GitHub</a></li>
+                <li><a href="http://lhmichael.facebook.com">Facebook</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href=".">lhqqqqq's BLOG</a> &copy; lh901124@126.com 2015</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="./theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>
