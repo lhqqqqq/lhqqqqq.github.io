@@ -59,8 +59,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="./cpp11.html"><h1>C++11新特性记录</h1></a>
-周三 08 四月 2015
+            <a href="./MySQL.html"><h1>MySQL之数据操纵</h1></a>
+周四 16 四月 2015
 
 by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
  
@@ -69,7 +69,272 @@ by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
  
         </div>
         
-        <div><h2></h2>
+        <div><!--MySQL之数据操纵-->
+
+<h2></h2>
+<h3>一、基本语法</h3>
+<div class="highlight"><pre>选择：select &lt;fields&gt; from &lt;table&gt; where &lt;condition&gt;;
+插入：insert into &lt;table&gt;(&lt;field1&gt;,&lt;field2&gt;) values(&lt;value1&gt;,&lt;value2&gt;); 
+删除：delete from &lt;table&gt; where &lt;condition&gt;; 
+更新：update &lt;table&gt; set &lt;field&gt;=&lt;value&gt; where &lt;condition&gt;; 
+查找：select &lt;fields&gt; from &lt;table&gt; where &lt;field1&gt; like &#39;%&lt;value&gt;%&#39; 
+排序：select &lt;fields&gt; from &lt;table&gt; order by &lt;field1&gt;,&lt;field2&gt; [desc] [limit &lt;number&gt;];
+总数：select count [as &lt;columnname&gt;] from table1; 
+求和：select sum(&lt;field&gt;) from &lt;table&gt;; 
+平均：select avg(&lt;field&gt;) from &lt;table&gt;; 
+最大：select max(&lt;field&gt;) from &lt;table&gt;; 
+最小：select min(&lt;field&gt;) from &lt;table&gt;;
+</pre></div>
+
+
+<h3>二、join</h3>
+<p>举例说明</p>
+<div class="highlight"><pre>Table1.
++----+-------+
+| Id | book  |
++----+-------+
+| 1  | java  |
+| 2  | c++   |
+| 3  | php   |
++----+-------+
+Table2.
++----+-------+
+| Id | author|
++----+-------+
+| 2  | zhang |
+| 2  | wang  |
+| 3  | li    |
++----+-------+
+</pre></div>
+
+
+<p><strong>Iner Join(内连接)</strong> 将两个表中存在连接关系的字段，组成的记录集。</p>
+<div class="highlight"><pre>mysql&gt; select * from table1 join table2 on table1.id=table2.id;  
++------+------+------+--------+  
+| id   | book | id   | author |  
++------+------+------+--------+  
+|    2 | c++  |    2 | zhang  |  
+|    3 | php  |    3 | wang   |  
++------+------+------+--------+
+</pre></div>
+
+
+<p>使用using子句</p>
+<div class="highlight"><pre>mysql&gt; select * from table1 inner join table2 using (id);  
++------+------+--------+  
+| id   | book | author |  
++------+------+--------+  
+|    2 | c++  | zhang  |  
+|    3 | php  | wang   |  
++------+------+--------+
+</pre></div>
+
+
+<p>等价于 </p>
+<div class="highlight"><pre>mysql&gt; select table1.id as id,book,author from table1, table2 where table1.id=table2.id; 
+mysql&gt; select table1.id, book, author from table1 join table2 on table1.id=table2.id;
+</pre></div>
+
+
+<p><strong>Cross Join(交叉连接)</strong> 求两个表的笛卡尔积，可以用逗号表示，如(table1, table 2)。不使用on或using时，和Inner Join是等价的。</p>
+<div class="highlight"><pre>mysql&gt; select * from table1 inner join table2;  
+mysql&gt; select * from table1 cross join table2;  
+mysql&gt; select * from (table1, table2);   
++------+------+------+--------+  
+| id   | book | id   | author |  
++------+------+------+--------+  
+|    1 | java |    2 | zhang  |  
+|    2 | c++  |    2 | zhang  |  
+|    3 | php  |    2 | zhang  |  
+|    1 | java |    3 | wang   |  
+|    2 | c++  |    3 | wang   |  
+|    3 | php  |    3 | wang   |  
+|    1 | java |    4 | li     |  
+|    2 | c++  |    4 | li     |  
+|    3 | php  |    4 | li     |  
++------+------+------+--------+
+</pre></div>
+
+
+<p><strong>Natural Join 自然连接</strong> 等价于使用using子句的Inner Join。</p>
+<div class="highlight"><pre>mysql&gt; select * from table1 natural join table2;  
+mysql&gt; select * from table1 inner join table2 using (id);   
++------+------+--------+  
+| id   | book | author |  
++------+------+--------+  
+|    2 | c++  | zhang  |  
+|    3 | php  | wang   |  
++------+------+--------+
+</pre></div>
+
+
+<p><strong>Left Join 左外连接</strong> 左外连接A、B表的意思就是将表A中的全部记录和表B中字段连接形成的记录集，这里注意的是最后出来的记录集会包括表A的全部记录。</p>
+<div class="highlight"><pre>mysql&gt; select * from table1 left join table2 on table1.id=table2.id; 
++------+------+------+--------+  
+| id   | book | id   | author |  
++------+------+------+--------+
+|    1 | java | NULL | NULL   |  
+|    2 | c++  |    2 | zhang  |  
+|    3 | php  |    3 | wang   |  
++------+------+------+--------+ 
+mysql&gt; select * from table2 right join table1 using (id);   
++------+------+--------+  
+| id   | book | author |  
++------+------+--------+  
+|    1 | java | NULL   |  
+|    2 | c++  | zhang  |  
+|    3 | php  | wang   |  
++------+------+--------+
+</pre></div>
+
+
+<p><strong>Right Join 右外连接</strong> 右外连接和左外连接是类似的。为了方便数据库便于访问，推荐使用左外连接代替右外连接。</p>
+<h3>三、in、exists</h3>
+<p>参考<a href="http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/">http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/</a></p>
+<p><strong>in</strong>查询相当于多个or条件的叠加</p>
+<div class="highlight"><pre>select * from user where userId in (1, 2, 3);
+</pre></div>
+
+
+<p>等效于</p>
+<div class="highlight"><pre>select * from user where userId = 1 or userId = 2 or userId = 3;
+</pre></div>
+
+
+<p>not in与in相反，如下</p>
+<div class="highlight"><pre>select * from user where userId not in (1, 2, 3);
+</pre></div>
+
+
+<p>等效于</p>
+<div class="highlight"><pre>select * from user where userId != 1 and userId != 2 and userId != 3;
+</pre></div>
+
+
+<p>总的来说，in查询就是先将子查询条件的记录全都查出来，假设结果集为B，共有m条记录，然后在将子查询条件的结果集分解成m个，再进行m次查询。</p>
+<p>in查询的子条件返回结果必须只有一个字段，例如</p>
+<div class="highlight"><pre>select * from user where userId in (select id from B);
+</pre></div>
+
+
+<p>而不能是</p>
+<div class="highlight"><pre>select * from user where userId in (select id, age from B);
+</pre></div>
+
+
+<p><strong>exists</strong>对外表用loop逐条查询，每次查询都会查看exists的条件语句，当exists里的条件语句能够返回记录行时(无论记录行是的多少，只要能返回)，条件就为真，返回当前loop到的这条记录，反之如果exists里的条件语句不能返回记录行，则当前loop到的这条记录被丢弃，exists的条件就像一个bool条件，当能返回结果集则为true，不能返回结果集则为false。</p>
+<p>如下：</p>
+<div class="highlight"><pre>select * from user where exists (select 1);
+</pre></div>
+
+
+<p>对user表的记录逐条取出，由于子条件中的select 1永远能返回记录行，那么user表的所有记录都将被加入结果集，所以与 select * from user;是一样的</p>
+<p>又如下：</p>
+<div class="highlight"><pre>select * from user where exists (select * from user where userId = 0);
+</pre></div>
+
+
+<p>可以知道对user表进行loop时，检查条件语句(select * from user where userId = 0),由于userId永远不为0，所以条件语句永远返回空集，条件永远为false，那么user表的所有记录都将被丢弃</p>
+<p>not exists与exists相反，也就是当exists条件有结果集返回时，loop到的记录将被丢弃，否则将loop到的记录加入结果集</p>
+<p>总的来说，如果A表有n条记录，那么exists查询就是将这n条记录逐条取出，然后判断n遍exists条件 </p>
+<p><strong>in</strong>和<strong>exists</strong></p>
+<p>in是把外表和内表作hash连接，而exists是对外表作loop循环，每次loop循环再对内表进行查询。</p>
+<p>如果查询的两个表大小相当，那么用in和exists差别不大；如果两个表中一个较小一个较大，则子查询表大的用exists，子查询表小的用in。</p>
+<p>例如：</p>
+<p>若表A较小，表B较大</p>
+<div class="highlight"><pre>select * from A where cc in(select cc from B)　　--&gt;效率低，用到了A表上cc列的索引；
+select * from A where exists(select cc from B where cc=A.cc)　　--&gt;效率高，用到了B表上cc列的索引。
+</pre></div>
+
+
+<p>相反的：</p>
+<div class="highlight"><pre>select * from B where cc in(select cc from A)　　--&gt;效率高，用到了B表上cc列的索引
+select * from B where exists(select cc from A where cc=B.cc)　　--&gt;效率低，用到了A表上cc列的索引。
+</pre></div>
+
+
+<p><strong>not in</strong>和<strong>not exists</strong></p>
+<p>not in 逻辑上不完全等同于not exists</p>
+<div class="highlight"><pre>Table1.
++-----+-----+
+| c1  | c2  |
++-----+-----+
+| 1   | 2   |
+| 1   | 3   |
++-----+-----+
+Table2.
++-----+-----+
+| c1  | c2  |
++-----+-----+
+| 1   | 2   |
+| 1   | null|
++-----+-----+
+select * from Table1 where c2 not in(select c2 from Table2);　　--&gt;执行结果：无
+select * from Table1 where not exists(select 1 from Table2 where Table2.c2=Table1.c2)　　--&gt;执行结果：1　　3
+</pre></div>
+
+
+<p>not in出现了不期望的结果集，存在逻辑错误。尽量不要使用not in(它会调用子查询)，而尽量使用not exists（它会调用关联子查询）。如果子查询中返回的任意一条记录含有空值，则not in查询将不返回任何记录。如果子查询字段有非空限制，这时可以使用not in。</p>
+<p>如果查询语句使用了not in，那么对内外表都进行全表扫描，没有用到索引；而not exists的子查询依然能用到表上的索引。所以无论哪个表大，用not exists都比not in 要快。</p>
+<p><strong>in</strong>和<strong>=</strong></p>
+<div class="highlight"><pre>select name from student where name in(&#39;zhang&#39;,&#39;wang&#39;,&#39;zhao&#39;);
+</pre></div>
+
+
+<p>与</p>
+<div class="highlight"><pre>select name from student where name=&#39;zhang&#39; or name=&#39;wang&#39; or name=&#39;zhao&#39;
+</pre></div>
+
+
+<p>的结果是相同的。</p></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="./dynamic.html"><h2>算法之动态规划</h2></a>
+        <div class= "well small"> 周五 10 四月 2015
+
+by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+ </div>
+        <div class="summary"><!--#算法之动态规划-->
+
+<h2></h2>
+<p>大篇幅参考<a href="http://www.cnblogs.com/sdjl/articles/1274312.html">http://www.cnblogs.com/sdjl/articles/1274312.html</a>，很好的故事 from <a href="http://SDJL.me">SDJL</a>。</p>
+<h3>一、什么是动态规划</h3>
+<p><strong>动态规划</strong>在查找有很多<em>重叠子问题</em>的情况的最优解时有效。它将问题重新组合成子问题。为了避免多次解决这些子问题，它们的结果都逐渐被计算并被保存，从简单的问题直到整个问题都被解决。因此，动态规划保存递归时的结果，因而不会在解决同样的问题时花费时间。</p>
+<p>动态规划只能应用于有<em>最优子结构的问题</em>。最优子结构的意思是局部最优解能决定全局最优解（对有些问题这个要求并不能完全满足，故有时需要引入一定的近似）。简单地说，问题能够分解成子问题来解决。</p>
+<p>from <a href="http://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">wiki</a></p>
+<p>复杂的概念，根本看不懂，需要从问题引入。</p>
+<p>关于动态规划，最经典的是<strong>01背包问题</strong>：</p>
+<blockquote>
+<p>有一个包和n个物品，包的容量为m，每个物品都有各自的体积和价值，问当从这n个物品中选择多个物品放在包里而物品体积总数不超过包的容量m时，能够得到的最大价值是多少？[对于每个物品不可以取多次，最多只能取一次，之所以叫做01背包，0表示不取，1表示取 ...</p></blockquote></!--#算法之动态规划--> <a class="btn btn-info xsmall" href="./dynamic.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="./cpp11.html"><h2>C++11新特性记录</h2></a>
+        <div class= "well small"> 周三 08 四月 2015
+
+by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2></h2>
 <ol>
 <li>
 <p>C++11</p>
@@ -84,72 +349,9 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 
 
 <p>应用在容器中</p>
-<div class="highlight"><pre>auto len = str.size(); //len的类型是string::size_type
-</pre></div>
-
-
-<p>应用在容器的迭代器中</p>
-<div class="highlight"><pre>vector&lt;int&gt; v{1, 2, 3};
-for （auto it = v.begin(); it != v.end; ++i）
-    (*it)++;
-//it的类型为vector&lt;int&gt;::iterator
-</pre></div>
-
-
-<p><strong>decltype</strong>：选择并返回操作数的数据类型。</p>
-<div class="highlight"><pre>decltype(f()) sum = x;
-</pre></div>
-
-
-<p>编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。</p>
-<blockquote>
-<p>decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。</p>
-</blockquote>
-</li>
-<li>
-<p>范围for语句</p>
-<p>遍历给定序列中的每个元素并对序列中的每个值执行某种操作</p>
-<div class="highlight"><pre>for (declaration: expression)
-    statement
-</pre></div>
-
-
-<p>expression部分是一个对象，用于表示一个序列；declaration部分负责定义一个变量，该变量将被用于访问序列中的基础元素。
-如：</p>
-<div class="highlight"><pre>string str(&quot;Hello world!&quot;);
-for (auto c : str)
-    cout &lt;&lt; c &lt;&lt;endl;
-</pre></div>
-
-
-</li>
-<li>
-<p>列表初始化</p>
-<p>列表初始化不再局限于数组。无论是初始化对象还是某些时候为新对象赋值，都可以使用一组花括号括起来的初始值。</p>
-<p>如，容器初始化</p>
-<div class="highlight"><pre>vector&lt;int&gt; v = {1, 2, 3};
-</pre></div>
-
-
-<p>或</p>
-<div class="highlight"><pre>vector&lt;int&gt; v{1, 2, 3};
-</pre></div>
-
-
-<p>取代以前的方法：</p>
-<div class="highlight"><pre>int arr[3] = {1, 2, 3}  
-vector&lt;int&gt; v(arr, arr + 3);
-</pre></div>
-
-
-</li>
-<li>
-<p>待续</p>
-</li>
-</ol></div>
-        <hr />
-    </div>
-		
+<div class="highlight"><pre>auto len ...</pre></div></li></ol> <a class="btn btn-info xsmall" href="./cpp11.html">read more</a></div>
+    </div>	
+				
 
  
         
@@ -359,6 +561,7 @@ by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
                 <li><a href="./category/algorithm.html">algorithm</a></li>
                 <li><a href="./category/cpp.html">cpp</a></li>
                 <li><a href="./category/data-structures.html">data structures</a></li>
+                <li><a href="./category/database.html">database</a></li>
                 <li><a href="./category/os.html">OS</a></li>
                 <li><a href="./category/personal.html">Personal</a></li>
                    
