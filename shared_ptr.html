@@ -93,8 +93,43 @@ by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
 <li>还有一种名为<strong>weak_ptr</strong>的伴随类，它是一种<a href="reference.html">弱引用</a>，指向shared_ptr所管理的对象。</li>
 </ul>
 <p>上述三种类型都定义在memory头文件中。</p>
-<h3>三、概念</h3>
-<h3>四、概念</h3></div>
+<p>创建：</p>
+<div class="highlight"><pre>shared_ptr&lt;string&gt; p1;      //可以指向string的shared_ptr
+shared_ptr&lt;lit&lt;int&gt;&gt; p1;    //可以指向int的list的shared_ptr
+</pre></div>
+
+
+<p>智能指针的使用（如判断、指向、解引用）与普通指针相同。</p>
+<p>智能指针的操作：</p>
+<p>shared_ptr和unique_ptr均支持的：</p>
+<ul>
+<li>shared_ptr<T> sp/unique_ptr<T> up 空智能指针，可以指向T类型的对象</li>
+<li>p         将p作为条件判断，空则为false，指向一个对象则为true</li>
+<li>*p        解引用p</li>
+<li>p.get()   返回p中保存的指针</li>
+<li>swap(p,q)/p.swap(q)   交换p和q中的指针</li>
+</ul>
+<p>只有shared_ptr支持的：</p>
+<ul>
+<li>make_shared<T>(args)  返回一个shared_ptr，指向一个动态分配的T类型对象，使用args初始化此对象（最安全的分配和使用动态内存的方法！）</li>
+<li>p.use_count()         返回p共享对象的智能指针量（可能很慢！用于调试！）</li>
+<li>p.unique()            若p.use_count()为1，返回true；否则返回false</li>
+<li>share_ptr<T> p(q)     p是q的拷贝；会递增q中的计数器。（q中的指针必须能转换成*T!)</li>
+<li>p = q                 此操作会递减p的引用计数，递增q中的引用计数；若p的引用计数变为0，则将其管理的原内存释放（p和q都是shared_ptr，且保存的指针必须能相互转换！）</li>
+</ul>
+<p>具体示例：</p>
+<div class="highlight"><pre>//指向一个值为9的int的shared_ptr
+share_ptr&lt;int&gt; p1 = make_shared&lt;int&gt;(9);
+//指向一个值为&quot;hello&quot;的string的shared_ptr
+share_ptr&lt;string&gt; p2 = make_shared&lt;string&gt;(&quot;hello&quot;);
+//指向一个值初始化的(对于int为0)int的shared_ptr
+share_ptr&lt;int&gt; p3 = make_shared&lt;int&gt;();
+//可以使用auto，这里指向空的string组成的vector
+auto p4 = make_shared&lt;vector&lt;string&gt;&gt;();
+</pre></div>
+
+
+<h3>四、shared_ptr的实现</h3></div>
 	
         <hr>
 
