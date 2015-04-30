@@ -55,7 +55,7 @@
     <div class='article'>
         <div class="content-title">
             <h1>动态内存与智能指针</h1>
-周二 07 四月 2015
+周四 30 四月 2015
 
 by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
  
@@ -63,7 +63,38 @@ by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
 
         </div>
 	
-        <div></div>
+        <div><p>from 《C++ Primer》</p>
+<h2></h2>
+<h3>一、动态内存</h3>
+<p>程序使用的<strong>内存</strong>包括：静态内存、栈内存动态内存；</p>
+<p><strong>静态内存</strong>用来保存局部static对象、类static数据成员和定义在任何函数之外的变量。</p>
+<p><strong>栈内存</strong>用来保存定义在函数内的非static对象。</p>
+<p>分配在静态或栈内存中的对象由编译器自动创建和销毁。对于栈对象，仅在其定义的程序块运行时才存在；static对象在使用之前分配，在程序结束时销毁。</p>
+<p><strong>动态内存</strong>被称作自由空间（free store）或堆（heap）。程序用堆来存储动态分配的对象，即那些在程序运行时分配的对象。动态对象的生存期由程序来控制，即不再使用时，代码必须显示地销毁。</p>
+<p>C++中，使用<strong>new</strong>和<strong>delete</strong>
+这对
+<strong>运算符</strong>来管理动态内存。</p>
+<blockquote>
+<p>new和delete是运算符，malloc和free是库函数。<a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/07/16/2593754.html">它们的不同？</a></p>
+</blockquote>
+<p><strong>new</strong>：在动态内存中为对象分配空间并返回一个指向该对象的指针。</p>
+<p><strong>delete</strong>：接受一个动态对象的指针，销毁该对象，并释放与之关联的内存。</p>
+<h3>二、new和delete</h3>
+<h3>三、智能指针</h3>
+<p>不正确释放动态内存，会引发问题：</p>
+<ul>
+<li>忘记释放内存，会产生<strong>内存泄露</strong>；</li>
+<li>在尚有指针引用内存的情况下释放，会产生<strong>引用非法内存</strong>的指针。</li>
+</ul>
+<p>为了更容易且更安全地使用动态内存，C++11标准引入（boost库中已有）两种<strong>智能指针（smart pointer）</strong>类型来管理动态对象。智能指针与常规指针的区别是它在负责自动释放所指向的对象。</p>
+<ul>
+<li><strong>shared_ptr</strong>允许多个指针指向同一对象；</li>
+<li><strong>unique_str</strong>独占所指向的对象；</li>
+<li>还有一种名为<strong>weak_ptr</strong>的伴随类，它是一种<a href="reference.html">弱引用</a>，指向shared_ptr所管理的对象。</li>
+</ul>
+<p>上述三种类型都定义在memory头文件中。</p>
+<h3>三、概念</h3>
+<h3>四、概念</h3></div>
 	
         <hr>
 

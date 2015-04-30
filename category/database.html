@@ -286,7 +286,40 @@ select * from Table1 where not exists(select 1 from Table2 where Table2.c2=Table
 </pre></div>
 
 
-<p>的结果是相同的。</p></div>
+<p>的结果是相同的。</p>
+<h3>四、group by</h3>
+<p><strong>group by</strong>语法可以根据给定数据列的每个成员对查询结果进行分组统计，最终得到一个分组汇总表。一般结合avg(),count()等进行统计。</p>
+<p>例如</p>
+<div class="highlight"><pre>Table1.
++----+-------+
+| Id | value |
++----+-------+
+| 1  | 2     |
+| 2  | 3     |
+| 1  | 2     |
+| 2  | 5     |
+| 3  | 4     |
++----+-------+ 
+select Id, avg(value) from Table1 group by Id;
++----+----------+
+| Id |avg(value)|
++----+----------+
+| 1  | 2        |
+| 2  | 4        |
+| 3  | 4        |
++----+----------+
+</pre></div>
+
+
+<p>还可以使用<strong>having</strong>子句测试一个统计结果，放在group by子句之后。</p>
+<div class="highlight"><pre>select Id, avg(value) from Table1 group by Id having having count(*) &gt; 1;
++----+----------+
+| Id |avg(value)|
++----+----------+
+| 1  | 2        |
+| 2  | 4        |
++----+----------+
+</pre></div></div>
         <hr />
     </div>
 		

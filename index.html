@@ -59,8 +59,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="./MySQL.html"><h1>MySQL之数据操纵</h1></a>
-周四 16 四月 2015
+            <a href="./shared_ptr.html"><h1>动态内存与智能指针</h1></a>
+周四 30 四月 2015
 
 by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
  
@@ -69,7 +69,57 @@ by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
  
         </div>
         
-        <div><!--MySQL之数据操纵-->
+        <div><p>from 《C++ Primer》</p>
+<h2></h2>
+<h3>一、动态内存</h3>
+<p>程序使用的<strong>内存</strong>包括：静态内存、栈内存动态内存；</p>
+<p><strong>静态内存</strong>用来保存局部static对象、类static数据成员和定义在任何函数之外的变量。</p>
+<p><strong>栈内存</strong>用来保存定义在函数内的非static对象。</p>
+<p>分配在静态或栈内存中的对象由编译器自动创建和销毁。对于栈对象，仅在其定义的程序块运行时才存在；static对象在使用之前分配，在程序结束时销毁。</p>
+<p><strong>动态内存</strong>被称作自由空间（free store）或堆（heap）。程序用堆来存储动态分配的对象，即那些在程序运行时分配的对象。动态对象的生存期由程序来控制，即不再使用时，代码必须显示地销毁。</p>
+<p>C++中，使用<strong>new</strong>和<strong>delete</strong>
+这对
+<strong>运算符</strong>来管理动态内存。</p>
+<blockquote>
+<p>new和delete是运算符，malloc和free是库函数。<a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/07/16/2593754.html">它们的不同？</a></p>
+</blockquote>
+<p><strong>new</strong>：在动态内存中为对象分配空间并返回一个指向该对象的指针。</p>
+<p><strong>delete</strong>：接受一个动态对象的指针，销毁该对象，并释放与之关联的内存。</p>
+<h3>二、new和delete</h3>
+<h3>三、智能指针</h3>
+<p>不正确释放动态内存，会引发问题：</p>
+<ul>
+<li>忘记释放内存，会产生<strong>内存泄露</strong>；</li>
+<li>在尚有指针引用内存的情况下释放，会产生<strong>引用非法内存</strong>的指针。</li>
+</ul>
+<p>为了更容易且更安全地使用动态内存，C++11标准引入（boost库中已有）两种<strong>智能指针（smart pointer）</strong>类型来管理动态对象。智能指针与常规指针的区别是它在负责自动释放所指向的对象。</p>
+<ul>
+<li><strong>shared_ptr</strong>允许多个指针指向同一对象；</li>
+<li><strong>unique_str</strong>独占所指向的对象；</li>
+<li>还有一种名为<strong>weak_ptr</strong>的伴随类，它是一种<a href="reference.html">弱引用</a>，指向shared_ptr所管理的对象。</li>
+</ul>
+<p>上述三种类型都定义在memory头文件中。</p>
+<h3>三、概念</h3>
+<h3>四、概念</h3></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="./MySQL.html"><h2>MySQL之数据操纵</h2></a>
+        <div class= "well small"> 周四 16 四月 2015
+
+by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+ </div>
+        <div class="summary"><!--MySQL之数据操纵-->
 
 <h2></h2>
 <h3>一、基本语法</h3>
@@ -78,218 +128,9 @@ by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
 删除：delete from &lt;table&gt; where &lt;condition&gt;; 
 更新：update &lt;table&gt; set &lt;field&gt;=&lt;value&gt; where &lt;condition&gt;; 
 查找：select &lt;fields&gt; from &lt;table&gt; where &lt;field1&gt; like &#39;%&lt;value&gt;%&#39; 
-排序：select &lt;fields&gt; from &lt;table&gt; order by &lt;field1&gt;,&lt;field2&gt; [desc] [limit &lt;number&gt;];
-总数：select count [as &lt;columnname&gt;] from table1; 
-求和：select sum(&lt;field&gt;) from &lt;table&gt;; 
-平均：select avg(&lt;field&gt;) from &lt;table&gt;; 
-最大：select max(&lt;field&gt;) from &lt;table&gt;; 
-最小：select min(&lt;field&gt;) from &lt;table&gt;;
-</pre></div>
-
-
-<h3>二、join</h3>
-<p>举例说明</p>
-<div class="highlight"><pre>Table1.
-+----+-------+
-| Id | book  |
-+----+-------+
-| 1  | java  |
-| 2  | c++   |
-| 3  | php   |
-+----+-------+
-Table2.
-+----+-------+
-| Id | author|
-+----+-------+
-| 2  | zhang |
-| 2  | wang  |
-| 3  | li    |
-+----+-------+
-</pre></div>
-
-
-<p><strong>Iner Join(内连接)</strong> 将两个表中存在连接关系的字段，组成的记录集。</p>
-<div class="highlight"><pre>mysql&gt; select * from table1 join table2 on table1.id=table2.id;  
-+------+------+------+--------+  
-| id   | book | id   | author |  
-+------+------+------+--------+  
-|    2 | c++  |    2 | zhang  |  
-|    3 | php  |    3 | wang   |  
-+------+------+------+--------+
-</pre></div>
-
-
-<p>使用using子句</p>
-<div class="highlight"><pre>mysql&gt; select * from table1 inner join table2 using (id);  
-+------+------+--------+  
-| id   | book | author |  
-+------+------+--------+  
-|    2 | c++  | zhang  |  
-|    3 | php  | wang   |  
-+------+------+--------+
-</pre></div>
-
-
-<p>等价于 </p>
-<div class="highlight"><pre>mysql&gt; select table1.id as id,book,author from table1, table2 where table1.id=table2.id; 
-mysql&gt; select table1.id, book, author from table1 join table2 on table1.id=table2.id;
-</pre></div>
-
-
-<p><strong>Cross Join(交叉连接)</strong> 求两个表的笛卡尔积，可以用逗号表示，如(table1, table 2)。不使用on或using时，和Inner Join是等价的。</p>
-<div class="highlight"><pre>mysql&gt; select * from table1 inner join table2;  
-mysql&gt; select * from table1 cross join table2;  
-mysql&gt; select * from (table1, table2);   
-+------+------+------+--------+  
-| id   | book | id   | author |  
-+------+------+------+--------+  
-|    1 | java |    2 | zhang  |  
-|    2 | c++  |    2 | zhang  |  
-|    3 | php  |    2 | zhang  |  
-|    1 | java |    3 | wang   |  
-|    2 | c++  |    3 | wang   |  
-|    3 | php  |    3 | wang   |  
-|    1 | java |    4 | li     |  
-|    2 | c++  |    4 | li     |  
-|    3 | php  |    4 | li     |  
-+------+------+------+--------+
-</pre></div>
-
-
-<p><strong>Natural Join 自然连接</strong> 等价于使用using子句的Inner Join。</p>
-<div class="highlight"><pre>mysql&gt; select * from table1 natural join table2;  
-mysql&gt; select * from table1 inner join table2 using (id);   
-+------+------+--------+  
-| id   | book | author |  
-+------+------+--------+  
-|    2 | c++  | zhang  |  
-|    3 | php  | wang   |  
-+------+------+--------+
-</pre></div>
-
-
-<p><strong>Left Join 左外连接</strong> 左外连接A、B表的意思就是将表A中的全部记录和表B中字段连接形成的记录集，这里注意的是最后出来的记录集会包括表A的全部记录。</p>
-<div class="highlight"><pre>mysql&gt; select * from table1 left join table2 on table1.id=table2.id; 
-+------+------+------+--------+  
-| id   | book | id   | author |  
-+------+------+------+--------+
-|    1 | java | NULL | NULL   |  
-|    2 | c++  |    2 | zhang  |  
-|    3 | php  |    3 | wang   |  
-+------+------+------+--------+ 
-mysql&gt; select * from table2 right join table1 using (id);   
-+------+------+--------+  
-| id   | book | author |  
-+------+------+--------+  
-|    1 | java | NULL   |  
-|    2 | c++  | zhang  |  
-|    3 | php  | wang   |  
-+------+------+--------+
-</pre></div>
-
-
-<p><strong>Right Join 右外连接</strong> 右外连接和左外连接是类似的。为了方便数据库便于访问，推荐使用左外连接代替右外连接。</p>
-<h3>三、in、exists</h3>
-<p>参考<a href="http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/">http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/</a></p>
-<p><strong>in</strong>查询相当于多个or条件的叠加</p>
-<div class="highlight"><pre>select * from user where userId in (1, 2, 3);
-</pre></div>
-
-
-<p>等效于</p>
-<div class="highlight"><pre>select * from user where userId = 1 or userId = 2 or userId = 3;
-</pre></div>
-
-
-<p>not in与in相反，如下</p>
-<div class="highlight"><pre>select * from user where userId not in (1, 2, 3);
-</pre></div>
-
-
-<p>等效于</p>
-<div class="highlight"><pre>select * from user where userId != 1 and userId != 2 and userId != 3;
-</pre></div>
-
-
-<p>总的来说，in查询就是先将子查询条件的记录全都查出来，假设结果集为B，共有m条记录，然后在将子查询条件的结果集分解成m个，再进行m次查询。</p>
-<p>in查询的子条件返回结果必须只有一个字段，例如</p>
-<div class="highlight"><pre>select * from user where userId in (select id from B);
-</pre></div>
-
-
-<p>而不能是</p>
-<div class="highlight"><pre>select * from user where userId in (select id, age from B);
-</pre></div>
-
-
-<p><strong>exists</strong>对外表用loop逐条查询，每次查询都会查看exists的条件语句，当exists里的条件语句能够返回记录行时(无论记录行是的多少，只要能返回)，条件就为真，返回当前loop到的这条记录，反之如果exists里的条件语句不能返回记录行，则当前loop到的这条记录被丢弃，exists的条件就像一个bool条件，当能返回结果集则为true，不能返回结果集则为false。</p>
-<p>如下：</p>
-<div class="highlight"><pre>select * from user where exists (select 1);
-</pre></div>
-
-
-<p>对user表的记录逐条取出，由于子条件中的select 1永远能返回记录行，那么user表的所有记录都将被加入结果集，所以与 select * from user;是一样的</p>
-<p>又如下：</p>
-<div class="highlight"><pre>select * from user where exists (select * from user where userId = 0);
-</pre></div>
-
-
-<p>可以知道对user表进行loop时，检查条件语句(select * from user where userId = 0),由于userId永远不为0，所以条件语句永远返回空集，条件永远为false，那么user表的所有记录都将被丢弃</p>
-<p>not exists与exists相反，也就是当exists条件有结果集返回时，loop到的记录将被丢弃，否则将loop到的记录加入结果集</p>
-<p>总的来说，如果A表有n条记录，那么exists查询就是将这n条记录逐条取出，然后判断n遍exists条件 </p>
-<p><strong>in</strong>和<strong>exists</strong></p>
-<p>in是把外表和内表作hash连接，而exists是对外表作loop循环，每次loop循环再对内表进行查询。</p>
-<p>如果查询的两个表大小相当，那么用in和exists差别不大；如果两个表中一个较小一个较大，则子查询表大的用exists，子查询表小的用in。</p>
-<p>例如：</p>
-<p>若表A较小，表B较大</p>
-<div class="highlight"><pre>select * from A where cc in(select cc from B)　　--&gt;效率低，用到了A表上cc列的索引；
-select * from A where exists(select cc from B where cc=A.cc)　　--&gt;效率高，用到了B表上cc列的索引。
-</pre></div>
-
-
-<p>相反的：</p>
-<div class="highlight"><pre>select * from B where cc in(select cc from A)　　--&gt;效率高，用到了B表上cc列的索引
-select * from B where exists(select cc from A where cc=B.cc)　　--&gt;效率低，用到了A表上cc列的索引。
-</pre></div>
-
-
-<p><strong>not in</strong>和<strong>not exists</strong></p>
-<p>not in 逻辑上不完全等同于not exists</p>
-<div class="highlight"><pre>Table1.
-+-----+-----+
-| c1  | c2  |
-+-----+-----+
-| 1   | 2   |
-| 1   | 3   |
-+-----+-----+
-Table2.
-+-----+-----+
-| c1  | c2  |
-+-----+-----+
-| 1   | 2   |
-| 1   | null|
-+-----+-----+
-select * from Table1 where c2 not in(select c2 from Table2);　　--&gt;执行结果：无
-select * from Table1 where not exists(select 1 from Table2 where Table2.c2=Table1.c2)　　--&gt;执行结果：1　　3
-</pre></div>
-
-
-<p>not in出现了不期望的结果集，存在逻辑错误。尽量不要使用not in(它会调用子查询)，而尽量使用not exists（它会调用关联子查询）。如果子查询中返回的任意一条记录含有空值，则not in查询将不返回任何记录。如果子查询字段有非空限制，这时可以使用not in。</p>
-<p>如果查询语句使用了not in，那么对内外表都进行全表扫描，没有用到索引；而not exists的子查询依然能用到表上的索引。所以无论哪个表大，用not exists都比not in 要快。</p>
-<p><strong>in</strong>和<strong>=</strong></p>
-<div class="highlight"><pre>select name from student where name in(&#39;zhang&#39;,&#39;wang&#39;,&#39;zhao&#39;);
-</pre></div>
-
-
-<p>与</p>
-<div class="highlight"><pre>select name from student where name=&#39;zhang&#39; or name=&#39;wang&#39; or name=&#39;zhao&#39;
-</pre></div>
-
-
-<p>的结果是相同的。</p></div>
-        <hr />
-    </div>
-		
+排序：select &lt;fields&gt; from &lt;table&gt; order by &lt;field1&gt;,&lt;field2 ...</pre></div></!--mysql之数据操纵--> <a class="btn btn-info xsmall" href="./MySQL.html">read more</a></div>
+    </div>	
+				
 
  
         
@@ -350,24 +191,6 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 
 <p>应用在容器中</p>
 <div class="highlight"><pre>auto len ...</pre></div></li></ol> <a class="btn btn-info xsmall" href="./cpp11.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="./shared_ptr.html"><h2>动态内存与智能指针</h2></a>
-        <div class= "well small"> 周二 07 四月 2015
-
-by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
- 
-
-
- </div>
-        <div class="summary"> <a class="btn btn-info xsmall" href="./shared_ptr.html">read more</a></div>
     </div>	
 				
 

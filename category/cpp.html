@@ -59,8 +59,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="../cpp11.html"><h1>C++11新特性记录</h1></a>
-周三 08 四月 2015
+            <a href="../shared_ptr.html"><h1>动态内存与智能指针</h1></a>
+周四 30 四月 2015
 
 by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
  
@@ -69,7 +69,57 @@ by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
  
         </div>
         
-        <div><h2></h2>
+        <div><p>from 《C++ Primer》</p>
+<h2></h2>
+<h3>一、动态内存</h3>
+<p>程序使用的<strong>内存</strong>包括：静态内存、栈内存动态内存；</p>
+<p><strong>静态内存</strong>用来保存局部static对象、类static数据成员和定义在任何函数之外的变量。</p>
+<p><strong>栈内存</strong>用来保存定义在函数内的非static对象。</p>
+<p>分配在静态或栈内存中的对象由编译器自动创建和销毁。对于栈对象，仅在其定义的程序块运行时才存在；static对象在使用之前分配，在程序结束时销毁。</p>
+<p><strong>动态内存</strong>被称作自由空间（free store）或堆（heap）。程序用堆来存储动态分配的对象，即那些在程序运行时分配的对象。动态对象的生存期由程序来控制，即不再使用时，代码必须显示地销毁。</p>
+<p>C++中，使用<strong>new</strong>和<strong>delete</strong>
+这对
+<strong>运算符</strong>来管理动态内存。</p>
+<blockquote>
+<p>new和delete是运算符，malloc和free是库函数。<a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/07/16/2593754.html">它们的不同？</a></p>
+</blockquote>
+<p><strong>new</strong>：在动态内存中为对象分配空间并返回一个指向该对象的指针。</p>
+<p><strong>delete</strong>：接受一个动态对象的指针，销毁该对象，并释放与之关联的内存。</p>
+<h3>二、new和delete</h3>
+<h3>三、智能指针</h3>
+<p>不正确释放动态内存，会引发问题：</p>
+<ul>
+<li>忘记释放内存，会产生<strong>内存泄露</strong>；</li>
+<li>在尚有指针引用内存的情况下释放，会产生<strong>引用非法内存</strong>的指针。</li>
+</ul>
+<p>为了更容易且更安全地使用动态内存，C++11标准引入（boost库中已有）两种<strong>智能指针（smart pointer）</strong>类型来管理动态对象。智能指针与常规指针的区别是它在负责自动释放所指向的对象。</p>
+<ul>
+<li><strong>shared_ptr</strong>允许多个指针指向同一对象；</li>
+<li><strong>unique_str</strong>独占所指向的对象；</li>
+<li>还有一种名为<strong>weak_ptr</strong>的伴随类，它是一种<a href="reference.html">弱引用</a>，指向shared_ptr所管理的对象。</li>
+</ul>
+<p>上述三种类型都定义在memory头文件中。</p>
+<h3>三、概念</h3>
+<h3>四、概念</h3></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../cpp11.html"><h2>C++11新特性记录</h2></a>
+        <div class= "well small"> 周三 08 四月 2015
+
+by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2></h2>
 <ol>
 <li>
 <p>C++11</p>
@@ -84,88 +134,7 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 
 
 <p>应用在容器中</p>
-<div class="highlight"><pre>auto len = str.size(); //len的类型是string::size_type
-</pre></div>
-
-
-<p>应用在容器的迭代器中</p>
-<div class="highlight"><pre>vector&lt;int&gt; v{1, 2, 3};
-for （auto it = v.begin(); it != v.end; ++i）
-    (*it)++;
-//it的类型为vector&lt;int&gt;::iterator
-</pre></div>
-
-
-<p><strong>decltype</strong>：选择并返回操作数的数据类型。</p>
-<div class="highlight"><pre>decltype(f()) sum = x;
-</pre></div>
-
-
-<p>编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。</p>
-<blockquote>
-<p>decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。</p>
-</blockquote>
-</li>
-<li>
-<p>范围for语句</p>
-<p>遍历给定序列中的每个元素并对序列中的每个值执行某种操作</p>
-<div class="highlight"><pre>for (declaration: expression)
-    statement
-</pre></div>
-
-
-<p>expression部分是一个对象，用于表示一个序列；declaration部分负责定义一个变量，该变量将被用于访问序列中的基础元素。
-如：</p>
-<div class="highlight"><pre>string str(&quot;Hello world!&quot;);
-for (auto c : str)
-    cout &lt;&lt; c &lt;&lt;endl;
-</pre></div>
-
-
-</li>
-<li>
-<p>列表初始化</p>
-<p>列表初始化不再局限于数组。无论是初始化对象还是某些时候为新对象赋值，都可以使用一组花括号括起来的初始值。</p>
-<p>如，容器初始化</p>
-<div class="highlight"><pre>vector&lt;int&gt; v = {1, 2, 3};
-</pre></div>
-
-
-<p>或</p>
-<div class="highlight"><pre>vector&lt;int&gt; v{1, 2, 3};
-</pre></div>
-
-
-<p>取代以前的方法：</p>
-<div class="highlight"><pre>int arr[3] = {1, 2, 3}  
-vector&lt;int&gt; v(arr, arr + 3);
-</pre></div>
-
-
-</li>
-<li>
-<p>待续</p>
-</li>
-</ol></div>
-        <hr />
-    </div>
-		
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../shared_ptr.html"><h2>动态内存与智能指针</h2></a>
-        <div class= "well small"> 周二 07 四月 2015
-
-by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
- 
-
-
- </div>
-        <div class="summary"> <a class="btn btn-info xsmall" href="../shared_ptr.html">read more</a></div>
+<div class="highlight"><pre>auto len ...</pre></div></li></ol> <a class="btn btn-info xsmall" href="../cpp11.html">read more</a></div>
     </div>	
 				
 
