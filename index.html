@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>lhqqqqq's BLOG</title>
     <meta name="description" content="">
-    <meta name="author" content="lh901124@126.com">
+    <meta name="author" content="lhqqqqq">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -77,6 +77,9 @@ by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
 <p><strong>栈内存</strong>用来保存定义在函数内的非static对象。</p>
 <p>分配在静态或栈内存中的对象由编译器自动创建和销毁。对于栈对象，仅在其定义的程序块运行时才存在；static对象在使用之前分配，在程序结束时销毁。</p>
 <p><strong>动态内存</strong>被称作自由空间（free store）或堆（heap）。程序用堆来存储动态分配的对象，即那些在程序运行时分配的对象。动态对象的生存期由程序来控制，即不再使用时，代码必须显示地销毁。</p>
+<blockquote>
+<p>STL容器均是使用动态内存！</p>
+</blockquote>
 <p>C++中，使用<strong>new</strong>和<strong>delete</strong>
 这对
 <strong>运算符</strong>来管理动态内存。</p>
@@ -109,19 +112,49 @@ shared_ptr&lt;lit&lt;int&gt;&gt; p1;    //可以指向int的list的shared_ptr
 <p>智能指针的操作：</p>
 <p>shared_ptr和unique_ptr均支持的：</p>
 <ul>
-<li>shared_ptr<T> sp/unique_ptr<T> up 空智能指针，可以指向T类型的对象</li>
-<li>p         将p作为条件判断，空则为false，指向一个对象则为true</li>
-<li>*p        解引用p</li>
-<li>p.get()   返回p中保存的指针</li>
-<li>swap(p,q)/p.swap(q)   交换p和q中的指针</li>
+<li>
+<p>shared_ptr<T> sp/unique_ptr<T> up </p>
+<p>空智能指针，可以指向T类型的对象</p>
+</li>
+<li>
+<p>p </p>
+<p>将p作为条件判断，空则为false，指向一个对象则为true</p>
+</li>
+<li>
+<p>*p        </p>
+<p>解引用p</p>
+</li>
+<li>
+<p>p.get()   </p>
+<p>返回p中保存的指针</p>
+</li>
+<li>
+<p>swap(p,q)/p.swap(q)   </p>
+<p>交换p和q中的指针</p>
+</li>
 </ul>
 <p>只有shared_ptr支持的：</p>
 <ul>
-<li>make_shared<T>(args)  返回一个shared_ptr，指向一个动态分配的T类型对象，使用args初始化此对象（最安全的分配和使用动态内存的方法！）</li>
-<li>p.use_count()         返回p共享对象的智能指针量（可能很慢！用于调试！）</li>
-<li>p.unique()            若p.use_count()为1，返回true；否则返回false</li>
-<li>share_ptr<T> p(q)     p是q的拷贝；会递增q中的计数器。（q中的指针必须能转换成*T!)</li>
-<li>p = q                 此操作会递减p的引用计数，递增q中的引用计数；若p的引用计数变为0，则将其管理的原内存释放（p和q都是shared_ptr，且保存的指针必须能相互转换！）</li>
+<li>
+<p>make_shared<T>(args)</p>
+<p>返回一个shared_ptr，指向一个动态分配的T类型对象，使用args初始化此对象（最安全的分配和使用动态内存的方法！）</p>
+</li>
+<li>
+<p>p.use_count()         </p>
+<p>返回p共享对象的智能指针量（可能很慢！用于调试！）</p>
+</li>
+<li>
+<p>p.unique()            </p>
+<p>若p.use_count()为1，返回true；否则返回false</p>
+</li>
+<li>
+<p>share_ptr<T> p(q) </p>
+<p>p是q的拷贝；会递增q中的计数器。（q中的指针必须能转换成*T!)</p>
+</li>
+<li>
+<p>p = q     </p>
+<p>此操作会递减p的引用计数，递增q中的引用计数；若p的引用计数变为0，则将其管理的原内存释放（p和q都是shared_ptr，且保存的指针必须能相互转换！）</p>
+</li>
 </ul>
 <p>具体示例：</p>
 <div class="highlight"><pre>//指向一个值为9的int的shared_ptr
@@ -135,6 +168,47 @@ auto p4 = make_shared&lt;vector&lt;string&gt;&gt;();
 </pre></div>
 
 
+<p>当进行拷贝或赋值操作时，每个shared_ptr都会记录有多少个其他shared_ptr指向相同的对象：</p>
+<div class="highlight"><pre>auto q(p1);     //q和p1均指向相同的int对象9，此对象有两个引用者。
+</pre></div>
+
+
+<p>每个shared_ptr都有一个关联计数器，称为<strong>引用计数（reference count）</strong>。</p>
+<ul>
+<li>引用计数递增：拷贝（如拷贝初始化、作为参数传递给函数、作为函数的返回值）；</li>
+<li>引用计数递减：赋予新值、被销毁（如离开作用域）。</li>
+</ul>
+<p>shared_ptr的析构函数使其具有管理动态内存的功能。它会递减shared_ptr所指向的对象的引用计数。如果引用计数变为0，就会销毁对象，并释放所占用的内存。</p>
+<div class="highlight"><pre>auto r = make_shared&lt;int&gt;(4);   //r指向的int只有一个引用者
+r = q;                          //给r赋值，则r原来指向的对象的引用计数递减
+                                //r原来指向的对象已没有引用者，会自动释放
+                                //q指向的对象的引用计数递增
+</pre></div>
+
+
+<p>可以这样使用shared_ptr：</p>
+<div class="highlight"><pre>//factory返回一个shared_ptr，指向一个动态分配的对象
+shared_ptr&lt;Foo&gt; factory(T arg) {
+    ...
+    return make_shared&lt;Foo&gt;(arg);
+}
+
+void use_factory(T arg) {
+    shared_ptr&lt;Foo&gt; p = factory(arg);
+}
+</pre></div>
+
+
+<p>由于p是局部变量，在函数结束时将被销毁。在p被销毁时，其引用计数递减。在此由于p是唯一引用factory返回的内存的对象，所以引用计数将为0，则p所指的对象也会被销毁，所占用内存会被释放。</p>
+<div class="highlight"><pre>void use_factory(T arg) {
+    shared_ptr&lt;Foo&gt; p = factory(arg);
+    return p;
+}
+</pre></div>
+
+
+<p>这里做了更改，return一个p的拷贝，这会递增其引用计数。当p被销毁时，由于它所指向的内存还有其他使用者，所以不会被释放。</p>
+<p>使用智能指针可以在多个对象间共享数据，即多个对象保存相同内容（存放在动态内存中）。这样，当一个对象被销毁时，不影响其他的对象；只有所有指向该内存的对象都被销毁时，该内存才会被释放。</p>
 <h3>四、shared_ptr的实现</h3></div>
         <hr />
     </div>
@@ -457,7 +531,7 @@ by <a class="url fn" href="./author/lhqqqqq.html">lhqqqqq</a>
     </div>     </div> 
 <footer>
 <br />
-<p><a href=".">lhqqqqq's BLOG</a> &copy; lh901124@126.com 2015</p>
+<p><a href=".">lhqqqqq's BLOG</a> &copy; lhqqqqq 2015</p>
 </footer>
 
 </div> <!-- /container -->
