@@ -39,7 +39,7 @@ p = nullptr;
 &lt;blockquote&gt;
 &lt;p&gt;nullptr为C++11标准引入的特殊类型的字面值，表示空指针，代替预处理常量NULL&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=""&gt;三、智能指针&lt;/h3&gt;
+&lt;h3 id="_1"&gt;三、智能指针&lt;/h3&gt;
 &lt;p&gt;不正确释放动态内存，会引发问题：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;忘记释放内存，会产生&lt;strong&gt;内存泄露&lt;/strong&gt;；&lt;/li&gt;
@@ -149,7 +149,7 @@ void use_factory(T arg) {
 &lt;p&gt;使用智能指针可以在多个对象间共享数据，即多个对象保存相同内容（存放在动态内存中）。这样，当一个对象被销毁时，不影响其他的对象；只有所有指向该内存的对象都被销毁时，该内存才会被释放。&lt;/p&gt;
 &lt;h3 id="shared_ptr"&gt;四、shared_ptr的实现&lt;/h3&gt;</summary><category term="C++"></category></entry><entry><title>MySQL之数据操纵</title><link href="http://lhqqqqq.github.io/database/MySQL.html" rel="alternate"></link><updated>2015-04-16T18:28:37+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-16:database/MySQL.html</id><summary type="html">&lt;!--MySQL之数据操纵--&gt;
 &lt;h2 id=""&gt;&lt;/h2&gt;
-&lt;h3 id=""&gt;一、基本语法&lt;/h3&gt;
+&lt;h3 id="_1"&gt;一、基本语法&lt;/h3&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;选择：select &amp;lt;fields&amp;gt; from &amp;lt;table&amp;gt; where &amp;lt;condition&amp;gt;;
 插入：insert into &amp;lt;table&amp;gt;(&amp;lt;field1&amp;gt;,&amp;lt;field2&amp;gt;) values(&amp;lt;value1&amp;gt;,&amp;lt;value2&amp;gt;); 
 删除：delete from &amp;lt;table&amp;gt; where &amp;lt;condition&amp;gt;; 
@@ -355,7 +355,7 @@ select Id, avg(value) from Table1 group by Id;
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="database"></category></entry><entry><title>算法之动态规划</title><link href="http://lhqqqqq.github.io/algorithm/dynamic.html" rel="alternate"></link><updated>2015-04-10T20:16:35+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-10:algorithm/dynamic.html</id><summary type="html">&lt;!--#算法之动态规划--&gt;
 &lt;h2 id=""&gt;&lt;/h2&gt;
 &lt;p&gt;大篇幅参考&lt;a href="http://www.cnblogs.com/sdjl/articles/1274312.html"&gt;http://www.cnblogs.com/sdjl/articles/1274312.html&lt;/a&gt;，很好的故事 from &lt;a href="http://SDJL.me"&gt;SDJL&lt;/a&gt;。&lt;/p&gt;
-&lt;h3 id=""&gt;一、什么是动态规划&lt;/h3&gt;
+&lt;h3 id="_1"&gt;一、什么是动态规划&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;动态规划&lt;/strong&gt;在查找有很多&lt;em&gt;重叠子问题&lt;/em&gt;的情况的最优解时有效。它将问题重新组合成子问题。为了避免多次解决这些子问题，它们的结果都逐渐被计算并被保存，从简单的问题直到整个问题都被解决。因此，动态规划保存递归时的结果，因而不会在解决同样的问题时花费时间。&lt;/p&gt;
 &lt;p&gt;动态规划只能应用于有&lt;em&gt;最优子结构的问题&lt;/em&gt;。最优子结构的意思是局部最优解能决定全局最优解（对有些问题这个要求并不能完全满足，故有时需要引入一定的近似）。简单地说，问题能够分解成子问题来解决。&lt;/p&gt;
 &lt;p&gt;from &lt;a href="http://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"&gt;wiki&lt;/a&gt;&lt;/p&gt;
@@ -419,7 +419,7 @@ select Id, avg(value) from Table1 group by Id;
 &lt;p&gt;当mineNum = 0且people &amp;gt;= peopleNeeded[mineNum]时 f(people,mineNum) = gold[mineNum]&lt;/p&gt;
 &lt;p&gt;当mineNum = 0且people &amp;lt; peopleNeeded[mineNum]时 f(people,mineNum) = 0&lt;/p&gt;
 &lt;p&gt;当mineNum != 0时 f(people,mineNum) = f(people-peopleNeeded[mineNum], mineNum-1) + gold[mineNum]与f(people, mineNum-1)中的较大者，前两个式子对应动态规划的“边界”，后一个式子对应动态规划的“最优子结构”请读者弄明白后再继续往下看。&lt;/p&gt;
-&lt;h3 id=""&gt;二、为什么要用动态规划&lt;/h3&gt;
+&lt;h3 id="_1_2"&gt;二、为什么要用动态规划&lt;/h3&gt;
 &lt;p&gt;现在我假设读者你已经搞清楚了为什么动态规划是正确的方法，但是我们为什么需要使用动态规划呢？请先继续欣赏这个故事：&lt;/p&gt;
 &lt;p&gt;国王得知他的两个手下使用了和他相同的方法去解决交代给他们的问题后，不但没有认为他的两个大臣在偷懒，反而很高兴，因为他知道，他的大臣必然会找更多的人一起解决这个问题，而更多的人会找更更多的人，这样他这个聪明的方法就会在不经意间流传开来，而全国人民都会知道这个聪明的方法是他们伟大的国王想出来的，你说国王能不高兴吗？&lt;/p&gt;
 &lt;p&gt;但是国王也有一些担忧，因为他实在不知道这个“工程”要动用到多少人来完成，如果帮助他解决这个问题的人太多的话那么就太劳民伤财了。“会不会影响到今年的收成呢？”国王在心里想着这个问题，于是他请来了整个国家里唯一的两个数学天才，一个叫做小天，另一个叫做小才。&lt;/p&gt;
@@ -460,9 +460,9 @@ select Id, avg(value) from Table1 group by Id;
 
    这就是动态规划的魔力，它减少了大量的计算，因此我们需要动态规划！
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=""&gt;三、实现&lt;/h3&gt;
-&lt;h3 id=""&gt;四、递归&lt;/h3&gt;
-&lt;h3 id=""&gt;五、非递归&lt;/h3&gt;</summary><category term="algorithm"></category></entry><entry><title>C++11新特性记录</title><link href="http://lhqqqqq.github.io/cpp/cpp11.html" rel="alternate"></link><updated>2015-04-08T09:23:50+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-08:cpp/cpp11.html</id><summary type="html">&lt;p&gt;-
+&lt;h3 id="_1_2_3"&gt;三、实现&lt;/h3&gt;
+&lt;h3 id="_1_2_3_4"&gt;四、递归&lt;/h3&gt;
+&lt;h3 id="_1_2_3_4_5"&gt;五、非递归&lt;/h3&gt;</summary><category term="algorithm"></category></entry><entry><title>C++11新特性记录</title><link href="http://lhqqqqq.github.io/cpp/cpp11.html" rel="alternate"></link><updated>2015-04-08T09:23:50+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-08:cpp/cpp11.html</id><summary type="html">&lt;p&gt;-
 1. C++11&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;C++11标准是 ISO/IEC 14882:2011 - Information technology -- Programming languages -- C++ 的简称。
 C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗下的C++标准委员会（ISO/IEC JTC1/SC22/WG21）于2011年8月12日公布，并于2011年9月出版。2012年2月28日的国际标准草案(N3376)是最接近于C++11标准的草案（仅编辑上的修正）。此次标准为C++98发布后13年来第一次重大修正。
@@ -528,7 +528,9 @@ vector&amp;lt;int&amp;gt; v(arr, arr + 3);
 &lt;li&gt;
 &lt;p&gt;待续&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</summary><category term="C++"></category></entry><entry><title>C++中的引用</title><link href="http://lhqqqqq.github.io/cpp/reference.html" rel="alternate"></link><updated>2015-04-07T15:04:40+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-07:cpp/reference.html</id><summary type="html">&lt;h2 id="from-c-primer"&gt;from 《C++ Primer》&lt;/h2&gt;
+&lt;/ol&gt;</summary><category term="C++"></category></entry><entry><title>C++中的引用</title><link href="http://lhqqqqq.github.io/cpp/reference.html" rel="alternate"></link><updated>2015-04-07T15:04:40+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-07:cpp/reference.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;from 《C++ Primer》&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h1 id=""&gt;一、概念&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;引用（reference）&lt;/strong&gt;的符号为&amp;amp;，一般指“左值引用”，作用是为对象起一个别名。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -536,7 +538,7 @@ vector&amp;lt;int&amp;gt; v(arr, arr + 3);
 &lt;/blockquote&gt;
 &lt;p&gt;定义引用时，程序把初始值和对象绑定在一次。之后，这种绑定关系会一直存在，所以引用必须初始化。
 引用本身不是对象。&lt;/p&gt;
-&lt;h1 id=""&gt;二、示例&lt;/h1&gt;
+&lt;h1 id="_1"&gt;二、示例&lt;/h1&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;int ival = 1024;
 int &amp;amp;refVal = ival; //引用，即refVal是ival的别名
 int &amp;amp;refVal2; //报错，引用必须被初始化
@@ -544,7 +546,7 @@ int &amp;amp;refVal3 = 10; //报错，引用的初始值必须是对象
 double dval = 3.14;
 int &amp;amp;refVal4 = dval; //报错，类型不一致
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=""&gt;三、有用的地方&lt;/h1&gt;
+&lt;h1 id="_1_2"&gt;三、有用的地方&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;数据交换，传递引用参数，可以改变原值&lt;/p&gt;
@@ -572,7 +574,7 @@ int &amp;amp;refVal4 = dval; //报错，类型不一致
 &lt;p&gt;未完待续&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=""&gt;四、弱引用与强引用&lt;/h1&gt;
+&lt;h1 id="_1_2_3"&gt;四、弱引用与强引用&lt;/h1&gt;
 &lt;p&gt;C语言中有&lt;a href="http://blog.csdn.net/astrotycoon/article/details/8008629"&gt;强符号与弱符号&lt;/a&gt;的概念。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;有用的命令:nm，列出指定文件的所有符号（包括静态和动态链接库）
@@ -647,7 +649,7 @@ weak_ptr&amp;lt;T&amp;gt; ptr(t); // t为一个T对象
 &lt;p&gt;weak_ptr必须从一个share_ptr或另一个weak_ptr转换而来，这也说明，进行该对象的内存管理的是那个强引用的share_ptr。weak_ptr只是提供了对管理对象的一个访问手段。&lt;/p&gt;
 &lt;p&gt;弱引用指针可以有效的解除循环引用，但这种方式必须在程序员能预见会出现循环引用的情况下才能使用，也可以是说这个仅仅是一种编译期的解决方案，如果程序在运行过程中出现了循环引用，还是会造成内存泄漏的。&lt;/p&gt;</summary><category term="C++"></category></entry><entry><title>数据结构之树</title><link href="http://lhqqqqq.github.io/data-structures/tree.html" rel="alternate"></link><updated>2015-04-04T17:30:00+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-04:data-structures/tree.html</id><summary type="html">&lt;!--#数据结构之树--&gt;
 &lt;h2 id=""&gt;&lt;/h2&gt;
-&lt;h3 id=""&gt;一、概念&lt;/h3&gt;
+&lt;h3 id="_1"&gt;一、概念&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;树（tree）&lt;/strong&gt;：由n（n&amp;gt;=1）个有限节点组成一个具有层次关系的集合；&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;度&lt;/strong&gt;：节点的子树个数；&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;树的度&lt;/strong&gt;：树中任意节点的度的最大值；&lt;/p&gt;
@@ -657,7 +659,7 @@ weak_ptr&amp;lt;T&amp;gt; ptr(t); // t为一个T对象
 &lt;p&gt;&lt;strong&gt;二叉树&lt;/strong&gt;：每个节点最多有两个子树的树&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;满二叉树&lt;/strong&gt;：叶子节点一定要在最后一层，并且所有非叶子节点都存在左孩子和右孩子；&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;完全二叉树&lt;/strong&gt;：除最后一层外，每一层上的节点数均达到最大值；在最后一层上只缺少右边的若干结点。&lt;/p&gt;
-&lt;h3 id=""&gt;二、二叉树性质&lt;/h3&gt;
+&lt;h3 id="_1_2"&gt;二、二叉树性质&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;在非空二叉树中，第i层的结点总数不超过2&lt;sup&gt;i&lt;/sup&gt;-1, i&amp;gt;=1；&lt;/li&gt;
 &lt;li&gt;深度为h的二叉树最多有2&lt;sup&gt;h&lt;/sup&gt;-1个结点(h&amp;gt;=1)，最少有h个结点；&lt;/li&gt;
@@ -674,7 +676,7 @@ weak_ptr&amp;lt;T&amp;gt; ptr(t); // t为一个T对象
 h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 &lt;li&gt;设有i个枝点，I为所有枝点的道路长度总和，J为叶的道路长度总和J=I+2i。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=""&gt;三、实现&lt;/h3&gt;
+&lt;h3 id="_1_2_3"&gt;三、实现&lt;/h3&gt;
 &lt;p&gt;树节点实现&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;struct TreeNode  
 {  
@@ -714,7 +716,7 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
     Visit(T);   
 }
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=""&gt;四、递归&lt;/h3&gt;
+&lt;h3 id="_1_2_3_4"&gt;四、递归&lt;/h3&gt;
 &lt;p&gt;深度优先搜索(Depth-firsh Search)&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;int Foo1(TreeNode *root) {
     if (!root) //终止条件
@@ -732,10 +734,10 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 &lt;p&gt;如果子节点需要父节点的数据，则需要在递归函数的参数中传递。&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;int Foo2(TreeNode *root, int data)；
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=""&gt;五、非递归&lt;/h3&gt;</summary><category term="data structures"></category></entry><entry><title>排序算法之快速排序</title><link href="http://lhqqqqq.github.io/algorithm/quicksort.html" rel="alternate"></link><updated>2015-04-07T15:08:23+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-01:algorithm/quicksort.html</id><summary type="html">&lt;!--排序算法之快速排序--&gt;
+&lt;h3 id="_1_2_3_4_5"&gt;五、非递归&lt;/h3&gt;</summary><category term="data structures"></category></entry><entry><title>排序算法之快速排序</title><link href="http://lhqqqqq.github.io/algorithm/quicksort.html" rel="alternate"></link><updated>2015-04-07T15:08:23+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-01:algorithm/quicksort.html</id><summary type="html">&lt;!--排序算法之快速排序--&gt;
 &lt;p&gt;from 《数据结构与算法分析——c语言描述》&lt;/p&gt;
 &lt;h2 id=""&gt;&lt;/h2&gt;
-&lt;h3 id=""&gt;一、思路&lt;/h3&gt;
+&lt;h3 id="_1"&gt;一、思路&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;快速排序（quicksort）&lt;/strong&gt;是实践中最快的已知排序算法。之所以快，是因为非常精炼和高度优化的内部循环。快速排序是一种分治的递归算法。&lt;/p&gt;
 &lt;p&gt;将数组&lt;em&gt;S&lt;/em&gt;排序的基本算法由下列四步组成：&lt;/p&gt;
 &lt;ol&gt;
@@ -747,7 +749,7 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 &lt;p&gt;下图为一个示例，其中65为随机选取的枢纽元。
 &lt;img alt="1" src="jpgs/quicksort.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;快排更快的原因，在于第3步分割成两组实际上是在适当的位置进行并且非常有效，它的高效弥补了大小不等的递归调用的缺憾而且还有超出。&lt;/p&gt;
-&lt;h3 id=""&gt;二、细节&lt;/h3&gt;
+&lt;h3 id="_1_2"&gt;二、细节&lt;/h3&gt;
 &lt;h4 id="1"&gt;1. 选取枢纽元&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -761,7 +763,7 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id="2"&gt;2. 分割策略&lt;/h4&gt;
-&lt;h3 id=""&gt;三、实现&lt;/h3&gt;</summary><category term="algorithm"></category></entry><entry><title>哲学家就餐问题</title><link href="http://lhqqqqq.github.io/os/philosophers.html" rel="alternate"></link><updated>2015-03-24T16:40:00+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-03-24:os/philosophers.html</id><summary type="html">&lt;h5 id="ipc"&gt;经典的IPC问题&lt;/h5&gt;
+&lt;h3 id="_1_2_3"&gt;三、实现&lt;/h3&gt;</summary><category term="algorithm"></category></entry><entry><title>哲学家就餐问题</title><link href="http://lhqqqqq.github.io/os/philosophers.html" rel="alternate"></link><updated>2015-03-24T16:40:00+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-03-24:os/philosophers.html</id><summary type="html">&lt;h5 id="ipc"&gt;经典的IPC问题&lt;/h5&gt;
 &lt;h2 id=""&gt;&lt;/h2&gt;
 &lt;p&gt;1965年，Dijkstra提出并解决了一个他称之为哲学家就餐的同步问题。从那时起，每个发明新的同步原语的人都希望通过解决哲学家就餐问题来展示其同步原语的精妙之处。这个问题可以简单地描述如下：五个哲学家围坐在一张圆桌周围，每个哲学家面前都有一盘通心粉。由于通心粉很滑，所以需要两把叉子才能夹住。相邻两个盘子之间放有一把叉子，餐桌如图2-44所示。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="1" src="http://images.51cto.com/files/uploadimg/20090805/120148542.jpg"/&gt;&lt;/p&gt;
