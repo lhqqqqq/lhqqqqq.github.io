@@ -103,27 +103,20 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 <li>
 <p>auto &amp; decltype</p>
 <p><strong>auto</strong>：让编译器分析表达式所属的类型。auto定义的变量必须有初始值。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>auto i = 1, *p = &amp;i; //整型，整型指针
+<div class="codehilite"><pre>auto i = 1, *p = &amp;i; //整型，整型指针
 </pre></div>
-</td></tr></table>
 <p>应用在容器中</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>auto len = str.size(); //len的类型是string::size_type
+<div class="codehilite"><pre>auto len = str.size(); //len的类型是string::size_type
 </pre></div>
-</td></tr></table>
 <p>应用在容器的迭代器中</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre>vector&lt;int&gt; v{1, 2, 3};
+<div class="codehilite"><pre>vector&lt;int&gt; v{1, 2, 3};
 for （auto it = v.begin(); it != v.end; ++i）
     (*it)++;
 //it的类型为vector&lt;int&gt;::iterator
 </pre></div>
-</td></tr></table>
 <p><strong>decltype</strong>：选择并返回操作数的数据类型。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>decltype(f()) sum = x;
+<div class="codehilite"><pre>decltype(f()) sum = x;
 </pre></div>
-</td></tr></table>
 <p>编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。</p>
 <blockquote>
 <p>decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。</p>
@@ -132,38 +125,29 @@ for （auto it = v.begin(); it != v.end; ++i）
 <li>
 <p>范围for语句</p>
 <p>遍历给定序列中的每个元素并对序列中的每个值执行某种操作</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre>for (declaration: expression)
+<div class="codehilite"><pre>for (declaration: expression)
     statement
 </pre></div>
-</td></tr></table>
 <p>expression部分是一个对象，用于表示一个序列；declaration部分负责定义一个变量，该变量将被用于访问序列中的基础元素。
 如：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre>string str("Hello world!");
+<div class="codehilite"><pre>string str("Hello world!");
 for (auto c : str)
     cout &lt;&lt; c &lt;&lt;endl;
 </pre></div>
-</td></tr></table>
 </li>
 <li>
 <p>列表初始化</p>
 <p>列表初始化不再局限于数组。无论是初始化对象还是某些时候为新对象赋值，都可以使用一组花括号括起来的初始值。</p>
 <p>如，容器初始化</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>vector&lt;int&gt; v = {1, 2, 3};
+<div class="codehilite"><pre>vector&lt;int&gt; v = {1, 2, 3};
 </pre></div>
-</td></tr></table>
 <p>或</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>vector&lt;int&gt; v{1, 2, 3};
+<div class="codehilite"><pre>vector&lt;int&gt; v{1, 2, 3};
 </pre></div>
-</td></tr></table>
 <p>取代以前的方法：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre>int arr[3] = {1, 2, 3}  
+<div class="codehilite"><pre>int arr[3] = {1, 2, 3}  
 vector&lt;int&gt; v(arr, arr + 3);
 </pre></div>
-</td></tr></table>
 </li>
 <li>
 <p><a href="shared_ptr.html">智能指针</a></p>
