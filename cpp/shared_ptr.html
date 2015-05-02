@@ -100,8 +100,10 @@
             </div>
             <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
                 <div id="niu2-main-content">
-                    <h2 id="from-c-primer">from 《C++ Primer》</h2>
-<h3 id="">一、动态内存</h3>
+                    <blockquote>
+<p>from 《C++ Primer》</p>
+</blockquote>
+<h1 id="">一、动态内存</h1>
 <p>程序使用的<strong>内存</strong>包括：静态内存、栈内存动态内存；</p>
 <p><strong>静态内存</strong>用来保存局部static对象、类static数据成员和定义在任何函数之外的变量。</p>
 <p><strong>栈内存</strong>用来保存定义在函数内的非static对象。</p>
@@ -116,7 +118,7 @@
 </blockquote>
 <p><strong>new</strong>：在动态内存中为对象分配空间并返回一个指向该对象的指针。</p>
 <p><strong>delete</strong>：接受一个动态对象的指针，销毁该对象，并释放与之关联的内存。</p>
-<h3 id="newdelete">二、new和delete</h3>
+<h1 id="newdelete">二、new和delete</h1>
 <p>在自由空间分配的内存是无名的，因此new无法为其分配的对象命名，而是返回一个指向该对象的指针。</p>
 <div class="codehilite"><pre>int *pi = new int；
 </pre></div>
@@ -140,7 +142,7 @@ p = nullptr;
 <blockquote>
 <p>nullptr为C++11标准引入的特殊类型的字面值，表示空指针，代替预处理常量NULL</p>
 </blockquote>
-<h3 id="_1">三、智能指针</h3>
+<h1 id="_1">三、智能指针</h1>
 <p>不正确释放动态内存，会引发问题：</p>
 <ul>
 <li>忘记释放内存，会产生<strong>内存泄露</strong>；</li>
@@ -248,7 +250,7 @@ void use_factory(T arg) {
 </pre></div>
 <p>这里做了更改，return一个p的拷贝，这会递增其引用计数。当p被销毁时，由于它所指向的内存还有其他使用者，所以不会被释放。</p>
 <p>使用智能指针可以在多个对象间共享数据，即多个对象保存相同内容（存放在动态内存中）。这样，当一个对象被销毁时，不影响其他的对象；只有所有指向该内存的对象都被销毁时，该内存才会被释放。</p>
-<h3 id="shared_ptr">四、shared_ptr的实现</h3>
+<h1 id="shared_ptr">四、shared_ptr的实现</h1>
                 </div>
                 <div id="content-comments">
                     <!-- 多说评论框 start -->
@@ -287,7 +289,7 @@ void use_factory(T arg) {
                     </div>
                     <ul id="niu2-sidebar-toc-list">
                         <li><a href="#content-heading">动态内存与智能指针</a></li>
-                        <li><a href='#from-c-primer'>from 《C++ Primer》</a><ul><li><a href='#'>一、动态内存</a></li><li><a href='#newdelete'>二、new和delete</a></li><li><a href='#_1'>三、智能指针</a></li><li><a href='#shared_ptr'>四、shared_ptr的实现</a></li></ul></li>
+                        <li><a href='#'>一、动态内存</a></li><li><a href='#newdelete'>二、new和delete</a></li><li><a href='#_1'>三、智能指针</a></li><li><a href='#shared_ptr'>四、shared_ptr的实现</a></li>
                         <li><a href="#content-comments">评论</a></li>
                     </ul>
                 </div>

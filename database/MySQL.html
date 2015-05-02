@@ -101,8 +101,7 @@
             <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
                 <div id="niu2-main-content">
                     <!--MySQL之数据操纵-->
-<h2 id=""></h2>
-<h3 id="_1">一、基本语法</h3>
+<h1 id="">一、基本语法</h1>
 <div class="codehilite"><pre>选择：select &lt;fields&gt; from &lt;table&gt; where &lt;condition&gt;;
 插入：insert into &lt;table&gt;(&lt;field1&gt;,&lt;field2&gt;) values(&lt;value1&gt;,&lt;value2&gt;); 
 删除：delete from &lt;table&gt; where &lt;condition&gt;; 
@@ -115,7 +114,7 @@
 最大：select max(&lt;field&gt;) from &lt;table&gt;; 
 最小：select min(&lt;field&gt;) from &lt;table&gt;;
 </pre></div>
-<h3 id="join">二、join</h3>
+<h1 id="join">二、join</h1>
 <p>举例说明</p>
 <div class="codehilite"><pre>Table1.
 +----+-------+
@@ -203,7 +202,7 @@ mysql&gt; select * from table2 right join table1 using (id);
 +------+------+--------+
 </pre></div>
 <p><strong>Right Join 右外连接</strong> 右外连接和左外连接是类似的。为了方便数据库便于访问，推荐使用左外连接代替右外连接。</p>
-<h3 id="inexists">三、in、exists</h3>
+<h1 id="inexists">三、in、exists</h1>
 <p>参考<a href="http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/">http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/</a></p>
 <p><strong>in</strong>查询相当于多个or条件的叠加</p>
 <div class="codehilite"><pre>select * from user where userId in (1, 2, 3);
@@ -275,7 +274,7 @@ select * from Table1 where not exists(select 1 from Table2 where Table2.c2=Table
 <div class="codehilite"><pre>select name from student where name='zhang' or name='wang' or name='zhao'
 </pre></div>
 <p>的结果是相同的。</p>
-<h3 id="group-by">四、group by</h3>
+<h1 id="group-by">四、group by</h1>
 <p><strong>group by</strong>语法可以根据给定数据列的每个成员对查询结果进行分组统计，最终得到一个分组汇总表。一般结合avg(),count()等进行统计。</p>
 <p>例如</p>
 <div class="codehilite"><pre>Table1.
@@ -344,7 +343,7 @@ select Id, avg(value) from Table1 group by Id;
                     </div>
                     <ul id="niu2-sidebar-toc-list">
                         <li><a href="#content-heading">MySQL之数据操纵</a></li>
-                        <li><a href='#'></a><ul><li><a href='#_1'>一、基本语法</a></li><li><a href='#join'>二、join</a></li><li><a href='#inexists'>三、in、exists</a></li><li><a href='#group-by'>四、group by</a></li></ul></li>
+                        <li><a href='#'>一、基本语法</a></li><li><a href='#join'>二、join</a></li><li><a href='#inexists'>三、in、exists</a></li><li><a href='#group-by'>四、group by</a></li>
                         <li><a href="#content-comments">评论</a></li>
                     </ul>
                 </div>
