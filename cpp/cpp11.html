@@ -106,14 +106,14 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 <div class="codehilite"><pre>auto i = 1, *p = &amp;i; //整型，整型指针
 </pre></div>
 <p>应用在容器中</p>
-<p><code>c
-    auto len = str.size(); //len的类型是string::size_type</code></p>
+<div class="codehilite"><pre>auto len = str.size(); //len的类型是string::size_type
+</pre></div>
 <p>应用在容器的迭代器中</p>
-<p><code>python   
-    vector&lt;int&gt; v{1, 2, 3};
-    for （auto it = v.begin(); it != v.end; ++i）
-        (*it)++;
-    //it的类型为vector&lt;int&gt;::iterator</code></p>
+<div class="codehilite"><pre>vector&lt;int&gt; v{1, 2, 3};
+for （auto it = v.begin(); it != v.end; ++i）
+    (*it)++;
+//it的类型为vector&lt;int&gt;::iterator
+</pre></div>
 <p><strong>decltype</strong>：选择并返回操作数的数据类型。</p>
 <div class="codehilite"><pre>decltype(f()) sum = x;
 </pre></div>

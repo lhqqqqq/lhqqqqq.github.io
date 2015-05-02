@@ -476,14 +476,14 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 &lt;div class="codehilite"&gt;&lt;pre&gt;auto i = 1, *p = &amp;amp;i; //整型，整型指针
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;应用在容器中&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;c
-    auto len = str.size(); //len的类型是string::size_type&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;auto len = str.size(); //len的类型是string::size_type
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;应用在容器的迭代器中&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;python   
-    vector&amp;lt;int&amp;gt; v{1, 2, 3};
-    for （auto it = v.begin(); it != v.end; ++i）
-        (*it)++;
-    //it的类型为vector&amp;lt;int&amp;gt;::iterator&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v{1, 2, 3};
+for （auto it = v.begin(); it != v.end; ++i）
+    (*it)++;
+//it的类型为vector&amp;lt;int&amp;gt;::iterator
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;decltype&lt;/strong&gt;：选择并返回操作数的数据类型。&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;decltype(f()) sum = x;
 &lt;/pre&gt;&lt;/div&gt;
