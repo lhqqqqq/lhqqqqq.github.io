@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>lhqqqqq's BLOG</title><link>http://lhqqqqq.github.io/</link><description></description><atom:link href="http://lhqqqqq.github.io/feeds%5Clhqqqqq.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 30 Apr 2015 20:36:39 +0800</lastBuildDate><item><title>动态内存与智能指针</title><link>http://lhqqqqq.github.io/cpp/shared_ptr.html</link><description>&lt;p&gt;from 《C++ Primer》&lt;/p&gt;
-&lt;h2 id=""&gt;&lt;/h2&gt;
-&lt;h3 id="_1"&gt;一、动态内存&lt;/h3&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>lhqqqqq's BLOG</title><link>http://lhqqqqq.github.io/</link><description></description><atom:link href="http://lhqqqqq.github.io/feeds%5Clhqqqqq.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 30 Apr 2015 20:36:39 +0800</lastBuildDate><item><title>动态内存与智能指针</title><link>http://lhqqqqq.github.io/cpp/shared_ptr.html</link><description>&lt;h2 id="from-c-primer"&gt;from 《C++ Primer》&lt;/h2&gt;
+&lt;h3 id=""&gt;一、动态内存&lt;/h3&gt;
 &lt;p&gt;程序使用的&lt;strong&gt;内存&lt;/strong&gt;包括：静态内存、栈内存动态内存；&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;静态内存&lt;/strong&gt;用来保存局部static对象、类static数据成员和定义在任何函数之外的变量。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;栈内存&lt;/strong&gt;用来保存定义在函数内的非static对象。&lt;/p&gt;
@@ -40,7 +39,7 @@ p = nullptr;
 &lt;blockquote&gt;
 &lt;p&gt;nullptr为C++11标准引入的特殊类型的字面值，表示空指针，代替预处理常量NULL&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id="_1_2"&gt;三、智能指针&lt;/h3&gt;
+&lt;h3 id="_1"&gt;三、智能指针&lt;/h3&gt;
 &lt;p&gt;不正确释放动态内存，会引发问题：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;忘记释放内存，会产生&lt;strong&gt;内存泄露&lt;/strong&gt;；&lt;/li&gt;
@@ -463,13 +462,12 @@ select Id, avg(value) from Table1 group by Id;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id="_1_2_3"&gt;三、实现&lt;/h3&gt;
 &lt;h3 id="_1_2_3_4"&gt;四、递归&lt;/h3&gt;
-&lt;h3 id="_1_2_3_4_5"&gt;五、非递归&lt;/h3&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">lhqqqqq</dc:creator><pubDate>Fri, 10 Apr 2015 20:16:35 +0800</pubDate><guid>tag:lhqqqqq.github.io,2015-04-10:algorithm/dynamic.html</guid><category>algorithm</category></item><item><title>C++11新特性记录</title><link>http://lhqqqqq.github.io/cpp/cpp11.html</link><description>&lt;h2 id=""&gt;&lt;/h2&gt;
+&lt;h3 id="_1_2_3_4_5"&gt;五、非递归&lt;/h3&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">lhqqqqq</dc:creator><pubDate>Fri, 10 Apr 2015 20:16:35 +0800</pubDate><guid>tag:lhqqqqq.github.io,2015-04-10:algorithm/dynamic.html</guid><category>algorithm</category></item><item><title>C++11新特性记录</title><link>http://lhqqqqq.github.io/cpp/cpp11.html</link><description>&lt;p&gt;-
+1. C++11&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;C++11标准是 ISO/IEC 14882:2011 - Information technology -- Programming languages -- C++ 的简称。
+C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗下的C++标准委员会（ISO/IEC JTC1/SC22/WG21）于2011年8月12日公布，并于2011年9月出版。2012年2月28日的国际标准草案(N3376)是最接近于C++11标准的草案（仅编辑上的修正）。此次标准为C++98发布后13年来第一次重大修正。
+&lt;/pre&gt;&lt;/div&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;C++11&lt;/p&gt;
-&lt;p&gt;C++11标准是 ISO/IEC 14882:2011 - Information technology -- Programming languages -- C++ 的简称。
-C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗下的C++标准委员会（ISO/IEC JTC1/SC22/WG21）于2011年8月12日公布，并于2011年9月出版。2012年2月28日的国际标准草案(N3376)是最接近于C++11标准的草案（仅编辑上的修正）。此次标准为C++98发布后13年来第一次重大修正。&lt;/p&gt;
-&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;auto &amp;amp; decltype&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;auto&lt;/strong&gt;：让编译器分析表达式所属的类型。auto定义的变量必须有初始值。&lt;/p&gt;
@@ -530,16 +528,15 @@ vector&amp;lt;int&amp;gt; v(arr, arr + 3);
 &lt;li&gt;
 &lt;p&gt;待续&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">lhqqqqq</dc:creator><pubDate>Wed, 08 Apr 2015 09:23:50 +0800</pubDate><guid>tag:lhqqqqq.github.io,2015-04-08:cpp/cpp11.html</guid><category>C++</category></item><item><title>C++中的引用</title><link>http://lhqqqqq.github.io/cpp/reference.html</link><description>&lt;p&gt;from 《C++ Primer》&lt;/p&gt;
-&lt;h2 id=""&gt;&lt;/h2&gt;
-&lt;h3 id="_1"&gt;一、概念&lt;/h3&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">lhqqqqq</dc:creator><pubDate>Wed, 08 Apr 2015 09:23:50 +0800</pubDate><guid>tag:lhqqqqq.github.io,2015-04-08:cpp/cpp11.html</guid><category>C++</category></item><item><title>C++中的引用</title><link>http://lhqqqqq.github.io/cpp/reference.html</link><description>&lt;h2 id="from-c-primer"&gt;from 《C++ Primer》&lt;/h2&gt;
+&lt;h1 id=""&gt;一、概念&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;引用（reference）&lt;/strong&gt;的符号为&amp;amp;，一般指“左值引用”，作用是为对象起一个别名。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;C++11引入了一种“右值引用”&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;定义引用时，程序把初始值和对象绑定在一次。之后，这种绑定关系会一直存在，所以引用必须初始化。
 引用本身不是对象。&lt;/p&gt;
-&lt;h3 id="_1_2"&gt;二、示例&lt;/h3&gt;
+&lt;h1 id="_1"&gt;二、示例&lt;/h1&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;int ival = 1024;
 int &amp;amp;refVal = ival; //引用，即refVal是ival的别名
 int &amp;amp;refVal2; //报错，引用必须被初始化
@@ -547,7 +544,7 @@ int &amp;amp;refVal3 = 10; //报错，引用的初始值必须是对象
 double dval = 3.14;
 int &amp;amp;refVal4 = dval; //报错，类型不一致
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="_1_2_3"&gt;三、有用的地方&lt;/h3&gt;
+&lt;h1 id="_1_2"&gt;三、有用的地方&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;数据交换，传递引用参数，可以改变原值&lt;/p&gt;
@@ -575,13 +572,13 @@ int &amp;amp;refVal4 = dval; //报错，类型不一致
 &lt;p&gt;未完待续&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id="_1_2_3_4"&gt;四、弱引用与强引用&lt;/h3&gt;
+&lt;h1 id="_1_2_3"&gt;四、弱引用与强引用&lt;/h1&gt;
 &lt;p&gt;C语言中有&lt;a href="http://blog.csdn.net/astrotycoon/article/details/8008629"&gt;强符号与弱符号&lt;/a&gt;的概念。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;有用的命令:nm，列出指定文件的所有符号（包括静态和动态链接库）
 &lt;a href="http://www.cnblogs.com/itech/archive/2012/09/16/2687423.html"&gt;参考链接&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id="1"&gt;1.为什么有引用计数&lt;/h4&gt;
+&lt;h2 id="1"&gt;1.为什么有引用计数&lt;/h2&gt;
 &lt;p&gt;C++中存在两种语义：值语义（value sematics）和对象语义（object sematic），对象语义也可以叫做引用语义（reference sematics）。&lt;/p&gt;
 &lt;p&gt;值语义，指的是对象的拷贝与原对象无关，就像拷贝int一样，C++的常用类型数据等都是值语义。&lt;/p&gt;
 &lt;p&gt;对象语义，指的是面向对象意义下的对象，是禁止拷贝的。
@@ -595,7 +592,7 @@ int &amp;amp;refVal4 = dval; //报错，类型不一致
 &lt;blockquote&gt;
 &lt;p&gt;shared_ptr：&lt;a href="shared_ptr.html" title="智能指针"&gt;智能指针&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id="2"&gt;2.强引用&lt;/h4&gt;
+&lt;h2 id="2"&gt;2.强引用&lt;/h2&gt;
 &lt;p&gt;当对象被创建时，计数为1；每创建一个变量引用该对象时，该对象的计数就增加1；当上述变量销毁时，对象的计数减1，当计数为0时，这个对象也就被析构了。&lt;/p&gt;
 &lt;p&gt;强引用：即当至少有一个强引用时，对象就不能被释放。shared_ptr就是如此。&lt;/p&gt;
 &lt;p&gt;强引用计数在很多种情况下都是可以正常工作的，但是也有不凑效的时候，当出现循环引用时，就会出现严重的问题，以至于出现内存泄露。&lt;/p&gt;
@@ -623,7 +620,7 @@ private:
 &lt;li&gt;使用弱引用的智能指针打破循环引用。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;虽然这三种方法都可行，但方法1和方法2都需要程序员手动控制，麻烦且容易出错。&lt;/p&gt;
-&lt;h4 id="3"&gt;3.弱引用&lt;/h4&gt;
+&lt;h2 id="3"&gt;3.弱引用&lt;/h2&gt;
 &lt;p&gt;弱引用：它仅仅是对象存在时候的引用，当对象不存在时弱引用能够检测到，从而避免非法访问，弱引用也不会修改对象的引用计数。&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;template&amp;lt;typename T&amp;gt; class weak_ptr  
 {  
