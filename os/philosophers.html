@@ -100,20 +100,20 @@
             </div>
             <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
                 <div id="niu2-main-content">
-                    <h5>经典的IPC问题</h5>
-<h2></h2>
+                    <h5 id="ipc">经典的IPC问题</h5>
+<h2 id=""></h2>
 <p>1965年，Dijkstra提出并解决了一个他称之为哲学家就餐的同步问题。从那时起，每个发明新的同步原语的人都希望通过解决哲学家就餐问题来展示其同步原语的精妙之处。这个问题可以简单地描述如下：五个哲学家围坐在一张圆桌周围，每个哲学家面前都有一盘通心粉。由于通心粉很滑，所以需要两把叉子才能夹住。相邻两个盘子之间放有一把叉子，餐桌如图2-44所示。</p>
-<p><img alt="1" src="http://images.51cto.com/files/uploadimg/20090805/120148542.jpg" /></p>
+<p><img alt="1" src="http://images.51cto.com/files/uploadimg/20090805/120148542.jpg"/></p>
 <p>哲学家的生活中有两种交替活动时段：即吃饭和思考（这只是一种抽象，即对哲学家而言其他活动都无关紧要）。当一个哲学家觉得饿了时，他就试图分两次去取其左边和右边的叉子，每次拿一把，但不分次序。如果成功地得到了两把叉子，就开始吃饭，吃完后放下叉子继续思考。关键问题是：能为每一个哲学家写一段描述其行为的程序，且决不会死锁吗？（要求拿两把叉子是人为规定的，我们也可以将意大利面条换成中国菜，用米饭代替通心粉，用筷子代替叉子。）</p>
 <p>图2-45给出了一种直观的解法。过程take_fork将一直等到所指定的叉子可用，然后将其取用。不过，这种显然的解法是错误的。如果五位哲学家同时拿起左面的叉子，就没有人能够拿到他们右面的叉子，于是发生死锁。</p>
 <p>我们可以将这个程序修改一下，这样在拿到左叉后，程序要查看右面的叉子是否可用。如果不可用，则该哲学家先放下左叉，等一段时间，再重复整个过程。但这种解法也是错误的，尽管与前一种原因不同。可能在某一个瞬间，所有的哲学家都同时开始这个算法，拿起其左叉，看到右叉不可用，又都放下左叉，等一会儿，又同时拿起左叉，如此这样永远重复下去。对于这种情况，所有的程序都在不停地运行，但都无法取得进展，就称为饥饿（starvation）。（即使问题不发生在意大利餐馆或中国餐馆，也被称为饥饿。）</p>
-<p><img alt="2" src="http://images.51cto.com/files/uploadimg/20090805/120227999.jpg" /><br />
+<p><img alt="2" src="http://images.51cto.com/files/uploadimg/20090805/120227999.jpg"/><br/>
 图2-45   哲学家就餐问题的一种错误解法</p>
 <p>现在读者可能会想，“如果哲学家在拿不到右边叉子时等待一段随机时间，而不是等待相同的时间，这样发生互锁的可能性就很小了，事情就可以继续了。”这种想法是对的，而且在几乎所有的应用程序中，稍后再试的办法并不会演化成为一个问题。例如，在流行的局域网以太网中，如果两台计算机同时发送包，那么每台计算机等待一段随机时间之后再尝试。在实践中，该方案工作良好。但是，在少数的应用中，人们希望有一种能够始终工作的方案，它不能因为一串不可靠的随机数字而导致失败（想象一下核电站中的安全控制系统）。</p>
 <p>对图2-45中的算法可做如下改进，它既不会发生死锁又不会产生饥饿：使用一个二元信号量对调用think之后的五个语句进行保护。在开始拿叉子之前，哲学家先对互斥量 mutex执行down操作。在放回叉子后，他再对mutex执行up操作。从理论上讲，这种解法是可行的。但从实际角度来看，这里有性能上的局限：在任何一时刻只能有一位哲学家进餐。而五把叉子实际上可以允许两位哲学家同时进餐。</p>
 <p>图2-46中的解法不仅没有死锁，而且对于任意位哲学家的情况都能获得最大的并行度。算法中使用一个数组state跟踪每一个哲学家是在进餐、思考还是饥饿状态（正在试图拿叉子）。一个哲学家只有在两个邻居都没有进餐时才允许进入到进餐状态。第 i个哲学家的邻居则由宏LEFT和RIGHT定义，换言之，若i为2，则LEFT为1，RIGHT为3。</p>
-<p><img alt="3" src="http://images.51cto.com/files/uploadimg/20090805/120310117.jpg" />
-<img alt="4" src="http://images.51cto.com/files/uploadimg/20090805/120410543.jpg" />     <br />
+<p><img alt="3" src="http://images.51cto.com/files/uploadimg/20090805/120310117.jpg"/>
+<img alt="4" src="http://images.51cto.com/files/uploadimg/20090805/120410543.jpg"/> <br/>
 图2-46   哲学家就餐问题的一个解法</p>
 <p>该程序使用了一个信号量数组，每个信号量对应一位哲学家，这样在所需的叉子被占用时，想进餐的哲学家就被阻塞。注意，每个进程将过程philosopher作为主代码运行，而其他过程take_forks、put_forks和test只是普通的过程，而非单独的进程。</p>
 <p>[1]<a href="http://baike.baidu.com/link?url=4YykWayXt5Wfaz2AMbSBrZ-KrWsdsrY0jnGZWmYi9QbFRgXR0aaNrkQ0TFjcK0o-1OdQambiwBzjOvW6YtBW1K">http://baike.baidu.com/link?url=4YykWayXt5Wfaz2AMbSBrZ-KrWsdsrY0jnGZWmYi9QbFRgXR0aaNrkQ0TFjcK0o-1OdQambiwBzjOvW6YtBW1K</a>
@@ -157,7 +157,7 @@
                     </div>
                     <ul id="niu2-sidebar-toc-list">
                         <li><a href="#content-heading">哲学家就餐问题</a></li>
-                        
+                        <li><a href='#ipc'>经典的IPC问题</a></li><li><a href='#'></a></li>
                         <li><a href="#content-comments">评论</a></li>
                     </ul>
                 </div>
