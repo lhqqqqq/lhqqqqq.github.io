@@ -464,76 +464,57 @@ select Id, avg(value) from Table1 group by Id;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h1 id="_1_2"&gt;三、实现&lt;/h1&gt;
 &lt;h1 id="_1_2_3"&gt;四、递归&lt;/h1&gt;
-&lt;h1 id="_1_2_3_4"&gt;五、非递归&lt;/h1&gt;</summary><category term="algorithm"></category></entry><entry><title>C++11新特性记录</title><link href="http://lhqqqqq.github.io/cpp/cpp11.html" rel="alternate"></link><updated>2015-04-08T09:23:50+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-08:cpp/cpp11.html</id><summary type="html">&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;C++11&lt;/p&gt;
+&lt;h1 id="_1_2_3_4"&gt;五、非递归&lt;/h1&gt;</summary><category term="algorithm"></category></entry><entry><title>C++11新特性记录</title><link href="http://lhqqqqq.github.io/cpp/cpp11.html" rel="alternate"></link><updated>2015-04-08T09:23:50+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-08:cpp/cpp11.html</id><summary type="html">&lt;h1 id="1-c11"&gt;1. C++11&lt;/h1&gt;
 &lt;p&gt;C++11标准是 ISO/IEC 14882:2011 - Information technology -- Programming languages -- C++ 的简称。
 C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗下的C++标准委员会（ISO/IEC JTC1/SC22/WG21）于2011年8月12日公布，并于2011年9月出版。2012年2月28日的国际标准草案(N3376)是最接近于C++11标准的草案（仅编辑上的修正）。此次标准为C++98发布后13年来第一次重大修正。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;auto &amp;amp; decltype&lt;/p&gt;
+&lt;h1 id="2-auto-decltype"&gt;2. auto &amp;amp; decltype&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;auto&lt;/strong&gt;：让编译器分析表达式所属的类型。auto定义的变量必须有初始值。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;auto i = 1, *p = &amp;amp;i; //整型，整型指针
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//整型，整型指针&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;应用在容器中&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;auto len = str.size(); //len的类型是string::size_type
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;len&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="c1"&gt;//len的类型是string::size_type&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;应用在容器的迭代器中&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="c1"&gt;//it的类型为vector&amp;lt;int&amp;gt;::iterator&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;//it的类型为vector&amp;lt;int&amp;gt;::iterator&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;**decltype**：选择并返回操作数的数据类型。
-
-    decltype(f()) sum = x;
-
-编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。
-
-&amp;gt;decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。
+&lt;p&gt;&lt;strong&gt;decltype&lt;/strong&gt;：选择并返回操作数的数据类型。&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;decltype&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;范围for语句&lt;/p&gt;
+&lt;p&gt;编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="3-for"&gt;3. 范围for语句&lt;/h1&gt;
 &lt;p&gt;遍历给定序列中的每个元素并对序列中的每个值执行某种操作&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;for (declaration: expression)
-    statement
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;declaration&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;expression&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;statement&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;expression部分是一个对象，用于表示一个序列；declaration部分负责定义一个变量，该变量将被用于访问序列中的基础元素。
-如：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;string str("Hello world!");
-for (auto c : str)
-    cout &amp;lt;&amp;lt; c &amp;lt;&amp;lt;endl;
+&lt;p&gt;expression部分是一个对象，用于表示一个序列；declaration部分负责定义一个变量，该变量将被用于访问序列中的基础元素。&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Hello world!"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="nl"&gt;c&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;cout&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;endl&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;列表初始化&lt;/p&gt;
+&lt;h1 id="4"&gt;4. 列表初始化&lt;/h1&gt;
 &lt;p&gt;列表初始化不再局限于数组。无论是初始化对象还是某些时候为新对象赋值，都可以使用一组花括号括起来的初始值。&lt;/p&gt;
 &lt;p&gt;如，容器初始化&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v = {1, 2, 3};
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;或&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v{1, 2, 3};
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;取代以前的方法：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;int arr[3] = {1, 2, 3}  
-vector&amp;lt;int&amp;gt; v(arr, arr + 3);
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arr&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; 
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="shared_ptr.html"&gt;智能指针&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;无序关联容器
-    关键字类型固有且无序，使用哈希函数和关键字类型的==运算符来组织元素。
-    包括unordered_map，unordered_set，unordered_multimap，unordered_multiset。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;待续&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="C++"></category></entry><entry><title>C++中的引用</title><link href="http://lhqqqqq.github.io/cpp/reference.html" rel="alternate"></link><updated>2015-04-07T15:04:40+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-07:cpp/reference.html</id><summary type="html">&lt;blockquote&gt;
+&lt;h1 id="5"&gt;5. &lt;a href="shared_ptr.html"&gt;智能指针&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="6"&gt;6. 无序关联容器&lt;/h1&gt;
+&lt;p&gt;关键字类型固有且无序，使用哈希函数和关键字类型的==运算符来组织元素。
+包括unordered_map，unordered_set，unordered_multimap，unordered_multiset。&lt;/p&gt;
+&lt;h1 id="7"&gt;7. 待续&lt;/h1&gt;</summary><category term="C++"></category></entry><entry><title>C++中的引用</title><link href="http://lhqqqqq.github.io/cpp/reference.html" rel="alternate"></link><updated>2015-04-07T15:04:40+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-07:cpp/reference.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;from 《C++ Primer》&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=""&gt;一、概念&lt;/h1&gt;

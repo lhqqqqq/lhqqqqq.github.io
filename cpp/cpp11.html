@@ -94,76 +94,57 @@
             </div>
             <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
                 <div id="niu2-main-content">
-                    <ol>
-<li>
-<p>C++11</p>
+                    <h1 id="1-c11">1. C++11</h1>
 <p>C++11标准是 ISO/IEC 14882:2011 - Information technology -- Programming languages -- C++ 的简称。
 C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗下的C++标准委员会（ISO/IEC JTC1/SC22/WG21）于2011年8月12日公布，并于2011年9月出版。2012年2月28日的国际标准草案(N3376)是最接近于C++11标准的草案（仅编辑上的修正）。此次标准为C++98发布后13年来第一次重大修正。</p>
-</li>
-<li>
-<p>auto &amp; decltype</p>
+<h1 id="2-auto-decltype">2. auto &amp; decltype</h1>
 <p><strong>auto</strong>：让编译器分析表达式所属的类型。auto定义的变量必须有初始值。</p>
-<div class="codehilite"><pre>auto i = 1, *p = &amp;i; //整型，整型指针
+<div class="codehilite"><pre><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">;</span> <span class="c1">//整型，整型指针</span>
 </pre></div>
 <p>应用在容器中</p>
-<div class="codehilite"><pre>auto len = str.size(); //len的类型是string::size_type
+<div class="codehilite"><pre><span class="k">auto</span> <span class="n">len</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="c1">//len的类型是string::size_type</span>
 </pre></div>
 <p>应用在容器的迭代器中</p>
-</li>
-</ol>
-<div class="codehilite"><pre>    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
-    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
-        <span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
-    <span class="c1">//it的类型为vector&lt;int&gt;::iterator</span>
+<div class="codehilite"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
+<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
+<span class="c1">//it的类型为vector&lt;int&gt;::iterator</span>
 </pre></div>
-<div class="codehilite"><pre>**decltype**：选择并返回操作数的数据类型。
-
-    decltype(f()) sum = x;
-
-编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。
-
-&gt;decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。
+<p><strong>decltype</strong>：选择并返回操作数的数据类型。</p>
+<div class="codehilite"><pre>    <span class="k">decltype</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
 </pre></div>
-<ol>
-<li>
-<p>范围for语句</p>
+<p>编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。</p>
+<blockquote>
+<p>decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。</p>
+</blockquote>
+<h1 id="3-for">3. 范围for语句</h1>
 <p>遍历给定序列中的每个元素并对序列中的每个值执行某种操作</p>
-<div class="codehilite"><pre>for (declaration: expression)
-    statement
+<div class="codehilite"><pre><span class="k">for</span> <span class="p">(</span><span class="nl">declaration</span><span class="p">:</span> <span class="n">expression</span><span class="p">)</span>
+    <span class="n">statement</span>
 </pre></div>
-<p>expression部分是一个对象，用于表示一个序列；declaration部分负责定义一个变量，该变量将被用于访问序列中的基础元素。
-如：</p>
-<div class="codehilite"><pre>string str("Hello world!");
-for (auto c : str)
-    cout &lt;&lt; c &lt;&lt;endl;
+<p>expression部分是一个对象，用于表示一个序列；declaration部分负责定义一个变量，该变量将被用于访问序列中的基础元素。</p>
+<p>如：</p>
+<div class="codehilite"><pre><span class="n">string</span> <span class="nf">str</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">str</span><span class="p">)</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
 </pre></div>
-</li>
-<li>
-<p>列表初始化</p>
+<h1 id="4">4. 列表初始化</h1>
 <p>列表初始化不再局限于数组。无论是初始化对象还是某些时候为新对象赋值，都可以使用一组花括号括起来的初始值。</p>
 <p>如，容器初始化</p>
-<div class="codehilite"><pre>vector&lt;int&gt; v = {1, 2, 3};
+<div class="codehilite"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
 </pre></div>
 <p>或</p>
-<div class="codehilite"><pre>vector&lt;int&gt; v{1, 2, 3};
+<div class="codehilite"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
 </pre></div>
 <p>取代以前的方法：</p>
-<div class="codehilite"><pre>int arr[3] = {1, 2, 3}  
-vector&lt;int&gt; v(arr, arr + 3);
+<div class="codehilite"><pre><span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>  
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span> <span class="o">+</span> <span class="mi">3</span><span class="p">);</span> 
 </pre></div>
-</li>
-<li>
-<p><a href="shared_ptr.html">智能指针</a></p>
-</li>
-<li>
-<p>无序关联容器
-    关键字类型固有且无序，使用哈希函数和关键字类型的==运算符来组织元素。
-    包括unordered_map，unordered_set，unordered_multimap，unordered_multiset。</p>
-</li>
-<li>
-<p>待续</p>
-</li>
-</ol>
+<h1 id="5">5. <a href="shared_ptr.html">智能指针</a></h1>
+<h1 id="6">6. 无序关联容器</h1>
+<p>关键字类型固有且无序，使用哈希函数和关键字类型的==运算符来组织元素。
+包括unordered_map，unordered_set，unordered_multimap，unordered_multiset。</p>
+<h1 id="7">7. 待续</h1>
                 </div>
                 <div id="content-comments">
                 </div>
@@ -185,7 +166,7 @@ vector&lt;int&gt; v(arr, arr + 3);
                     </div>
                     <ul id="niu2-sidebar-toc-list">
                         <li><a href="#content-heading">C++11新特性记录</a></li>
-                        
+                        <li><a href='#1-c11'>1. C++11</a></li><li><a href='#2-auto-decltype'>2. auto & decltype</a></li><li><a href='#3-for'>3. 范围for语句</a></li><li><a href='#4'>4. 列表初始化</a></li><li><a href='#5'>5. 智能指针</a></li><li><a href='#6'>6. 无序关联容器</a></li><li><a href='#7'>7. 待续</a></li>
                     </ul>
                 </div>
             </div>
