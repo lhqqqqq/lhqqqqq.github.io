@@ -109,19 +109,22 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 <div class="codehilite"><pre>auto len = str.size(); //len的类型是string::size_type
 </pre></div>
 <p>应用在容器的迭代器中</p>
-<div class="codehilite"><pre>vector&lt;int&gt; v{1, 2, 3};
-for （auto it = v.begin(); it != v.end; ++i）
-    (*it)++;
-//it的类型为vector&lt;int&gt;::iterator
-</pre></div>
-<p><strong>decltype</strong>：选择并返回操作数的数据类型。</p>
-<div class="codehilite"><pre>decltype(f()) sum = x;
-</pre></div>
-<p>编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。</p>
-<blockquote>
-<p>decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。</p>
-</blockquote>
 </li>
+</ol>
+<div class="codehilite"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
+<span class="k">for</span> <span class="err">（</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="err">）</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
+<span class="c1">//it的类型为vector&lt;int&gt;::iterator</span>
+</pre></div>
+<div class="codehilite"><pre>**decltype**：选择并返回操作数的数据类型。
+
+    decltype(f()) sum = x;
+
+编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。
+
+&gt;decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。
+</pre></div>
+<ol>
 <li>
 <p>范围for语句</p>
 <p>遍历给定序列中的每个元素并对序列中的每个值执行某种操作</p>
