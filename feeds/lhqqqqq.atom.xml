@@ -19,23 +19,23 @@
 &lt;p&gt;&lt;strong&gt;delete&lt;/strong&gt;：接受一个动态对象的指针，销毁该对象，并释放与之关联的内存。&lt;/p&gt;
 &lt;h1 id="newdelete"&gt;二、new和delete&lt;/h1&gt;
 &lt;p&gt;在自由空间分配的内存是无名的，因此new无法为其分配的对象命名，而是返回一个指向该对象的指针。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;int *pi = new int；
+&lt;div class="highlight"&gt;&lt;pre&gt;int *pi = new int；
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;默认情况下，动态分配的对象是默认初始化的，即内置类型或组合类型的对象的值是未定义的，类类型的对象将采用默认初始化函数进行初始化。&lt;/p&gt;
 &lt;p&gt;可以使用直接初始化：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;int *pi = new int(1124);
+&lt;div class="highlight"&gt;&lt;pre&gt;int *pi = new int(1124);
 stirng *ps = new string(10, '9');
 vector&amp;lt;int&amp;gt; *pv = new vector&amp;lt;int&amp;gt;{0,1,2,3,4}; //新标准的列表初始化
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;对于内置类型，若未直接初始化，也应当值初始化：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;int *pi1 = new int;     //默认初始化，*pi1的值未定义
+&lt;div class="highlight"&gt;&lt;pre&gt;int *pi1 = new int;     //默认初始化，*pi1的值未定义
 int *pi2 = new int();   //值初始化为0
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;delete表达式接受一个指针，指向要释放的对象，将动态内存归还给系统。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;delete p;   //p为指向一个动态分配的对象或一个空指针
+&lt;div class="highlight"&gt;&lt;pre&gt;delete p;   //p为指向一个动态分配的对象或一个空指针
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;当delete一个指针后，虽然指针值无效，但其上仍保存着已经释放了的动态内存的地址，称为空悬指针（dangling pointer），即指向一块曾经保存数据对象但现在已经无效的内存的指针。可以在delete之后，将nullptr赋予指针，支出指针不指向任何对象。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;delete p;
+&lt;div class="highlight"&gt;&lt;pre&gt;delete p;
 p = nullptr;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
@@ -55,7 +55,7 @@ p = nullptr;
 &lt;/ul&gt;
 &lt;p&gt;上述三种类型都定义在memory头文件中。&lt;/p&gt;
 &lt;p&gt;创建：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;shared_ptr&amp;lt;string&amp;gt; p1;      //可以指向string的shared_ptr
+&lt;div class="highlight"&gt;&lt;pre&gt;shared_ptr&amp;lt;string&amp;gt; p1;      //可以指向string的shared_ptr
 shared_ptr&amp;lt;lit&amp;lt;int&amp;gt;&amp;gt; p1;    //可以指向int的list的shared_ptr
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;智能指针的使用（如判断、指向、解引用）与普通指针相同。&lt;/p&gt;
@@ -107,7 +107,7 @@ shared_ptr&amp;lt;lit&amp;lt;int&amp;gt;&amp;gt; p1;    //可以指向int的list
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;具体示例：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;//指向一个值为9的int的shared_ptr
+&lt;div class="highlight"&gt;&lt;pre&gt;//指向一个值为9的int的shared_ptr
 share_ptr&amp;lt;int&amp;gt; p1 = make_shared&amp;lt;int&amp;gt;(9);
 //指向一个值为"hello"的string的shared_ptr
 share_ptr&amp;lt;string&amp;gt; p2 = make_shared&amp;lt;string&amp;gt;("hello");
@@ -117,7 +117,7 @@ share_ptr&amp;lt;int&amp;gt; p3 = make_shared&amp;lt;int&amp;gt;();
 auto p4 = make_shared&amp;lt;vector&amp;lt;string&amp;gt;&amp;gt;();
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;当进行拷贝或赋值操作时，每个shared_ptr都会记录有多少个其他shared_ptr指向相同的对象：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;auto q(p1);     //q和p1均指向相同的int对象9，此对象有两个引用者。
+&lt;div class="highlight"&gt;&lt;pre&gt;auto q(p1);     //q和p1均指向相同的int对象9，此对象有两个引用者。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;每个shared_ptr都有一个关联计数器，称为&lt;strong&gt;引用计数（reference count）&lt;/strong&gt;。&lt;/p&gt;
 &lt;ul&gt;
@@ -125,13 +125,13 @@ auto p4 = make_shared&amp;lt;vector&amp;lt;string&amp;gt;&amp;gt;();
 &lt;li&gt;引用计数递减：赋予新值、被销毁（如离开作用域）。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;shared_ptr的析构函数使其具有管理动态内存的功能。它会递减shared_ptr所指向的对象的引用计数。如果引用计数变为0，就会销毁对象，并释放所占用的内存。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;auto r = make_shared&amp;lt;int&amp;gt;(4);   //r指向的int只有一个引用者
+&lt;div class="highlight"&gt;&lt;pre&gt;auto r = make_shared&amp;lt;int&amp;gt;(4);   //r指向的int只有一个引用者
 r = q;                          //给r赋值，则r原来指向的对象的引用计数递减
                                 //r原来指向的对象已没有引用者，会自动释放
                                 //q指向的对象的引用计数递增
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;可以这样使用shared_ptr：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;//factory返回一个shared_ptr，指向一个动态分配的对象
+&lt;div class="highlight"&gt;&lt;pre&gt;//factory返回一个shared_ptr，指向一个动态分配的对象
 shared_ptr&amp;lt;Foo&amp;gt; factory(T arg) {
     ...
     return make_shared&amp;lt;Foo&amp;gt;(arg);
@@ -142,7 +142,7 @@ void use_factory(T arg) {
 }
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;由于p是局部变量，在函数结束时将被销毁。在p被销毁时，其引用计数递减。在此由于p是唯一引用factory返回的内存的对象，所以引用计数将为0，则p所指的对象也会被销毁，所占用内存会被释放。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;void use_factory(T arg) {
+&lt;div class="highlight"&gt;&lt;pre&gt;void use_factory(T arg) {
     shared_ptr&amp;lt;Foo&amp;gt; p = factory(arg);
     return p;
 }
@@ -151,7 +151,7 @@ void use_factory(T arg) {
 &lt;p&gt;使用智能指针可以在多个对象间共享数据，即多个对象保存相同内容（存放在动态内存中）。这样，当一个对象被销毁时，不影响其他的对象；只有所有指向该内存的对象都被销毁时，该内存才会被释放。&lt;/p&gt;
 &lt;h1 id="shared_ptr"&gt;四、shared_ptr的实现&lt;/h1&gt;</summary><category term="C++"></category></entry><entry><title>MySQL之数据操纵</title><link href="http://lhqqqqq.github.io/database/MySQL.html" rel="alternate"></link><updated>2015-04-16T18:28:37+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-16:database/MySQL.html</id><summary type="html">&lt;!--MySQL之数据操纵--&gt;
 &lt;h1 id=""&gt;一、基本语法&lt;/h1&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;选择：select &amp;lt;fields&amp;gt; from &amp;lt;table&amp;gt; where &amp;lt;condition&amp;gt;;
+&lt;div class="highlight"&gt;&lt;pre&gt;选择：select &amp;lt;fields&amp;gt; from &amp;lt;table&amp;gt; where &amp;lt;condition&amp;gt;;
 插入：insert into &amp;lt;table&amp;gt;(&amp;lt;field1&amp;gt;,&amp;lt;field2&amp;gt;) values(&amp;lt;value1&amp;gt;,&amp;lt;value2&amp;gt;); 
 删除：delete from &amp;lt;table&amp;gt; where &amp;lt;condition&amp;gt;; 
 更新：update &amp;lt;table&amp;gt; set &amp;lt;field&amp;gt;=&amp;lt;value&amp;gt; where &amp;lt;condition&amp;gt;; 
@@ -165,7 +165,7 @@ void use_factory(T arg) {
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h1 id="join"&gt;二、join&lt;/h1&gt;
 &lt;p&gt;举例说明&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;Table1.
+&lt;div class="highlight"&gt;&lt;pre&gt;Table1.
 +----+-------+
 | Id | book  |
 +----+-------+
@@ -183,7 +183,7 @@ Table2.
 +----+-------+
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Iner Join(内连接)&lt;/strong&gt; 将两个表中存在连接关系的字段，组成的记录集。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 join table2 on table1.id=table2.id;  
+&lt;div class="highlight"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 join table2 on table1.id=table2.id;  
 +------+------+------+--------+  
 | id   | book | id   | author |  
 +------+------+------+--------+  
@@ -192,7 +192,7 @@ Table2.
 +------+------+------+--------+
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;使用using子句&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 inner join table2 using (id);  
+&lt;div class="highlight"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 inner join table2 using (id);  
 +------+------+--------+  
 | id   | book | author |  
 +------+------+--------+  
@@ -201,11 +201,11 @@ Table2.
 +------+------+--------+
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;等价于 &lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;mysql&amp;gt; select table1.id as id,book,author from table1, table2 where table1.id=table2.id; 
+&lt;div class="highlight"&gt;&lt;pre&gt;mysql&amp;gt; select table1.id as id,book,author from table1, table2 where table1.id=table2.id; 
 mysql&amp;gt; select table1.id, book, author from table1 join table2 on table1.id=table2.id;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Cross Join(交叉连接)&lt;/strong&gt; 求两个表的笛卡尔积，可以用逗号表示，如(table1, table 2)。不使用on或using时，和Inner Join是等价的。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 inner join table2;  
+&lt;div class="highlight"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 inner join table2;  
 mysql&amp;gt; select * from table1 cross join table2;  
 mysql&amp;gt; select * from (table1, table2);   
 +------+------+------+--------+  
@@ -223,7 +223,7 @@ mysql&amp;gt; select * from (table1, table2);
 +------+------+------+--------+
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Natural Join 自然连接&lt;/strong&gt; 等价于使用using子句的Inner Join。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 natural join table2;  
+&lt;div class="highlight"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 natural join table2;  
 mysql&amp;gt; select * from table1 inner join table2 using (id);   
 +------+------+--------+  
 | id   | book | author |  
@@ -233,7 +233,7 @@ mysql&amp;gt; select * from table1 inner join table2 using (id);
 +------+------+--------+
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Left Join 左外连接&lt;/strong&gt; 左外连接A、B表的意思就是将表A中的全部记录和表B中字段连接形成的记录集，这里注意的是最后出来的记录集会包括表A的全部记录。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 left join table2 on table1.id=table2.id; 
+&lt;div class="highlight"&gt;&lt;pre&gt;mysql&amp;gt; select * from table1 left join table2 on table1.id=table2.id; 
 +------+------+------+--------+  
 | id   | book | id   | author |  
 +------+------+------+--------+
@@ -254,31 +254,31 @@ mysql&amp;gt; select * from table2 right join table1 using (id);
 &lt;h1 id="inexists"&gt;三、in、exists&lt;/h1&gt;
 &lt;p&gt;参考&lt;a href="http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/"&gt;http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;in&lt;/strong&gt;查询相当于多个or条件的叠加&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from user where userId in (1, 2, 3);
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from user where userId in (1, 2, 3);
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;等效于&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from user where userId = 1 or userId = 2 or userId = 3;
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from user where userId = 1 or userId = 2 or userId = 3;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;not in与in相反，如下&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from user where userId not in (1, 2, 3);
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from user where userId not in (1, 2, 3);
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;等效于&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from user where userId != 1 and userId != 2 and userId != 3;
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from user where userId != 1 and userId != 2 and userId != 3;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;总的来说，in查询就是先将子查询条件的记录全都查出来，假设结果集为B，共有m条记录，然后在将子查询条件的结果集分解成m个，再进行m次查询。&lt;/p&gt;
 &lt;p&gt;in查询的子条件返回结果必须只有一个字段，例如&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from user where userId in (select id from B);
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from user where userId in (select id from B);
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;而不能是&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from user where userId in (select id, age from B);
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from user where userId in (select id, age from B);
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;exists&lt;/strong&gt;对外表用loop逐条查询，每次查询都会查看exists的条件语句，当exists里的条件语句能够返回记录行时(无论记录行是的多少，只要能返回)，条件就为真，返回当前loop到的这条记录，反之如果exists里的条件语句不能返回记录行，则当前loop到的这条记录被丢弃，exists的条件就像一个bool条件，当能返回结果集则为true，不能返回结果集则为false。&lt;/p&gt;
 &lt;p&gt;如下：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from user where exists (select 1);
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from user where exists (select 1);
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;对user表的记录逐条取出，由于子条件中的select 1永远能返回记录行，那么user表的所有记录都将被加入结果集，所以与 select * from user;是一样的&lt;/p&gt;
 &lt;p&gt;又如下：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from user where exists (select * from user where userId = 0);
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from user where exists (select * from user where userId = 0);
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;可以知道对user表进行loop时，检查条件语句(select * from user where userId = 0),由于userId永远不为0，所以条件语句永远返回空集，条件永远为false，那么user表的所有记录都将被丢弃&lt;/p&gt;
 &lt;p&gt;not exists与exists相反，也就是当exists条件有结果集返回时，loop到的记录将被丢弃，否则将loop到的记录加入结果集&lt;/p&gt;
@@ -288,16 +288,16 @@ mysql&amp;gt; select * from table2 right join table1 using (id);
 &lt;p&gt;如果查询的两个表大小相当，那么用in和exists差别不大；如果两个表中一个较小一个较大，则子查询表大的用exists，子查询表小的用in。&lt;/p&gt;
 &lt;p&gt;例如：&lt;/p&gt;
 &lt;p&gt;若表A较小，表B较大&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from A where cc in(select cc from B)　　--&amp;gt;效率低，用到了A表上cc列的索引；
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from A where cc in(select cc from B)　　--&amp;gt;效率低，用到了A表上cc列的索引；
 select * from A where exists(select cc from B where cc=A.cc)　　--&amp;gt;效率高，用到了B表上cc列的索引。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;相反的：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select * from B where cc in(select cc from A)　　--&amp;gt;效率高，用到了B表上cc列的索引
+&lt;div class="highlight"&gt;&lt;pre&gt;select * from B where cc in(select cc from A)　　--&amp;gt;效率高，用到了B表上cc列的索引
 select * from B where exists(select cc from A where cc=B.cc)　　--&amp;gt;效率低，用到了A表上cc列的索引。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;not in&lt;/strong&gt;和&lt;strong&gt;not exists&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;not in 逻辑上不完全等同于not exists&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;Table1.
+&lt;div class="highlight"&gt;&lt;pre&gt;Table1.
 +-----+-----+
 | c1  | c2  |
 +-----+-----+
@@ -317,16 +317,16 @@ select * from Table1 where not exists(select 1 from Table2 where Table2.c2=Table
 &lt;p&gt;not in出现了不期望的结果集，存在逻辑错误。尽量不要使用not in(它会调用子查询)，而尽量使用not exists（它会调用关联子查询）。如果子查询中返回的任意一条记录含有空值，则not in查询将不返回任何记录。如果子查询字段有非空限制，这时可以使用not in。&lt;/p&gt;
 &lt;p&gt;如果查询语句使用了not in，那么对内外表都进行全表扫描，没有用到索引；而not exists的子查询依然能用到表上的索引。所以无论哪个表大，用not exists都比not in 要快。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;in&lt;/strong&gt;和&lt;strong&gt;=&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select name from student where name in('zhang','wang','zhao');
+&lt;div class="highlight"&gt;&lt;pre&gt;select name from student where name in('zhang','wang','zhao');
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;与&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select name from student where name='zhang' or name='wang' or name='zhao'
+&lt;div class="highlight"&gt;&lt;pre&gt;select name from student where name='zhang' or name='wang' or name='zhao'
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;的结果是相同的。&lt;/p&gt;
 &lt;h1 id="group-by"&gt;四、group by&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;group by&lt;/strong&gt;语法可以根据给定数据列的每个成员对查询结果进行分组统计，最终得到一个分组汇总表。一般结合avg(),count()等进行统计。&lt;/p&gt;
 &lt;p&gt;例如&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;Table1.
+&lt;div class="highlight"&gt;&lt;pre&gt;Table1.
 +----+-------+
 | Id | value |
 +----+-------+
@@ -346,7 +346,7 @@ select Id, avg(value) from Table1 group by Id;
 +----+----------+
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;还可以使用&lt;strong&gt;having&lt;/strong&gt;子句测试一个统计结果，放在group by子句之后。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;select Id, avg(value) from Table1 group by Id having having count(*) &amp;gt; 1;
+&lt;div class="highlight"&gt;&lt;pre&gt;select Id, avg(value) from Table1 group by Id having having count(*) &amp;gt; 1;
 +----+----------+
 | Id |avg(value)|
 +----+----------+
@@ -436,7 +436,7 @@ select Id, avg(value) from Table1 group by Id;
 &lt;p&gt;“因为每个问题的人数可以从0取到10000，而金矿数可以从0取到10，所以最多大约有10000 * 10 等于100000个不同的问题。” 小才一边算着一边回答。&lt;/p&gt;
 &lt;p&gt;“什么？十万个问题？十万个人力？”国王有点失望。&lt;/p&gt;
 &lt;p&gt;“请国王放心，事实上我们需要的人力远远小于这个数的，因为不是每一个问题都会遇到，也许我们仅需要一、两百个人力就可以解决这个问题了，这主要和各个金矿所需要的人数有关。” 小才立刻回答到。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;   故事的最后，自然是国王再一次向他的臣民们证明了他是这个国家里最聪明的人，现在我们通过故事的第二部分来考虑动态规划的另外两个思考点。
+&lt;div class="highlight"&gt;&lt;pre&gt;   故事的最后，自然是国王再一次向他的臣民们证明了他是这个国家里最聪明的人，现在我们通过故事的第二部分来考虑动态规划的另外两个思考点。
 
 
 
@@ -473,19 +473,19 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 &lt;li&gt;
 &lt;p&gt;auto &amp;amp; decltype&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;auto&lt;/strong&gt;：让编译器分析表达式所属的类型。auto定义的变量必须有初始值。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;auto i = 1, *p = &amp;amp;i; //整型，整型指针
+&lt;div class="highlight"&gt;&lt;pre&gt;auto i = 1, *p = &amp;amp;i; //整型，整型指针
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;应用在容器中&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;auto len = str.size(); //len的类型是string::size_type
+&lt;div class="highlight"&gt;&lt;pre&gt;auto len = str.size(); //len的类型是string::size_type
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;应用在容器的迭代器中&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v{1, 2, 3};
+&lt;div class="highlight"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v{1, 2, 3};
 for （auto it = v.begin(); it != v.end; ++i）
     (*it)++;
 //it的类型为vector&amp;lt;int&amp;gt;::iterator
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;decltype&lt;/strong&gt;：选择并返回操作数的数据类型。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;decltype(f()) sum = x;
+&lt;div class="highlight"&gt;&lt;pre&gt;decltype(f()) sum = x;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -495,12 +495,12 @@ for （auto it = v.begin(); it != v.end; ++i）
 &lt;li&gt;
 &lt;p&gt;范围for语句&lt;/p&gt;
 &lt;p&gt;遍历给定序列中的每个元素并对序列中的每个值执行某种操作&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;for (declaration: expression)
+&lt;div class="highlight"&gt;&lt;pre&gt;for (declaration: expression)
     statement
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;expression部分是一个对象，用于表示一个序列；declaration部分负责定义一个变量，该变量将被用于访问序列中的基础元素。
 如：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;string str("Hello world!");
+&lt;div class="highlight"&gt;&lt;pre&gt;string str("Hello world!");
 for (auto c : str)
     cout &amp;lt;&amp;lt; c &amp;lt;&amp;lt;endl;
 &lt;/pre&gt;&lt;/div&gt;
@@ -509,13 +509,13 @@ for (auto c : str)
 &lt;p&gt;列表初始化&lt;/p&gt;
 &lt;p&gt;列表初始化不再局限于数组。无论是初始化对象还是某些时候为新对象赋值，都可以使用一组花括号括起来的初始值。&lt;/p&gt;
 &lt;p&gt;如，容器初始化&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v = {1, 2, 3};
+&lt;div class="highlight"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v = {1, 2, 3};
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;或&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v{1, 2, 3};
+&lt;div class="highlight"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v{1, 2, 3};
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;取代以前的方法：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;int arr[3] = {1, 2, 3}  
+&lt;div class="highlight"&gt;&lt;pre&gt;int arr[3] = {1, 2, 3}  
 vector&amp;lt;int&amp;gt; v(arr, arr + 3);
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
@@ -541,7 +541,7 @@ vector&amp;lt;int&amp;gt; v(arr, arr + 3);
 &lt;p&gt;定义引用时，程序把初始值和对象绑定在一次。之后，这种绑定关系会一直存在，所以引用必须初始化。
 引用本身不是对象。&lt;/p&gt;
 &lt;h1 id="_1"&gt;二、示例&lt;/h1&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;int ival = 1024;
+&lt;div class="highlight"&gt;&lt;pre&gt;int ival = 1024;
 int &amp;amp;refVal = ival; //引用，即refVal是ival的别名
 int &amp;amp;refVal2; //报错，引用必须被初始化
 int &amp;amp;refVal3 = 10; //报错，引用的初始值必须是对象
@@ -552,7 +552,7 @@ int &amp;amp;refVal4 = dval; //报错，类型不一致
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;数据交换，传递引用参数，可以改变原值&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;int swap(int &amp;amp;a, int &amp;amp;b)
+&lt;div class="highlight"&gt;&lt;pre&gt;int swap(int &amp;amp;a, int &amp;amp;b)
 {
     int tmp = a;
     a = b;
@@ -600,7 +600,7 @@ int &amp;amp;refVal4 = dval; //报错，类型不一致
 &lt;p&gt;当对象被创建时，计数为1；每创建一个变量引用该对象时，该对象的计数就增加1；当上述变量销毁时，对象的计数减1，当计数为0时，这个对象也就被析构了。&lt;/p&gt;
 &lt;p&gt;强引用：即当至少有一个强引用时，对象就不能被释放。shared_ptr就是如此。&lt;/p&gt;
 &lt;p&gt;强引用计数在很多种情况下都是可以正常工作的，但是也有不凑效的时候，当出现循环引用时，就会出现严重的问题，以至于出现内存泄露。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;Class Parent  
+&lt;div class="highlight"&gt;&lt;pre&gt;Class Parent  
 {  
 public:  
     // ...  
@@ -626,7 +626,7 @@ private:
 &lt;p&gt;虽然这三种方法都可行，但方法1和方法2都需要程序员手动控制，麻烦且容易出错。&lt;/p&gt;
 &lt;h2 id="3"&gt;3.弱引用&lt;/h2&gt;
 &lt;p&gt;弱引用：它仅仅是对象存在时候的引用，当对象不存在时弱引用能够检测到，从而避免非法访问，弱引用也不会修改对象的引用计数。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;template&amp;lt;typename T&amp;gt; class weak_ptr  
+&lt;div class="highlight"&gt;&lt;pre&gt;template&amp;lt;typename T&amp;gt; class weak_ptr  
 {  
     public:  
         template &amp;lt;typename Y&amp;gt;  
@@ -642,11 +642,11 @@ private:
 };
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;定义变量：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;shared_ptr&amp;lt;T&amp;gt; t(new T);
+&lt;div class="highlight"&gt;&lt;pre&gt;shared_ptr&amp;lt;T&amp;gt; t(new T);
 weak_ptr&amp;lt;T&amp;gt; ptr(t); // t为一个T对象
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;则当t被销毁时，ptr 被自动置为无效。使用方法如下：&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;if ( shard_ptr&amp;lt;T&amp;gt; safePtr = ptr.lock() )  safePtr-&amp;gt;Fun();
+&lt;div class="highlight"&gt;&lt;pre&gt;if ( shard_ptr&amp;lt;T&amp;gt; safePtr = ptr.lock() )  safePtr-&amp;gt;Fun();
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;weak_ptr必须从一个share_ptr或另一个weak_ptr转换而来，这也说明，进行该对象的内存管理的是那个强引用的share_ptr。weak_ptr只是提供了对管理对象的一个访问手段。&lt;/p&gt;
 &lt;p&gt;弱引用指针可以有效的解除循环引用，但这种方式必须在程序员能预见会出现循环引用的情况下才能使用，也可以是说这个仅仅是一种编译期的解决方案，如果程序在运行过程中出现了循环引用，还是会造成内存泄漏的。&lt;/p&gt;</summary><category term="C++"></category></entry><entry><title>数据结构之树</title><link href="http://lhqqqqq.github.io/data-structures/tree.html" rel="alternate"></link><updated>2015-04-04T17:30:00+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-04:data-structures/tree.html</id><summary type="html">&lt;!--#数据结构之树--&gt;
@@ -679,7 +679,7 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="_1_2"&gt;三、实现&lt;/h1&gt;
 &lt;p&gt;树节点实现&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;struct TreeNode  
+&lt;div class="highlight"&gt;&lt;pre&gt;struct TreeNode  
 {  
     int val;  
     TreeNode *left;  
@@ -688,7 +688,7 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 };
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;前序遍历（PreorderTraversal），根-&amp;gt;左-&amp;gt;右&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;void PreorderTraversal(TreeNode *node)  
+&lt;div class="highlight"&gt;&lt;pre&gt;void PreorderTraversal(TreeNode *node)  
 {  
     if(!node)  
         return; 
@@ -698,7 +698,7 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 }
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;中序遍历（InorderTraversal），左-&amp;gt;根-&amp;gt;右&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;void PreorderTraversal(TreeNode *node)  
+&lt;div class="highlight"&gt;&lt;pre&gt;void PreorderTraversal(TreeNode *node)  
 {  
     if(!node)  
         return; 
@@ -708,7 +708,7 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 }
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;后序遍历（PostorderTraversal），左-&amp;gt;右-&amp;gt;根&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;void PreorderTraversal(TreeNode *node)  
+&lt;div class="highlight"&gt;&lt;pre&gt;void PreorderTraversal(TreeNode *node)  
 {  
     if(!node)  
         return;
@@ -719,7 +719,7 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h1 id="_1_2_3"&gt;四、递归&lt;/h1&gt;
 &lt;p&gt;深度优先搜索(Depth-firsh Search)&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;int Foo1(TreeNode *root) {
+&lt;div class="highlight"&gt;&lt;pre&gt;int Foo1(TreeNode *root) {
     if (!root) //终止条件
         return ;
     if (!root-&amp;gt;left &amp;amp;&amp;amp; !root-&amp;gt;right) //剪枝
@@ -733,7 +733,7 @@ h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如果父节点需要子节点的数据，只需要逐层返回；&lt;/p&gt;
 &lt;p&gt;如果子节点需要父节点的数据，则需要在递归函数的参数中传递。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;int Foo2(TreeNode *root, int data)；
+&lt;div class="highlight"&gt;&lt;pre&gt;int Foo2(TreeNode *root, int data)；
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h1 id="_1_2_3_4"&gt;五、非递归&lt;/h1&gt;</summary><category term="data structures"></category></entry><entry><title>排序算法之快速排序</title><link href="http://lhqqqqq.github.io/algorithm/quicksort.html" rel="alternate"></link><updated>2015-04-07T15:08:23+08:00</updated><author><name>lhqqqqq</name></author><id>tag:lhqqqqq.github.io,2015-04-01:algorithm/quicksort.html</id><summary type="html">&lt;!--排序算法之快速排序--&gt;
 &lt;blockquote&gt;
