@@ -1,204 +1,399 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>标签 C++ - lhqqqqq's BLOG</title>
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="http://cdn.atime.me/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="http://cdn.atime.me/font-icons/style.min.css" type="text/css" />
-        <link rel="stylesheet" href="../theme/css/niu2.min.css" type="text/css" />
-        <script type="text/javascript">window.onload=function(){};</script>
-        <!--[if lt IE 9]>
-            <script src="../theme/js/html5shiv.js"></script>
-            <script src="../theme/js/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body> 
-        <div id="body-header">
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="col-md-12">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="..">
-                            <i class="icon-home"></i>lhqqqqq's BLOG
-                        </a>
-                    </div>
-                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/About.html" title="about me">
-                                <i class="icon-anchor"></i>关于</a>
-                            </li>
-                            <li><a href="/tag/" title="tags">
-                                <i class="icon-tag"></i>标签</a>
-                            </li>
-                        <!-- category dropdown list -->
-                        <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-folder-open"></i>分类<b class="caret"></b>
-                           </a>
-                           <ul class="dropdown-menu">
-                               <li><a href="../algorithm/index.html">
-                                   <i class="icon-folder-close"></i>algorithm
-                                      (2)</a></li>
-                               <li><a href="../cpp/index.html">
-                                   <i class="icon-folder-close"></i>cpp
-                                      (3)</a></li>
-                               <li><a href="../data-structures/index.html">
-                                   <i class="icon-folder-close"></i>data structures
-                                      (1)</a></li>
-                               <li><a href="../database/index.html">
-                                   <i class="icon-folder-close"></i>database
-                                      (1)</a></li>
-                               <li><a href="../os/index.html">
-                                   <i class="icon-folder-close"></i>OS
-                                      (1)</a></li>
-                               <li><a href="../personal/index.html">
-                                   <i class="icon-folder-close"></i>Personal
-                                      (1)</a></li>
-                           </ul>
-                        </li>
-                        <!--  self defined dropdown list -->
-                        <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                               <i class="icon-archive"></i>存档<b class="caret"></b>
-                           </a>
-                           <ul class="dropdown-menu">
-                               <li><a href="/archives.html" title="archives order by publish time">
-                                 <i class="icon-calendar"></i>存档 (按发布时间)</a>
-                               </li>
-                               <li><a href="/archives_updatedate.html" title="archives order by modify time">
-                                 <i class="icon-pencil"></i>存档 (按修改时间)</a>
-                               </li>
-                           </ul>
-                        </li>
-                        </ul>
-                        
-                        <!-- right nav bar -->
-                        <ul class="nav navbar-nav navbar-right">
-                        <!-- google custom search -->
-                       </ul>
-                    </nav>
-                </div>
-            </div>
+<html lang="zh_cn">
+<head>
+    <meta charset="utf-8">
+    <title>lhqqqqq's BLOG</title>
+    <meta name="description" content="">
+    <meta name="author" content="lhqqqqq">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="../theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="http://lhqqqqq.github.io/feed.xml" rel="alternate" title="lhqqqqq's BLOG" type="application/rss+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="..">lhqqqqq's BLOG</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+            <li><a href="../About.html">About Me</a></li>
+        </ul>
         </div>
+        
+    </div>
+    </div>
+</div>
 
-        <div id="body-content">
-            <div class="col-md-8 col-md-offset-2">
-                <h1 class="niu2-index-title"><i class="icon-tag icon-lg"></i>C++</h1>
-            </div>
+<div class="container">
+    <div class="content">
+    <div class="row">
 
-            <div class="col-md-8 col-md-offset-2">
-                <div class="niu2-index-article">
-                    <div class="niu2-index-article-title">
-                        <span>
-                            <a href="../cpp/shared_ptr.html">动态内存与智能指针</a>
-                        </span>
-                    </div>
-                    <div class="niu2-meta-index">
-                        <span class="niu2-meta-date-index">
-                            <i class="icon-calendar"></i>2015-04-30
-                        </span>
-                        <span class="niu2-meta-category-index">
-                            <i class="icon-folder-open"></i>cpp
-                        </span>
-                        <span class="niu2-meta-tag-index">
-                            <i class="icon-tag"></i>
-                            <a href="../tag/c.html">C++</a>
-                        </span>
-                    </div>
-                    <div class="niu2-article-summary">
-                        
-                    </div>
-                </div>
-                <div class="niu2-index-article">
-                    <div class="niu2-index-article-title">
-                        <span>
-                            <a href="../cpp/cpp11.html">C++11新特性记录</a>
-                        </span>
-                    </div>
-                    <div class="niu2-meta-index">
-                        <span class="niu2-meta-date-index">
-                            <i class="icon-calendar"></i>2015-04-08
-                        </span>
-                        <span class="niu2-meta-category-index">
-                            <i class="icon-folder-open"></i>cpp
-                        </span>
-                        <span class="niu2-meta-tag-index">
-                            <i class="icon-tag"></i>
-                            <a href="../tag/c.html">C++</a>
-                        </span>
-                    </div>
-                    <div class="niu2-article-summary">
-                        
-                    </div>
-                </div>
-                <div class="niu2-index-article">
-                    <div class="niu2-index-article-title">
-                        <span>
-                            <a href="../cpp/reference.html">C++中的引用</a>
-                        </span>
-                    </div>
-                    <div class="niu2-meta-index">
-                        <span class="niu2-meta-date-index">
-                            <i class="icon-calendar"></i>2015-04-07
-                        </span>
-                        <span class="niu2-meta-category-index">
-                            <i class="icon-folder-open"></i>cpp
-                        </span>
-                        <span class="niu2-meta-tag-index">
-                            <i class="icon-tag"></i>
-                            <a href="../tag/c.html">C++</a>
-                        </span>
-                    </div>
-                    <div class="niu2-article-summary">
-                        
-                    </div>
-                </div>
+        <div class="span9">
+        
+
+        
 
 
+    <div class='article'>
+        <div class="content-title">
+            <a href="../cpp/shared_ptr.html"><h1>动态内存与智能指针</h1></a>
+2015-04-30 20:36:34
 
-            </div>
+by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+ 
         </div>
+        
+        <div><blockquote>
+<p>from 《C++ Primer》</p>
+</blockquote>
+<h1 id="">一、动态内存</h1>
+<p>程序使用的<strong>内存</strong>包括：静态内存、栈内存动态内存；</p>
+<p><strong>静态内存</strong>用来保存局部static对象、类static数据成员和定义在任何函数之外的变量。</p>
+<p><strong>栈内存</strong>用来保存定义在函数内的非static对象。</p>
+<p>分配在静态或栈内存中的对象由编译器自动创建和销毁。对于栈对象，仅在其定义的程序块运行时才存在；static对象在使用之前分配，在程序结束时销毁。</p>
+<p><strong>动态内存</strong>被称作自由空间（free store）或堆（heap）。程序用堆来存储动态分配的对象，即那些在程序运行时分配的对象。动态对象的生存期由程序来控制，即不再使用时，代码必须显示地销毁。</p>
+<blockquote>
+<p>STL容器均是使用动态内存！</p>
+</blockquote>
+<p>C++中，使用<strong>new</strong>和<strong>delete</strong>这对<strong>运算符</strong>来管理动态内存。</p>
+<blockquote>
+<p>new和delete是运算符，malloc和free是库函数。<a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/07/16/2593754.html">它们的不同？</a></p>
+</blockquote>
+<p><strong>new</strong>：在动态内存中为对象分配空间并返回一个指向该对象的指针。</p>
+<p><strong>delete</strong>：接受一个动态对象的指针，销毁该对象，并释放与之关联的内存。</p>
+<h1 id="newdelete">二、new和delete</h1>
+<p>在自由空间分配的内存是无名的，因此new无法为其分配的对象命名，而是返回一个指向该对象的指针。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>int *pi = new int；
+</pre></div>
+</td></tr></table>
+<p>默认情况下，动态分配的对象是默认初始化的，即内置类型或组合类型的对象的值是未定义的，类类型的对象将采用默认初始化函数进行初始化。</p>
+<p>可以使用直接初始化：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre>int *pi = new int(1124);
+stirng *ps = new string(10, '9');
+vector&lt;int&gt; *pv = new vector&lt;int&gt;{0,1,2,3,4}; //新标准的列表初始化
+</pre></div>
+</td></tr></table>
+<p>对于内置类型，若未直接初始化，也应当值初始化：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre>int *pi1 = new int;     //默认初始化，*pi1的值未定义
+int *pi2 = new int();   //值初始化为0
+</pre></div>
+</td></tr></table>
+<p>delete表达式接受一个指针，指向要释放的对象，将动态内存归还给系统。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>delete p;   //p为指向一个动态分配的对象或一个空指针
+</pre></div>
+</td></tr></table>
+<p>当delete一个指针后，虽然指针值无效，但其上仍保存着已经释放了的动态内存的地址，称为空悬指针（dangling pointer），即指向一块曾经保存数据对象但现在已经无效的内存的指针。可以在delete之后，将nullptr赋予指针，支出指针不指向任何对象。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre>delete p;
+p = nullptr;
+</pre></div>
+</td></tr></table>
+<blockquote>
+<p>nullptr为C++11标准引入的特殊类型的字面值，表示空指针，代替预处理常量NULL</p>
+</blockquote>
+<h1 id="_1">三、智能指针</h1>
+<p>不正确释放动态内存，会引发问题：</p>
+<ul>
+<li>忘记释放内存，会产生<strong>内存泄露</strong>；</li>
+<li>在尚有指针引用内存的情况下释放，会产生<strong>引用非法内存</strong>的指针。</li>
+</ul>
+<p>为了更容易且更安全地使用动态内存，C++11标准引入（boost库中已有）两种<strong>智能指针（smart pointer）</strong>类型来管理动态对象。智能指针与常规指针的区别是它在负责自动释放所指向的对象。</p>
+<ul>
+<li><strong>shared_ptr</strong>允许多个指针指向同一对象；</li>
+<li><strong>unique_str</strong>独占所指向的对象；</li>
+<li>还有一种名为<strong>weak_ptr</strong>的伴随类，它是一种<a href="reference.html">弱引用</a>，指向shared_ptr所管理的对象。</li>
+</ul>
+<p>上述三种类型都定义在memory头文件中。</p>
+<p>创建：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre>shared_ptr&lt;string&gt; p1;      //可以指向string的shared_ptr
+shared_ptr&lt;lit&lt;int&gt;&gt; p1;    //可以指向int的list的shared_ptr
+</pre></div>
+</td></tr></table>
+<p>智能指针的使用（如判断、指向、解引用）与普通指针相同。</p>
+<p>智能指针的操作：</p>
+<p>shared_ptr和unique_ptr均支持的：</p>
+<ul>
+<li>
+<p>shared_ptr<t> sp/unique_ptr<t> up </t></t></p>
+<p>空智能指针，可以指向T类型的对象</p>
+</li>
+<li>
+<p>p </p>
+<p>将p作为条件判断，空则为false，指向一个对象则为true</p>
+</li>
+<li>
+<p>*p        </p>
+<p>解引用p</p>
+</li>
+<li>
+<p>p.get()   </p>
+<p>返回p中保存的指针</p>
+</li>
+<li>
+<p>swap(p,q)/p.swap(q)   </p>
+<p>交换p和q中的指针</p>
+</li>
+</ul>
+<p>只有shared_ptr支持的：</p>
+<ul>
+<li>
+<p>make_shared<t>(args)</t></p>
+<p>返回一个shared_ptr，指向一个动态分配的T类型对象，使用args初始化此对象（最安全的分配和使用动态内存的方法！）</p>
+</li>
+<li>
+<p>p.use_count()         </p>
+<p>返回p共享对象的智能指针量（可能很慢！用于调试！）</p>
+</li>
+<li>
+<p>p.unique()            </p>
+<p>若p.use_count()为1，返回true；否则返回false</p>
+</li>
+<li>
+<p>share_ptr<t> p(q) </t></p>
+<p>p是q的拷贝；会递增q中的计数器。（q中的指针必须能转换成*T!)</p>
+</li>
+<li>
+<p>p = q     </p>
+<p>此操作会递减p的引用计数，递增q中的引用计数；若p的引用计数变为0，则将其管理的原内存释放（p和q都是shared_ptr，且保存的指针必须能相互转换！）</p>
+</li>
+</ul>
+<p>具体示例：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre>//指向一个值为9的int的shared_ptr
+share_ptr&lt;int&gt; p1 = make_shared&lt;int&gt;(9);
+//指向一个值为"hello"的string的shared_ptr
+share_ptr&lt;string&gt; p2 = make_shared&lt;string&gt;("hello");
+//指向一个值初始化的(对于int为0)int的shared_ptr
+share_ptr&lt;int&gt; p3 = make_shared&lt;int&gt;();
+//可以使用auto，这里指向空的string组成的vector
+auto p4 = make_shared&lt;vector&lt;string&gt;&gt;();
+</pre></div>
+</td></tr></table>
+<p>当进行拷贝或赋值操作时，每个shared_ptr都会记录有多少个其他shared_ptr指向相同的对象：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>auto q(p1);     //q和p1均指向相同的int对象9，此对象有两个引用者。
+</pre></div>
+</td></tr></table>
+<p>每个shared_ptr都有一个关联计数器，称为<strong>引用计数（reference count）</strong>。</p>
+<ul>
+<li>引用计数递增：拷贝（如拷贝初始化、作为参数传递给函数、作为函数的返回值）；</li>
+<li>引用计数递减：赋予新值、被销毁（如离开作用域）。</li>
+</ul>
+<p>shared_ptr的析构函数使其具有管理动态内存的功能。它会递减shared_ptr所指向的对象的引用计数。如果引用计数变为0，就会销毁对象，并释放所占用的内存。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre>auto r = make_shared&lt;int&gt;(4);   //r指向的int只有一个引用者
+r = q;                          //给r赋值，则r原来指向的对象的引用计数递减
+                                //r原来指向的对象已没有引用者，会自动释放
+                                //q指向的对象的引用计数递增
+</pre></div>
+</td></tr></table>
+<p>可以这样使用shared_ptr：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre>//factory返回一个shared_ptr，指向一个动态分配的对象
+shared_ptr&lt;Foo&gt; factory(T arg) {
+    ...
+    return make_shared&lt;Foo&gt;(arg);
+}
 
-        <div class="niu2-footer">
-            <div id="body-footer" class="col-md-8 col-md-offset-2">
-                <hr/>
-                <p>
-                    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
-                    <a href="https://github.com/mawenbao/niu-x2-sidebar">theme</a> built with <a href="http://getbootstrap.com">Bootstrap3</a>
-                    by <a href="http://blog.atime.me">Ma Wenbao</a>, icons by 
-                    <a href="http://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
-                </p>
-                <p>
-                    ©
-                            2015
-                    <a class="niu2-footer-link" href="..">lhqqqqq</a>
-                    /                         <a class="niu2-footer-link" href="/About.html" title="about me">关于</a>
-                </p>
-                <p class="niu2-icons">
-                    <a class="niu2-footer-icon" href="mailto: lh901124@126.com" title="my email address">
-                        <i class="icon-envelope-o icon-lg"></i>
-                    </a>
-                    <a class="niu2-footer-icon" href="http://github.com/lhqqqqq" title="my github page">
-                        <i class="icon-github-alt icon-lg"></i>
-                    </a>
-                    <a class="niu2-footer-icon" href="/feed.xml" title="subscribe my blog">
-                        <i class="icon-rss icon-lg"></i>
-                    </a>
-                </p>
-            </div>
+void use_factory(T arg) {
+    shared_ptr&lt;Foo&gt; p = factory(arg);
+}
+</pre></div>
+</td></tr></table>
+<p>由于p是局部变量，在函数结束时将被销毁。在p被销毁时，其引用计数递减。在此由于p是唯一引用factory返回的内存的对象，所以引用计数将为0，则p所指的对象也会被销毁，所占用内存会被释放。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre>void use_factory(T arg) {
+    shared_ptr&lt;Foo&gt; p = factory(arg);
+    return p;
+}
+</pre></div>
+</td></tr></table>
+<p>这里做了更改，return一个p的拷贝，这会递增其引用计数。当p被销毁时，由于它所指向的内存还有其他使用者，所以不会被释放。</p>
+<p>使用智能指针可以在多个对象间共享数据，即多个对象保存相同内容（存放在动态内存中）。这样，当一个对象被销毁时，不影响其他的对象；只有所有指向该内存的对象都被销毁时，该内存才会被释放。</p>
+<h1 id="shared_ptr">四、shared_ptr的实现</h1></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../cpp/cpp11.html"><h2>C++11新特性记录</h2></a>
+        <div class= "well small"> 2015-04-08 09:23:47
+
+by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+ </div>
+        <div class="summary"><ol>
+<li>
+<p>C++11</p>
+<p>C++11标准是 ISO/IEC 14882:2011 - Information technology -- Programming languages -- C++ 的简称。
+C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗下的C++标准委员会（ISO/IEC JTC1/SC22/WG21）于2011年8月12日公布，并于2011年9月出版。2012年2月28日的国际标准草案(N3376)是最接近于C++11标准的草案（仅编辑上的修正）。此次标准为C++98发布后13年来第一次重大修正。</p>
+</li>
+<li>
+<p>auto &amp; decltype</p>
+<p><strong>auto</strong>：让编译器分析表达式所属的类型。auto定义的变量必须有初始值。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>auto i = 1, *p = &amp;i; //整型，整型指针
+</pre></div>
+</td></tr></table>
+<p>应用在容器中</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1 ...</pre></div></td></tr></table></li></ol> <a class="btn btn-info xsmall" href="../cpp/cpp11.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../cpp/reference.html"><h2>C++中的引用</h2></a>
+        <div class= "well small"> 2015-04-07 15:04:34
+
+by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+ </div>
+        <div class="summary"><blockquote>
+<p>from 《C++ Primer》</p>
+</blockquote>
+<h1 id="">一、概念</h1>
+<p><strong>引用（reference）</strong>的符号为&amp;，一般指“左值引用”，作用是为对象起一个别名。</p>
+<blockquote>
+<p>C++11引入了一种“右值引用”</p>
+</blockquote>
+<p>定义引用时，程序把初始值和对象绑定在一次。之后，这种绑定关系会一直存在，所以引用必须初始化。
+引用本身不是对象。</p>
+<h1 id="_1">二、示例</h1>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre>int ival = 1024;
+int &amp;refVal = ival; //引用，即refVal是ival的别名
+int &amp;refVal2; //报错，引用必须被初始化
+int &amp;refVal3 = 10; //报错，引用的初始值必须是对象
+double dval = 3.14;
+int ...</pre></div></td></tr></table> <a class="btn btn-info xsmall" href="../cpp/reference.html">read more</a></div>
+    </div>	
+				
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="../tag/c.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
         </div>
+        
+        <div class="span3">
 
-        <div id="niu2-pygments" data-theme="github"></div>
-        <script type="text/javascript" src="http://cdn.atime.me/jquery/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="../theme/js/niu2.min.js"></script>
-        <script type="text/javascript" src="http://cdn.atime.me/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-        </script>
-    </body>
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+
+
+
+                <li><a href="http://lhqqqqq.github.io/feed.xml" rel="alternate">RSS feed</a></li>
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="../algorithm/index.html">algorithm</a></li>
+                <li><a href="../cpp/index.html">cpp</a></li>
+                <li><a href="../data-structures/index.html">data structures</a></li>
+                <li><a href="../database/index.html">database</a></li>
+                <li><a href="../os/index.html">OS</a></li>
+                <li><a href="../personal/index.html">Personal</a></li>
+                   
+            </ul>
+            </div>
+
+
+
+
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="..">lhqqqqq's BLOG</a> &copy; lhqqqqq 2015</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="../theme/bootstrap-collapse.js"></script>
+ 
+</body>
 </html>

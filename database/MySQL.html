@@ -1,102 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MySQL之数据操纵 - lhqqqqq's BLOG</title>
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="http://cdn.atime.me/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="http://cdn.atime.me/font-icons/style.min.css" type="text/css" />
-        <link rel="stylesheet" href="../theme/css/niu2.min.css" type="text/css" />
-        <link rel="canonical" href="../database/MySQL.html" />
-        <script type="text/javascript">window.onload=function(){};</script>
-        <!--[if lt IE 9]>
-            <script src="../theme/js/html5shiv.js"></script>
-            <script src="../theme/js/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body> 
-        <div id="body-header">
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="col-md-12">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="..">
-                            <i class="icon-home"></i>lhqqqqq's BLOG
-                        </a>
-                    </div>
-                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/About.html" title="about me">
-                                <i class="icon-anchor"></i>关于</a>
-                            </li>
-                            <li><a href="/tag/" title="tags">
-                                <i class="icon-tag"></i>标签</a>
-                            </li>
-                        <!-- category dropdown list -->
-                        <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-folder-open"></i>分类<b class="caret"></b>
-                           </a>
-                           <ul class="dropdown-menu">
-                               <li><a href="../algorithm/index.html">
-                                   <i class="icon-folder-close"></i>algorithm
-                                      (2)</a></li>
-                               <li><a href="../cpp/index.html">
-                                   <i class="icon-folder-close"></i>cpp
-                                      (3)</a></li>
-                               <li><a href="../data-structures/index.html">
-                                   <i class="icon-folder-close"></i>data structures
-                                      (1)</a></li>
-                               <li><a href="../database/index.html">
-                                   <i class="icon-folder-close"></i>database
-                                      (1)</a></li>
-                               <li><a href="../os/index.html">
-                                   <i class="icon-folder-close"></i>OS
-                                      (1)</a></li>
-                               <li><a href="../personal/index.html">
-                                   <i class="icon-folder-close"></i>Personal
-                                      (1)</a></li>
-                           </ul>
-                        </li>
-                        <!--  self defined dropdown list -->
-                        <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                               <i class="icon-archive"></i>存档<b class="caret"></b>
-                           </a>
-                           <ul class="dropdown-menu">
-                               <li><a href="/archives.html" title="archives order by publish time">
-                                 <i class="icon-calendar"></i>存档 (按发布时间)</a>
-                               </li>
-                               <li><a href="/archives_updatedate.html" title="archives order by modify time">
-                                 <i class="icon-pencil"></i>存档 (按修改时间)</a>
-                               </li>
-                           </ul>
-                        </li>
-                        </ul>
-                        
-                        <!-- right nav bar -->
-                        <ul class="nav navbar-nav navbar-right">
-                        <!-- google custom search -->
-                       </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
+<html lang="zh_cn">
+<head>
+    <meta charset="utf-8">
+    <title>lhqqqqq's BLOG</title>
+    <meta name="description" content="">
+    <meta name="author" content="lhqqqqq">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <div id="body-content">
-            <div class="col-md-8 col-md-offset-2">
-                <h1 id="content-heading">MySQL之数据操纵</h1>
-            </div>
-            <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
-                <div id="niu2-main-content">
-                    <!--MySQL之数据操纵-->
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="../theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="http://lhqqqqq.github.io/feed.xml" rel="alternate" title="lhqqqqq's BLOG" type="application/rss+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="..">lhqqqqq's BLOG</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+            <li><a href="../About.html">About Me</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>MySQL之数据操纵</h1>
+2015-04-16 18:28:34
+
+by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
+ 
+
+
+        </div>
+	
+        <div><!--MySQL之数据操纵-->
 <h1 id="">一、基本语法</h1>
-<div class="codehilite"><pre>选择：select &lt;fields&gt; from &lt;table&gt; where &lt;condition&gt;;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre>选择：select &lt;fields&gt; from &lt;table&gt; where &lt;condition&gt;;
 插入：insert into &lt;table&gt;(&lt;field1&gt;,&lt;field2&gt;) values(&lt;value1&gt;,&lt;value2&gt;); 
 删除：delete from &lt;table&gt; where &lt;condition&gt;; 
 更新：update &lt;table&gt; set &lt;field&gt;=&lt;value&gt; where &lt;condition&gt;; 
@@ -108,9 +88,25 @@
 最大：select max(&lt;field&gt;) from &lt;table&gt;; 
 最小：select min(&lt;field&gt;) from &lt;table&gt;;
 </pre></div>
+</td></tr></table>
 <h1 id="join">二、join</h1>
 <p>举例说明</p>
-<div class="codehilite"><pre>Table1.
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="codehilite"><pre>Table1.
 +----+-------+
 | Id | book  |
 +----+-------+
@@ -127,8 +123,15 @@ Table2.
 | 3  | li    |
 +----+-------+
 </pre></div>
+</td></tr></table>
 <p><strong>Iner Join(内连接)</strong> 将两个表中存在连接关系的字段，组成的记录集。</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 join table2 on table1.id=table2.id;  
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre>mysql&gt; select * from table1 join table2 on table1.id=table2.id;  
 +------+------+------+--------+  
 | id   | book | id   | author |  
 +------+------+------+--------+  
@@ -136,8 +139,15 @@ Table2.
 |    3 | php  |    3 | wang   |  
 +------+------+------+--------+
 </pre></div>
+</td></tr></table>
 <p>使用using子句</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 inner join table2 using (id);  
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre>mysql&gt; select * from table1 inner join table2 using (id);  
 +------+------+--------+  
 | id   | book | author |  
 +------+------+--------+  
@@ -145,12 +155,30 @@ Table2.
 |    3 | php  | wang   |  
 +------+------+--------+
 </pre></div>
+</td></tr></table>
 <p>等价于 </p>
-<div class="codehilite"><pre>mysql&gt; select table1.id as id,book,author from table1, table2 where table1.id=table2.id; 
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre>mysql&gt; select table1.id as id,book,author from table1, table2 where table1.id=table2.id; 
 mysql&gt; select table1.id, book, author from table1 join table2 on table1.id=table2.id;
 </pre></div>
+</td></tr></table>
 <p><strong>Cross Join(交叉连接)</strong> 求两个表的笛卡尔积，可以用逗号表示，如(table1, table 2)。不使用on或using时，和Inner Join是等价的。</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 inner join table2;  
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="codehilite"><pre>mysql&gt; select * from table1 inner join table2;  
 mysql&gt; select * from table1 cross join table2;  
 mysql&gt; select * from (table1, table2);   
 +------+------+------+--------+  
@@ -167,8 +195,16 @@ mysql&gt; select * from (table1, table2);
 |    3 | php  |    4 | li     |  
 +------+------+------+--------+
 </pre></div>
+</td></tr></table>
 <p><strong>Natural Join 自然连接</strong> 等价于使用using子句的Inner Join。</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 natural join table2;  
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre>mysql&gt; select * from table1 natural join table2;  
 mysql&gt; select * from table1 inner join table2 using (id);   
 +------+------+--------+  
 | id   | book | author |  
@@ -177,8 +213,24 @@ mysql&gt; select * from table1 inner join table2 using (id);
 |    3 | php  | wang   |  
 +------+------+--------+
 </pre></div>
+</td></tr></table>
 <p><strong>Left Join 左外连接</strong> 左外连接A、B表的意思就是将表A中的全部记录和表B中字段连接形成的记录集，这里注意的是最后出来的记录集会包括表A的全部记录。</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 left join table2 on table1.id=table2.id; 
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="codehilite"><pre>mysql&gt; select * from table1 left join table2 on table1.id=table2.id; 
 +------+------+------+--------+  
 | id   | book | id   | author |  
 +------+------+------+--------+
@@ -195,36 +247,45 @@ mysql&gt; select * from table2 right join table1 using (id);
 |    3 | php  | wang   |  
 +------+------+--------+
 </pre></div>
+</td></tr></table>
 <p><strong>Right Join 右外连接</strong> 右外连接和左外连接是类似的。为了方便数据库便于访问，推荐使用左外连接代替右外连接。</p>
 <h1 id="inexists">三、in、exists</h1>
 <p>参考<a href="http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/">http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/</a></p>
 <p><strong>in</strong>查询相当于多个or条件的叠加</p>
-<div class="codehilite"><pre>select * from user where userId in (1, 2, 3);
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select * from user where userId in (1, 2, 3);
 </pre></div>
+</td></tr></table>
 <p>等效于</p>
-<div class="codehilite"><pre>select * from user where userId = 1 or userId = 2 or userId = 3;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select * from user where userId = 1 or userId = 2 or userId = 3;
 </pre></div>
+</td></tr></table>
 <p>not in与in相反，如下</p>
-<div class="codehilite"><pre>select * from user where userId not in (1, 2, 3);
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select * from user where userId not in (1, 2, 3);
 </pre></div>
+</td></tr></table>
 <p>等效于</p>
-<div class="codehilite"><pre>select * from user where userId != 1 and userId != 2 and userId != 3;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select * from user where userId != 1 and userId != 2 and userId != 3;
 </pre></div>
+</td></tr></table>
 <p>总的来说，in查询就是先将子查询条件的记录全都查出来，假设结果集为B，共有m条记录，然后在将子查询条件的结果集分解成m个，再进行m次查询。</p>
 <p>in查询的子条件返回结果必须只有一个字段，例如</p>
-<div class="codehilite"><pre>select * from user where userId in (select id from B);
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select * from user where userId in (select id from B);
 </pre></div>
+</td></tr></table>
 <p>而不能是</p>
-<div class="codehilite"><pre>select * from user where userId in (select id, age from B);
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select * from user where userId in (select id, age from B);
 </pre></div>
+</td></tr></table>
 <p><strong>exists</strong>对外表用loop逐条查询，每次查询都会查看exists的条件语句，当exists里的条件语句能够返回记录行时(无论记录行是的多少，只要能返回)，条件就为真，返回当前loop到的这条记录，反之如果exists里的条件语句不能返回记录行，则当前loop到的这条记录被丢弃，exists的条件就像一个bool条件，当能返回结果集则为true，不能返回结果集则为false。</p>
 <p>如下：</p>
-<div class="codehilite"><pre>select * from user where exists (select 1);
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select * from user where exists (select 1);
 </pre></div>
+</td></tr></table>
 <p>对user表的记录逐条取出，由于子条件中的select 1永远能返回记录行，那么user表的所有记录都将被加入结果集，所以与 select * from user;是一样的</p>
 <p>又如下：</p>
-<div class="codehilite"><pre>select * from user where exists (select * from user where userId = 0);
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select * from user where exists (select * from user where userId = 0);
 </pre></div>
+</td></tr></table>
 <p>可以知道对user表进行loop时，检查条件语句(select * from user where userId = 0),由于userId永远不为0，所以条件语句永远返回空集，条件永远为false，那么user表的所有记录都将被丢弃</p>
 <p>not exists与exists相反，也就是当exists条件有结果集返回时，loop到的记录将被丢弃，否则将loop到的记录加入结果集</p>
 <p>总的来说，如果A表有n条记录，那么exists查询就是将这n条记录逐条取出，然后判断n遍exists条件 </p>
@@ -233,16 +294,35 @@ mysql&gt; select * from table2 right join table1 using (id);
 <p>如果查询的两个表大小相当，那么用in和exists差别不大；如果两个表中一个较小一个较大，则子查询表大的用exists，子查询表小的用in。</p>
 <p>例如：</p>
 <p>若表A较小，表B较大</p>
-<div class="codehilite"><pre>select * from A where cc in(select cc from B)　　--&gt;效率低，用到了A表上cc列的索引；
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre>select * from A where cc in(select cc from B)　　--&gt;效率低，用到了A表上cc列的索引；
 select * from A where exists(select cc from B where cc=A.cc)　　--&gt;效率高，用到了B表上cc列的索引。
 </pre></div>
+</td></tr></table>
 <p>相反的：</p>
-<div class="codehilite"><pre>select * from B where cc in(select cc from A)　　--&gt;效率高，用到了B表上cc列的索引
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre>select * from B where cc in(select cc from A)　　--&gt;效率高，用到了B表上cc列的索引
 select * from B where exists(select cc from A where cc=B.cc)　　--&gt;效率低，用到了A表上cc列的索引。
 </pre></div>
+</td></tr></table>
 <p><strong>not in</strong>和<strong>not exists</strong></p>
 <p>not in 逻辑上不完全等同于not exists</p>
-<div class="codehilite"><pre>Table1.
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="codehilite"><pre>Table1.
 +-----+-----+
 | c1  | c2  |
 +-----+-----+
@@ -259,19 +339,39 @@ Table2.
 select * from Table1 where c2 not in(select c2 from Table2);　　--&gt;执行结果：无
 select * from Table1 where not exists(select 1 from Table2 where Table2.c2=Table1.c2)　　--&gt;执行结果：1　　3
 </pre></div>
+</td></tr></table>
 <p>not in出现了不期望的结果集，存在逻辑错误。尽量不要使用not in(它会调用子查询)，而尽量使用not exists（它会调用关联子查询）。如果子查询中返回的任意一条记录含有空值，则not in查询将不返回任何记录。如果子查询字段有非空限制，这时可以使用not in。</p>
 <p>如果查询语句使用了not in，那么对内外表都进行全表扫描，没有用到索引；而not exists的子查询依然能用到表上的索引。所以无论哪个表大，用not exists都比not in 要快。</p>
 <p><strong>in</strong>和<strong>=</strong></p>
-<div class="codehilite"><pre>select name from student where name in('zhang','wang','zhao');
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select name from student where name in('zhang','wang','zhao');
 </pre></div>
+</td></tr></table>
 <p>与</p>
-<div class="codehilite"><pre>select name from student where name='zhang' or name='wang' or name='zhao'
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre>select name from student where name='zhang' or name='wang' or name='zhao'
 </pre></div>
+</td></tr></table>
 <p>的结果是相同的。</p>
 <h1 id="group-by">四、group by</h1>
 <p><strong>group by</strong>语法可以根据给定数据列的每个成员对查询结果进行分组统计，最终得到一个分组汇总表。一般结合avg(),count()等进行统计。</p>
 <p>例如</p>
-<div class="codehilite"><pre>Table1.
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="codehilite"><pre>Table1.
 +----+-------+
 | Id | value |
 +----+-------+
@@ -290,8 +390,15 @@ select Id, avg(value) from Table1 group by Id;
 | 3  | 4        |
 +----+----------+
 </pre></div>
+</td></tr></table>
 <p>还可以使用<strong>having</strong>子句测试一个统计结果，放在group by子句之后。</p>
-<div class="codehilite"><pre>select Id, avg(value) from Table1 group by Id having having count(*) &gt; 1;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre>select Id, avg(value) from Table1 group by Id having having count(*) &gt; 1;
 +----+----------+
 | Id |avg(value)|
 +----+----------+
@@ -299,76 +406,62 @@ select Id, avg(value) from Table1 group by Id;
 | 2  | 4        |
 +----+----------+
 </pre></div>
-                </div>
-                <div id="content-comments">
-                </div>
+</td></tr></table></div>
+	
+        <hr>
 
-            </div>
-            <div class="niu2-right-container col-md-2">
-                <div id="niu2-sidebar-meta" class="niu2-sidebar">
-                    <div class="niu2-sidebar-label"><i class="icon-calendar"></i>发布时间:</div>
-                    <div class="niu2-sidebar-value">2015-04-16 18:28</div>
-                    <div class="niu2-sidebar-label"><i class="icon-open-folder"></i>分类:</div>
-                    <div class="niu2-sidebar-value"><a href="../database/index.html">database</a></div>
-                    <div class="niu2-sidebar-label"><i class="icon-tag"></i>标签:</div>
-                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="../tag/database.html">database</a><sup>1</sup></div>
-                </div>
-
-                <div id="niu2-sidebar-toc" class="niu2-sidebar" data-status="closed">
-                    <div class="niu2-sidebar-label">
-                        <i id="niu2-sidebar-toc-ctrl" class="icon-open-tocs"></i>目录
-                    </div>
-                    <ul id="niu2-sidebar-toc-list">
-                        <li><a href="#content-heading">MySQL之数据操纵</a></li>
-                        <li><a href='#'>一、基本语法</a></li><li><a href='#join'>二、join</a></li><li><a href='#inexists'>三、in、exists</a></li><li><a href='#group-by'>四、group by</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="niu2-toolbar">
-                <ul class="list-unstyled">
-                    <li><a id="niu2-toolbar-ctrlsidebar" href="#" title="隐藏侧边栏"><i class="icon-3x icon-hide-sidebar"></i></a></li>
-                </ul>
-                <div id="niu2-toolbar-showsidebar" data-title="显示侧边栏"></div>
-                <div id="niu2-toolbar-github" data-repo=""></div>
-                <div id="niu2-toolbar-bitbucket" data-repo=""></div>
-            </div>
+    </div>
         </div>
+        
+        <div class="span3">
 
-        <div class="niu2-footer">
-            <div id="body-footer" class="col-md-6 col-md-offset-2">
-                <hr/>
-                <p>
-                    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
-                    <a href="https://github.com/mawenbao/niu-x2-sidebar">theme</a> built with <a href="http://getbootstrap.com">Bootstrap3</a>
-                    by <a href="http://blog.atime.me">Ma Wenbao</a>, icons by 
-                    <a href="http://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
-                </p>
-                <p>
-                    ©
-                            2015
-                    <a class="niu2-footer-link" href="..">lhqqqqq</a>
-                    /                         <a class="niu2-footer-link" href="/About.html" title="about me">关于</a>
-                </p>
-                <p class="niu2-icons">
-                    <a class="niu2-footer-icon" href="mailto: lh901124@126.com" title="my email address">
-                        <i class="icon-envelope-o icon-lg"></i>
-                    </a>
-                    <a class="niu2-footer-icon" href="http://github.com/lhqqqqq" title="my github page">
-                        <i class="icon-github-alt icon-lg"></i>
-                    </a>
-                    <a class="niu2-footer-icon" href="/feed.xml" title="subscribe my blog">
-                        <i class="icon-rss icon-lg"></i>
-                    </a>
-                </p>
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+
+
+
+                <li><a href="http://lhqqqqq.github.io/feed.xml" rel="alternate">RSS feed</a></li>
+
+            </ul>
             </div>
-        </div>
 
-        <div id="niu2-pygments" data-theme="github"></div>
-        <script type="text/javascript" src="http://cdn.atime.me/jquery/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="../theme/js/niu2.min.js"></script>
-        <script type="text/javascript" src="http://cdn.atime.me/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            onContentLoaded();
-        </script>
-    </body>
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="../algorithm/index.html">algorithm</a></li>
+                <li><a href="../cpp/index.html">cpp</a></li>
+                <li><a href="../data-structures/index.html">data structures</a></li>
+                <li><a href="../database/index.html">database</a></li>
+                <li><a href="../os/index.html">OS</a></li>
+                <li><a href="../personal/index.html">Personal</a></li>
+                   
+            </ul>
+            </div>
+
+
+
+
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="..">lhqqqqq's BLOG</a> &copy; lhqqqqq 2015</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="../theme/bootstrap-collapse.js"></script>
+ 
+</body>
 </html>
