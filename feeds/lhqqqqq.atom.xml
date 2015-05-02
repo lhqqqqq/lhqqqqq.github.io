@@ -479,7 +479,7 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 &lt;p&gt;&lt;code&gt;c
     auto len = str.size(); //len的类型是string::size_type&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;应用在容器的迭代器中&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;c        
+&lt;p&gt;&lt;code&gt;python   
     vector&amp;lt;int&amp;gt; v{1, 2, 3};
     for （auto it = v.begin(); it != v.end; ++i）
         (*it)++;
