@@ -479,22 +479,19 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 &lt;div class="codehilite"&gt;&lt;pre&gt;auto len = str.size(); //len的类型是string::size_type
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;应用在容器的迭代器中&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cpp
+vector&amp;lt;int&amp;gt; v{1, 2, 3};
+for (auto it = v.begin(); it != v.end; ++i)
+    (*it)++;
+//it的类型为vector&amp;lt;int&amp;gt;::iterator&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;decltype&lt;/strong&gt;：选择并返回操作数的数据类型。&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;decltype(f()) sum = x;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
-&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="err"&gt;）&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="c1"&gt;//it的类型为vector&amp;lt;int&amp;gt;::iterator&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;**decltype**：选择并返回操作数的数据类型。
-
-    decltype(f()) sum = x;
-
-编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。
-
-&amp;gt;decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。
-&lt;/pre&gt;&lt;/div&gt;
-&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;范围for语句&lt;/p&gt;
 &lt;p&gt;遍历给定序列中的每个元素并对序列中的每个值执行某种操作&lt;/p&gt;
