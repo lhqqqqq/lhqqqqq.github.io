@@ -1,181 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>lhqqqqq's BLOG</title>
-    <meta name="description" content="">
-    <meta name="author" content="lhqqqqq">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <title>Tag OS - lhqqqqq's BLOG</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png">
+    <link rel="stylesheet" href="../theme/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/niu2.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/custom.css" type="text/css" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../theme/js/niu2.js"></script>    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            initGoogleCSEAnimation();
+        });
+    </script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
+        <script src="../theme/js/html5shiv.js"></script>
+        <script src="../theme/js/respond.min.js"></script>
     <![endif]-->
-
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-    <!-- So Firefox can bookmark->"abo this site" -->
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">lhqqqqq's BLOG</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-            
-            <li><a href="../pages/lhqqqqq.html">About Me</a></li>
-        </ul>
-        </div>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome-ie7.min.css" type="text/css" />
+    <![endif]--></head>
+  <body>
+    <div id="body-header"><div class="navbar navbar-inverse navbar-fixed-top">
+<div class="col-md-12">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="..">
+            <i class="icon-home"></i>lhqqqqq's BLOG
+        </a>
+    </div>
+	<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+		<ul class="nav navbar-nav"><li><a href="../archives.html">
+                <i class="icon-archive"></i>Archive</a>
+		</li>
+		<li><a href="../tags.html">
+                <i class="icon-tag"></i>Tag</a>
+		</li><!-- category dropdown list -->
+		<li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-folder-open"></i>Category<b class="caret"></b>
+           </a>
+           <ul class="dropdown-menu"><li><a href="../category/algorithm.html"><i class="icon-folder-close"></i>algorithm                      (2)</a></li><li><a href="../category/cpp.html"><i class="icon-folder-close"></i>cpp                      (3)</a></li><li><a href="../category/data-structures.html"><i class="icon-folder-close"></i>data structures                      (1)</a></li><li><a href="../category/database.html"><i class="icon-folder-close"></i>database                      (1)</a></li><li><a href="../category/os.html"><i class="icon-folder-close"></i>OS                      (1)</a></li><li><a href="../category/personal.html"><i class="icon-folder-close"></i>Personal                      (1)</a></li></ul>
+        </li>
+        <!--  self defined dropdown list --><!--  table of contents of page or article --></ul>
         
-    </div>
-    </div>
+        <!-- right nav bar -->
+		<ul class="nav navbar-nav navbar-right">
+		<!-- google custom search --></ul>
+	</nav>
 </div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-        
-
-        
-
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../philosophers.html"><h1>哲学家就餐问题</h1></a>
-周二 24 三月 2015
-
-by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
- 
-
-
- 
-        </div>
-        
-        <div><h5>经典的IPC问题</h5>
-<h2></h2>
-<p>1965年，Dijkstra提出并解决了一个他称之为哲学家就餐的同步问题。从那时起，每个发明新的同步原语的人都希望通过解决哲学家就餐问题来展示其同步原语的精妙之处。这个问题可以简单地描述如下：五个哲学家围坐在一张圆桌周围，每个哲学家面前都有一盘通心粉。由于通心粉很滑，所以需要两把叉子才能夹住。相邻两个盘子之间放有一把叉子，餐桌如图2-44所示。</p>
-<p><img alt="1" src="http://images.51cto.com/files/uploadimg/20090805/120148542.jpg" /></p>
-<p>哲学家的生活中有两种交替活动时段：即吃饭和思考（这只是一种抽象，即对哲学家而言其他活动都无关紧要）。当一个哲学家觉得饿了时，他就试图分两次去取其左边和右边的叉子，每次拿一把，但不分次序。如果成功地得到了两把叉子，就开始吃饭，吃完后放下叉子继续思考。关键问题是：能为每一个哲学家写一段描述其行为的程序，且决不会死锁吗？（要求拿两把叉子是人为规定的，我们也可以将意大利面条换成中国菜，用米饭代替通心粉，用筷子代替叉子。）</p>
-<p>图2-45给出了一种直观的解法。过程take_fork将一直等到所指定的叉子可用，然后将其取用。不过，这种显然的解法是错误的。如果五位哲学家同时拿起左面的叉子，就没有人能够拿到他们右面的叉子，于是发生死锁。</p>
-<p>我们可以将这个程序修改一下，这样在拿到左叉后，程序要查看右面的叉子是否可用。如果不可用，则该哲学家先放下左叉，等一段时间，再重复整个过程。但这种解法也是错误的，尽管与前一种原因不同。可能在某一个瞬间，所有的哲学家都同时开始这个算法，拿起其左叉，看到右叉不可用，又都放下左叉，等一会儿，又同时拿起左叉，如此这样永远重复下去。对于这种情况，所有的程序都在不停地运行，但都无法取得进展，就称为饥饿（starvation）。（即使问题不发生在意大利餐馆或中国餐馆，也被称为饥饿。）</p>
-<p><img alt="2" src="http://images.51cto.com/files/uploadimg/20090805/120227999.jpg" /><br />
-图2-45   哲学家就餐问题的一种错误解法</p>
-<p>现在读者可能会想，“如果哲学家在拿不到右边叉子时等待一段随机时间，而不是等待相同的时间，这样发生互锁的可能性就很小了，事情就可以继续了。”这种想法是对的，而且在几乎所有的应用程序中，稍后再试的办法并不会演化成为一个问题。例如，在流行的局域网以太网中，如果两台计算机同时发送包，那么每台计算机等待一段随机时间之后再尝试。在实践中，该方案工作良好。但是，在少数的应用中，人们希望有一种能够始终工作的方案，它不能因为一串不可靠的随机数字而导致失败（想象一下核电站中的安全控制系统）。</p>
-<p>对图2-45中的算法可做如下改进，它既不会发生死锁又不会产生饥饿：使用一个二元信号量对调用think之后的五个语句进行保护。在开始拿叉子之前，哲学家先对互斥量 mutex执行down操作。在放回叉子后，他再对mutex执行up操作。从理论上讲，这种解法是可行的。但从实际角度来看，这里有性能上的局限：在任何一时刻只能有一位哲学家进餐。而五把叉子实际上可以允许两位哲学家同时进餐。</p>
-<p>图2-46中的解法不仅没有死锁，而且对于任意位哲学家的情况都能获得最大的并行度。算法中使用一个数组state跟踪每一个哲学家是在进餐、思考还是饥饿状态（正在试图拿叉子）。一个哲学家只有在两个邻居都没有进餐时才允许进入到进餐状态。第 i个哲学家的邻居则由宏LEFT和RIGHT定义，换言之，若i为2，则LEFT为1，RIGHT为3。</p>
-<p><img alt="3" src="http://images.51cto.com/files/uploadimg/20090805/120310117.jpg" />
-<img alt="4" src="http://images.51cto.com/files/uploadimg/20090805/120410543.jpg" />     <br />
-图2-46   哲学家就餐问题的一个解法</p>
-<p>该程序使用了一个信号量数组，每个信号量对应一位哲学家，这样在所需的叉子被占用时，想进餐的哲学家就被阻塞。注意，每个进程将过程philosopher作为主代码运行，而其他过程take_forks、put_forks和test只是普通的过程，而非单独的进程。</p>
-<p>[1]<a href="http://baike.baidu.com/link?url=4YykWayXt5Wfaz2AMbSBrZ-KrWsdsrY0jnGZWmYi9QbFRgXR0aaNrkQ0TFjcK0o-1OdQambiwBzjOvW6YtBW1K">http://baike.baidu.com/link?url=4YykWayXt5Wfaz2AMbSBrZ-KrWsdsrY0jnGZWmYi9QbFRgXR0aaNrkQ0TFjcK0o-1OdQambiwBzjOvW6YtBW1K</a>
-[2]<a href="http://book.51cto.com/art/200907/138168.htm">http://book.51cto.com/art/200907/138168.htm</a>
-[3]<a href="http://blog.csdn.net/ikikray/article/details/4042922">http://blog.csdn.net/ikikray/article/details/4042922</a></p></div>
-        <hr />
-    </div>
-		
-<div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/os.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>
- 
-  
-        </div>
-        
-        <div class="span3">
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-
-
-
-
-            </ul>
-            </div>
-
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                <li><a href="../category/algorithm.html">algorithm</a></li>
-                <li><a href="../category/cpp.html">cpp</a></li>
-                <li><a href="../category/data-structures.html">data structures</a></li>
-                <li><a href="../category/database.html">database</a></li>
-                <li><a href="../category/os.html">OS</a></li>
-                <li><a href="../category/personal.html">Personal</a></li>
-                   
-            </ul>
-            </div>
-
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                <li><a href="http://getpelican.com/">Pelican</a></li>
-                <li><a href="http://python.org/">Python.org</a></li>
-                <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-            </ul>
-            </div>
-
-
-            <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
+</div></div>
+    
+    <div id="body-content" class="col-md-8 col-md-offset-2"><div class="niu2-page"><h1 class="niu2-index-title">
+<i class="icon-tag icon-large"></i>OS
+</h1><div class="niu2-index-article">
+	   <div class="niu2-index-article-title">
+           <span><a href="../philosophers.html">哲学家就餐问题</a>
+           </span>
+       </div><div class="niu2-meta-index">
+    <span class="niu2-meta-date-index">
+        <i class="icon-calendar"></i>2015-03-24
+    </span>
+    <span class="niu2-meta-category-index"><i class="icon-open-folder"></i>OS</span><span class="niu2-meta-tag-index">
+        <i class="icon-tag"></i><a href="../tag/os.html">OS</a></span></div><div class="niu2-article-summary">
            
-                <li><a href="https://github.com/lhqqqqq">GitHub</a></li>
-                <li><a href="http://lhmichael.facebook.com">Facebook</a></li>
-            </ul>
-            </div>
-            </div>
+       </div>
+       </div></div></div>
 
-        </div>  
-    </div>     </div> 
-<footer>
-<br />
-<p><a href="..">lhqqqqq's BLOG</a> &copy; lhqqqqq 2015</p>
-</footer>
-
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="../theme/bootstrap-collapse.js"></script>
- 
-</body>
+    <div id="body-footer" class="col-md-8 col-md-offset-2"><div class="niu2-footer">
+    <hr/>
+	<p>
+		Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
+		theme built with <a href="http://getbootstrap.com">Bootstrap3</a>
+		by <a href="http://atime.me">Ma Wenbao</a>, icons by 
+		<a href="http://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
+	</p>
+	<p>
+		Copyright
+2015		<a href="..">lhqqqqq</a>
+</p>
+    <p class="niu2-icons"></p>
+</div></div><!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script></body>
 </html>

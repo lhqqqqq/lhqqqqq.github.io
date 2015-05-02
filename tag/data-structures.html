@@ -1,263 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>lhqqqqq's BLOG</title>
-    <meta name="description" content="">
-    <meta name="author" content="lhqqqqq">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <title>Tag data structures - lhqqqqq's BLOG</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png">
+    <link rel="stylesheet" href="../theme/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/niu2.css" type="text/css" />
+    <link rel="stylesheet" href="../theme/css/custom.css" type="text/css" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../theme/js/niu2.js"></script>    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            initGoogleCSEAnimation();
+        });
+    </script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
+        <script src="../theme/js/html5shiv.js"></script>
+        <script src="../theme/js/respond.min.js"></script>
     <![endif]-->
-
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-    <!-- So Firefox can bookmark->"abo this site" -->
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">lhqqqqq's BLOG</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-            
-            <li><a href="../pages/lhqqqqq.html">About Me</a></li>
-        </ul>
-        </div>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome-ie7.min.css" type="text/css" />
+    <![endif]--></head>
+  <body>
+    <div id="body-header"><div class="navbar navbar-inverse navbar-fixed-top">
+<div class="col-md-12">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="..">
+            <i class="icon-home"></i>lhqqqqq's BLOG
+        </a>
+    </div>
+	<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+		<ul class="nav navbar-nav"><li><a href="../archives.html">
+                <i class="icon-archive"></i>Archive</a>
+		</li>
+		<li><a href="../tags.html">
+                <i class="icon-tag"></i>Tag</a>
+		</li><!-- category dropdown list -->
+		<li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-folder-open"></i>Category<b class="caret"></b>
+           </a>
+           <ul class="dropdown-menu"><li><a href="../category/algorithm.html"><i class="icon-folder-close"></i>algorithm                      (2)</a></li><li><a href="../category/cpp.html"><i class="icon-folder-close"></i>cpp                      (3)</a></li><li><a href="../category/data-structures.html"><i class="icon-folder-close"></i>data structures                      (1)</a></li><li><a href="../category/database.html"><i class="icon-folder-close"></i>database                      (1)</a></li><li><a href="../category/os.html"><i class="icon-folder-close"></i>OS                      (1)</a></li><li><a href="../category/personal.html"><i class="icon-folder-close"></i>Personal                      (1)</a></li></ul>
+        </li>
+        <!--  self defined dropdown list --><!--  table of contents of page or article --></ul>
         
-    </div>
-    </div>
+        <!-- right nav bar -->
+		<ul class="nav navbar-nav navbar-right">
+		<!-- google custom search --></ul>
+	</nav>
 </div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-        
-
-        
-
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../tree.html"><h1>数据结构之树</h1></a>
-周六 04 四月 2015
-
-by <a class="url fn" href="../author/lhqqqqq.html">lhqqqqq</a>
- 
-
-
- 
-        </div>
-        
-        <div><!--#数据结构之树-->
-
-<h2></h2>
-<h3>一、概念</h3>
-<p><strong>树（tree）</strong>：由n（n&gt;=1）个有限节点组成一个具有层次关系的集合；</p>
-<p><strong>度</strong>：节点的子树个数；</p>
-<p><strong>树的度</strong>：树中任意节点的度的最大值；</p>
-<p><strong>兄弟</strong>：两节点的父节点相同；</p>
-<p><strong>层</strong>：根在第一层，以此类推；</p>
-<p><strong>高度</strong>：叶子节点的高度为1，根节点高度最高；</p>
-<p><strong>二叉树</strong>：每个节点最多有两个子树的树</p>
-<p><strong>满二叉树</strong>：叶子节点一定要在最后一层，并且所有非叶子节点都存在左孩子和右孩子；</p>
-<p><strong>完全二叉树</strong>：除最后一层外，每一层上的节点数均达到最大值；在最后一层上只缺少右边的若干结点。</p>
-<h3>二、二叉树性质</h3>
-<ol>
-<li>在非空二叉树中，第i层的结点总数不超过2<sup>i</sup>-1, i&gt;=1；</li>
-<li>深度为h的二叉树最多有2<sup>h</sup>-1个结点(h&gt;=1)，最少有h个结点；</li>
-<li>对于任意一棵二叉树，如果其叶结点数为N0，而度数为2的结点总数为N2，则N0=N2+1；</li>
-<li>具有n个结点的完全二叉树的深度为log<sub>2</sub>(n+1)</li>
-<li>有N个结点的完全二叉树各结点如果用顺序方式存储，若I为结点编号，则结点之间有如下关系：<ul>
-<li>如果I&gt;1，则其父结点的编号为I/2；</li>
-<li>如果2*I&lt;=N，则其左儿子（即左子树的根结点）的编号为2*I</li>
-<li>若2*I&gt;N，则无左儿子；</li>
-<li>如果2*I+1&lt;=N，则其右儿子的结点编号为2*I+1；若2*I+1&gt;N，则无右儿子。</li>
-</ul>
-</li>
-<li>给定N个节点，能构成h(N)种不同的二叉树。
-h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。</li>
-<li>设有i个枝点，I为所有枝点的道路长度总和，J为叶的道路长度总和J=I+2i。</li>
-</ol>
-<h3>三、实现</h3>
-<p>树节点实现</p>
-<div class="highlight"><pre>struct TreeNode  
-{  
-    int val;  
-    TreeNode *left;  
-    TreeNode *right;  
-    TreeNode(int val):val(val), left(NULL),right(NULL){} ;   
-};
-</pre></div>
-
-
-<p>前序遍历（PreorderTraversal），根-&gt;左-&gt;右</p>
-<div class="highlight"><pre>void PreorderTraversal(TreeNode *node)  
-{  
-    if(!node)  
-        return; 
-    Visit(T); 
-    PreorderTraversal(node-&gt;left);  
-    PreorderTraversal(node-&gt;right);  
-}
-</pre></div>
-
-
-<p>中序遍历（InorderTraversal），左-&gt;根-&gt;右</p>
-<div class="highlight"><pre>void PreorderTraversal(TreeNode *node)  
-{  
-    if(!node)  
-        return; 
-    PreorderTraversal(node-&gt;left);  
-    Visit(T);       
-    PreorderTraversal(node-&gt;right);  
-}
-</pre></div>
-
-
-<p>后序遍历（PostorderTraversal），左-&gt;右-&gt;根</p>
-<div class="highlight"><pre>void PreorderTraversal(TreeNode *node)  
-{  
-    if(!node)  
-        return;
-    PreorderTraversal(node-&gt;left);  
-    PreorderTraversal(node-&gt;right); 
-    Visit(T);   
-}
-</pre></div>
-
-
-<h3>四、递归</h3>
-<p>深度优先搜索(Depth-firsh Search)</p>
-<div class="highlight"><pre>int Foo1(TreeNode *root) {
-    if (!root) //终止条件
-        return ;
-    if (!root-&gt;left &amp;&amp; !root-&gt;right) //剪枝
-        return ;
-    /*if (!root-&gt;left) //剪枝
-        return (root-&gt;right);
-    if (!root-&gt;right) //剪枝
-        return (root-&gt;left);*/
-    return ; //合并
-}
-</pre></div>
-
-
-<p>如果父节点需要子节点的数据，只需要逐层返回；</p>
-<p>如果子节点需要父节点的数据，则需要在递归函数的参数中传递。</p>
-<div class="highlight"><pre>int Foo2(TreeNode *root, int data)；
-</pre></div>
-
-
-<h3>五、非递归</h3></div>
-        <hr />
-    </div>
-		
-<div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/data-structures.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>
- 
-  
-        </div>
-        
-        <div class="span3">
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-
-
-
-
-            </ul>
-            </div>
-
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                <li><a href="../category/algorithm.html">algorithm</a></li>
-                <li><a href="../category/cpp.html">cpp</a></li>
-                <li><a href="../category/data-structures.html">data structures</a></li>
-                <li><a href="../category/database.html">database</a></li>
-                <li><a href="../category/os.html">OS</a></li>
-                <li><a href="../category/personal.html">Personal</a></li>
-                   
-            </ul>
-            </div>
-
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                <li><a href="http://getpelican.com/">Pelican</a></li>
-                <li><a href="http://python.org/">Python.org</a></li>
-                <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-            </ul>
-            </div>
-
-
-            <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
+</div></div>
+    
+    <div id="body-content" class="col-md-8 col-md-offset-2"><div class="niu2-page"><h1 class="niu2-index-title">
+<i class="icon-tag icon-large"></i>data structures
+</h1><div class="niu2-index-article">
+	   <div class="niu2-index-article-title">
+           <span><a href="../tree.html">数据结构之树</a>
+           </span>
+       </div><div class="niu2-meta-index">
+    <span class="niu2-meta-date-index">
+        <i class="icon-calendar"></i>2015-04-04
+    </span>
+    <span class="niu2-meta-category-index"><i class="icon-open-folder"></i>data structures</span><span class="niu2-meta-tag-index">
+        <i class="icon-tag"></i><a href="../tag/data-structures.html">data structures</a></span></div><div class="niu2-article-summary">
            
-                <li><a href="https://github.com/lhqqqqq">GitHub</a></li>
-                <li><a href="http://lhmichael.facebook.com">Facebook</a></li>
-            </ul>
-            </div>
-            </div>
+       </div>
+       </div></div></div>
 
-        </div>  
-    </div>     </div> 
-<footer>
-<br />
-<p><a href="..">lhqqqqq's BLOG</a> &copy; lhqqqqq 2015</p>
-</footer>
-
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="../theme/bootstrap-collapse.js"></script>
- 
-</body>
+    <div id="body-footer" class="col-md-8 col-md-offset-2"><div class="niu2-footer">
+    <hr/>
+	<p>
+		Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
+		theme built with <a href="http://getbootstrap.com">Bootstrap3</a>
+		by <a href="http://atime.me">Ma Wenbao</a>, icons by 
+		<a href="http://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
+	</p>
+	<p>
+		Copyright
+2015		<a href="..">lhqqqqq</a>
+</p>
+    <p class="niu2-icons"></p>
+</div></div><!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script></body>
 </html>
