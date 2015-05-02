@@ -475,23 +475,27 @@ C++11标准由国际标准化组织（ISO）和国际电工委员会（IEC）旗
 &lt;p&gt;&lt;strong&gt;auto&lt;/strong&gt;：让编译器分析表达式所属的类型。auto定义的变量必须有初始值。&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;auto i = 1, *p = &amp;amp;i; //整型，整型指针
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;应用在容器中
-&lt;code&gt;c
-    auto len = str.size(); //len的类型是string::size_type&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;应用在容器的迭代器中&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;vector&amp;lt;int&amp;gt; v{1, 2, 3};
-for （auto it = v.begin(); it != v.end; ++i）
-    (*it)++;
-//it的类型为vector&amp;lt;int&amp;gt;::iterator
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;decltype&lt;/strong&gt;：选择并返回操作数的数据类型。&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;decltype(f()) sum = x;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;应用在容器中&lt;/p&gt;
 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;len&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="c1"&gt;//len的类型是string::size_type&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;应用在容器的迭代器中
+
+    vector&amp;lt;int&amp;gt; v{1, 2, 3};
+    for （auto it = v.begin(); it != v.end; ++i）
+        (*it)++;
+    //it的类型为vector&amp;lt;int&amp;gt;::iterator
+
+**decltype**：选择并返回操作数的数据类型。
+
+    decltype(f()) sum = x;
+
+编译器不实际调用函数f，而是使用f返回值类型来作为sum的类型。
+
+&amp;gt;decltype((variable))的结果永远是引用，decltype(variable)的结果只有当variable本身是引用时才是引用。
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;范围for语句&lt;/p&gt;
 &lt;p&gt;遍历给定序列中的每个元素并对序列中的每个值执行某种操作&lt;/p&gt;
