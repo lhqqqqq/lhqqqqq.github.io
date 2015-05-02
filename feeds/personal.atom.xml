@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>lhqqqqq's BLOG</title><link href="lhqqqqq.github.io/" rel="alternate"></link><link href="http://lhqqqqq.github.io/feeds/personal.atom.xml" rel="self"></link><id>lhqqqqq.github.io/</id><updated>2015-03-21T21:09:00+08:00</updated><entry><title>Blog on GitHub Pages，using Pelican</title><link href="lhqqqqq.github.io/personal/start.html" rel="alternate"></link><updated>2015-03-21T21:09:00+08:00</updated><author><name>lhqqqqq</name></author><id>tag:,2015-03-21:lhqqqqq.github.io/personal/start.html</id><summary type="html">&lt;h2 id=""&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Python3&lt;/li&gt;
+&lt;li&gt;Pelican&lt;/li&gt;
+&lt;li&gt;Markdown&lt;/li&gt;
+&lt;li&gt;GitHub&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="test"></category></entry></feed>

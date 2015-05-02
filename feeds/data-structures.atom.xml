@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>lhqqqqq's BLOG</title><link href="lhqqqqq.github.io/" rel="alternate"></link><link href="http://lhqqqqq.github.io/feeds/data-structures.atom.xml" rel="self"></link><id>lhqqqqq.github.io/</id><updated>2015-04-04T17:30:00+08:00</updated><entry><title>数据结构之树</title><link href="lhqqqqq.github.io/data-structures/tree.html" rel="alternate"></link><updated>2015-04-04T17:30:00+08:00</updated><author><name>lhqqqqq</name></author><id>tag:,2015-04-04:lhqqqqq.github.io/data-structures/tree.html</id><summary type="html">&lt;!--#数据结构之树--&gt;
+&lt;h2 id=""&gt;&lt;/h2&gt;
+&lt;h3 id="_1"&gt;一、概念&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;树（tree）&lt;/strong&gt;：由n（n&amp;gt;=1）个有限节点组成一个具有层次关系的集合；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;度&lt;/strong&gt;：节点的子树个数；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;树的度&lt;/strong&gt;：树中任意节点的度的最大值；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;兄弟&lt;/strong&gt;：两节点的父节点相同；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;层&lt;/strong&gt;：根在第一层，以此类推；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;高度&lt;/strong&gt;：叶子节点的高度为1，根节点高度最高；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;二叉树&lt;/strong&gt;：每个节点最多有两个子树的树&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;满二叉树&lt;/strong&gt;：叶子节点一定要在最后一层，并且所有非叶子节点都存在左孩子和右孩子；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;完全二叉树&lt;/strong&gt;：除最后一层外，每一层上的节点数均达到最大值；在最后一层上只缺少右边的若干结点。&lt;/p&gt;
+&lt;h3 id="_1_2"&gt;二、二叉树性质&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在非空二叉树中，第i层的结点总数不超过2&lt;sup&gt;i&lt;/sup&gt;-1, i&amp;gt;=1；&lt;/li&gt;
+&lt;li&gt;深度为h的二叉树最多有2&lt;sup&gt;h&lt;/sup&gt;-1个结点(h&amp;gt;=1)，最少有h个结点；&lt;/li&gt;
+&lt;li&gt;对于任意一棵二叉树，如果其叶结点数为N0，而度数为2的结点总数为N2，则N0=N2+1；&lt;/li&gt;
+&lt;li&gt;具有n个结点的完全二叉树的深度为log&lt;sub&gt;2&lt;/sub&gt;(n+1)&lt;/li&gt;
+&lt;li&gt;有N个结点的完全二叉树各结点如果用顺序方式存储，若I为结点编号，则结点之间有如下关系：&lt;ul&gt;
+&lt;li&gt;如果I&amp;gt;1，则其父结点的编号为I/2；&lt;/li&gt;
+&lt;li&gt;如果2*I&amp;lt;=N，则其左儿子（即左子树的根结点）的编号为2*I&lt;/li&gt;
+&lt;li&gt;若2*I&amp;gt;N，则无左儿子；&lt;/li&gt;
+&lt;li&gt;如果2*I+1&amp;lt;=N，则其右儿子的结点编号为2*I+1；若2*I+1&amp;gt;N，则无右儿子。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;给定N个节点，能构成h(N)种不同的二叉树。
+h(N)为卡特兰数的第N项。h(n)=C(2*n，n)/(n+1)。&lt;/li&gt;
+&lt;li&gt;设有i个枝点，I为所有枝点的道路长度总和，J为叶的道路长度总和J=I+2i。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="_1_2_3"&gt;三、实现&lt;/h3&gt;
+&lt;p&gt;树节点实现&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;struct TreeNode  
+{  
+    int val;  
+    TreeNode *left;  
+    TreeNode *right;  
+    TreeNode(int val):val(val), left(NULL),right(NULL){} ;   
+};
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;前序遍历（PreorderTraversal），根-&amp;gt;左-&amp;gt;右&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;void PreorderTraversal(TreeNode *node)  
+{  
+    if(!node)  
+        return; 
+    Visit(T); 
+    PreorderTraversal(node-&amp;gt;left);  
+    PreorderTraversal(node-&amp;gt;right);  
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;中序遍历（InorderTraversal），左-&amp;gt;根-&amp;gt;右&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;void PreorderTraversal(TreeNode *node)  
+{  
+    if(!node)  
+        return; 
+    PreorderTraversal(node-&amp;gt;left);  
+    Visit(T);       
+    PreorderTraversal(node-&amp;gt;right);  
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;后序遍历（PostorderTraversal），左-&amp;gt;右-&amp;gt;根&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;void PreorderTraversal(TreeNode *node)  
+{  
+    if(!node)  
+        return;
+    PreorderTraversal(node-&amp;gt;left);  
+    PreorderTraversal(node-&amp;gt;right); 
+    Visit(T);   
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="_1_2_3_4"&gt;四、递归&lt;/h3&gt;
+&lt;p&gt;深度优先搜索(Depth-firsh Search)&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;int Foo1(TreeNode *root) {
+    if (!root) //终止条件
+        return ;
+    if (!root-&amp;gt;left &amp;amp;&amp;amp; !root-&amp;gt;right) //剪枝
+        return ;
+    /*if (!root-&amp;gt;left) //剪枝
+        return (root-&amp;gt;right);
+    if (!root-&amp;gt;right) //剪枝
+        return (root-&amp;gt;left);*/
+    return ; //合并
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果父节点需要子节点的数据，只需要逐层返回；&lt;/p&gt;
+&lt;p&gt;如果子节点需要父节点的数据，则需要在递归函数的参数中传递。&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;int Foo2(TreeNode *root, int data)；
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="_1_2_3_4_5"&gt;五、非递归&lt;/h3&gt;</summary><category term="data structures"></category></entry></feed>
