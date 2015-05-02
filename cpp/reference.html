@@ -108,7 +108,7 @@
 </blockquote>
 <p>定义引用时，程序把初始值和对象绑定在一次。之后，这种绑定关系会一直存在，所以引用必须初始化。
 引用本身不是对象。</p>
-<h1 id="_1">二、示例</h1>
+<h1 id="">二、示例</h1>
 <div class="codehilite"><pre>int ival = 1024;
 int &amp;refVal = ival; //引用，即refVal是ival的别名
 int &amp;refVal2; //报错，引用必须被初始化
@@ -116,7 +116,7 @@ int &amp;refVal3 = 10; //报错，引用的初始值必须是对象
 double dval = 3.14;
 int &amp;refVal4 = dval; //报错，类型不一致
 </pre></div>
-<h1 id="_1_2">三、有用的地方</h1>
+<h1 id="">三、有用的地方</h1>
 <ol>
 <li>
 <p>数据交换，传递引用参数，可以改变原值</p>
@@ -144,7 +144,7 @@ int &amp;refVal4 = dval; //报错，类型不一致
 <p>未完待续</p>
 </li>
 </ol>
-<h1 id="_1_2_3">四、弱引用与强引用</h1>
+<h1 id="">四、弱引用与强引用</h1>
 <p>C语言中有<a href="http://blog.csdn.net/astrotycoon/article/details/8008629">强符号与弱符号</a>的概念。</p>
 <blockquote>
 <p>有用的命令:nm，列出指定文件的所有符号（包括静态和动态链接库）
@@ -256,7 +256,7 @@ weak_ptr&lt;T&gt; ptr(t); // t为一个T对象
                     </div>
                     <ul id="niu2-sidebar-toc-list">
                         <li><a href="#content-heading">C++中的引用</a></li>
-                        <li><a href='#from-c-primer'>from 《C++ Primer》</a></li><li><a href='#'>一、概念</a></li><li><a href='#_1'>二、示例</a></li><li><a href='#_1_2'>三、有用的地方</a></li><li><a href='#_1_2_3'>四、弱引用与强引用</a><ul><li><a href='#1'>1.为什么有引用计数</a></li><li><a href='#2'>2.强引用</a></li><li><a href='#3'>3.弱引用</a></li></ul></li>
+                        <li><a href='#from-c-primer'>from 《C++ Primer》</a></li><li><a href='#'>一、概念</a></li><li><a href='#'>二、示例</a></li><li><a href='#'>三、有用的地方</a></li><li><a href='#'>四、弱引用与强引用</a><ul><li><a href='#1'>1.为什么有引用计数</a></li><li><a href='#2'>2.强引用</a></li><li><a href='#3'>3.弱引用</a></li></ul></li>
                         <li><a href="#content-comments">评论</a></li>
                     </ul>
                 </div>
