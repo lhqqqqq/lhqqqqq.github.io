@@ -95,135 +95,137 @@
             <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
                 <div id="niu2-main-content">
                     <!--MySQL之数据操纵-->
-<h1 id="">一、基本语法</h1>
-<div class="codehilite"><pre>选择：select &lt;fields&gt; from &lt;table&gt; where &lt;condition&gt;;
-插入：insert into &lt;table&gt;(&lt;field1&gt;,&lt;field2&gt;) values(&lt;value1&gt;,&lt;value2&gt;); 
-删除：delete from &lt;table&gt; where &lt;condition&gt;; 
-更新：update &lt;table&gt; set &lt;field&gt;=&lt;value&gt; where &lt;condition&gt;; 
-查找：select &lt;fields&gt; from &lt;table&gt; where &lt;field1&gt; like '%&lt;value&gt;%' 
-排序：select &lt;fields&gt; from &lt;table&gt; order by &lt;field1&gt;,&lt;field2&gt; [desc] [limit &lt;number&gt;];
-总数：select count [as &lt;columnname&gt;] from table1; 
-求和：select sum(&lt;field&gt;) from &lt;table&gt;; 
-平均：select avg(&lt;field&gt;) from &lt;table&gt;; 
-最大：select max(&lt;field&gt;) from &lt;table&gt;; 
-最小：select min(&lt;field&gt;) from &lt;table&gt;;
+<h3 id="">一、基本语法</h3>
+<div class="codehilite"><pre><span class="err">选择：</span><span class="k">select</span> <span class="o">&lt;</span><span class="n">fields</span><span class="o">&gt;</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span> <span class="k">where</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="err">插入：</span><span class="k">insert</span> <span class="k">into</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">field1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">field2</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="o">&lt;</span><span class="n">value1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">value2</span><span class="o">&gt;</span><span class="p">);</span> 
+<span class="err">删除：</span><span class="k">delete</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span> <span class="k">where</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">;</span> 
+<span class="err">更新：</span><span class="k">update</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span> <span class="k">set</span> <span class="o">&lt;</span><span class="n">field</span><span class="o">&gt;=&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="k">where</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">;</span> 
+<span class="err">查找：</span><span class="k">select</span> <span class="o">&lt;</span><span class="n">fields</span><span class="o">&gt;</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span> <span class="k">where</span> <span class="o">&lt;</span><span class="n">field1</span><span class="o">&gt;</span> <span class="k">like</span> <span class="s1">'%&lt;value&gt;%'</span> 
+<span class="err">排序：</span><span class="k">select</span> <span class="o">&lt;</span><span class="n">fields</span><span class="o">&gt;</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span> <span class="k">order</span> <span class="k">by</span> <span class="o">&lt;</span><span class="n">field1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">field2</span><span class="o">&gt;</span> <span class="p">[</span><span class="k">desc</span><span class="p">]</span> <span class="p">[</span><span class="k">limit</span> <span class="o">&lt;</span><span class="nb">number</span><span class="o">&gt;</span><span class="p">];</span>
+<span class="err">总数：</span><span class="k">select</span> <span class="k">count</span> <span class="p">[</span><span class="k">as</span> <span class="o">&lt;</span><span class="n">columnname</span><span class="o">&gt;</span><span class="p">]</span> <span class="k">from</span> <span class="n">table1</span><span class="p">;</span> 
+<span class="err">求和：</span><span class="k">select</span> <span class="k">sum</span><span class="p">(</span><span class="o">&lt;</span><span class="n">field</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span><span class="p">;</span> 
+<span class="err">平均：</span><span class="k">select</span> <span class="k">avg</span><span class="p">(</span><span class="o">&lt;</span><span class="n">field</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span><span class="p">;</span> 
+<span class="err">最大：</span><span class="k">select</span> <span class="k">max</span><span class="p">(</span><span class="o">&lt;</span><span class="n">field</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span><span class="p">;</span> 
+<span class="err">最小：</span><span class="k">select</span> <span class="k">min</span><span class="p">(</span><span class="o">&lt;</span><span class="n">field</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">table</span><span class="o">&gt;</span><span class="p">;</span> 
 </pre></div>
-<h1 id="join">二、join</h1>
+<h3 id="join">二、join</h3>
 <p>举例说明</p>
-<div class="codehilite"><pre>Table1.
-+----+-------+
-| Id | book  |
-+----+-------+
-| 1  | java  |
-| 2  | c++   |
-| 3  | php   |
-+----+-------+
-Table2.
-+----+-------+
-| Id | author|
-+----+-------+
-| 2  | zhang |
-| 2  | wang  |
-| 3  | li    |
-+----+-------+
+<div class="codehilite"><pre><span class="n">Table1</span><span class="p">.</span>
+<span class="o">+</span><span class="c1">----+-------+</span>
+<span class="o">|</span> <span class="n">Id</span> <span class="o">|</span> <span class="n">book</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-------+</span>
+<span class="o">|</span> <span class="mi">1</span>  <span class="o">|</span> <span class="n">java</span>  <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span>  <span class="o">|</span> <span class="k">c</span><span class="o">++</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">3</span>  <span class="o">|</span> <span class="n">php</span>   <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-------+</span>
+<span class="n">Table2</span><span class="p">.</span>
+<span class="o">+</span><span class="c1">----+-------+</span>
+<span class="o">|</span> <span class="n">Id</span> <span class="o">|</span> <span class="n">author</span><span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-------+</span>
+<span class="o">|</span> <span class="mi">2</span>  <span class="o">|</span> <span class="n">zhang</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span>  <span class="o">|</span> <span class="n">wang</span>  <span class="o">|</span>
+<span class="o">|</span> <span class="mi">3</span>  <span class="o">|</span> <span class="n">li</span>    <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-------+</span>
 </pre></div>
 <p><strong>Iner Join(内连接)</strong> 将两个表中存在连接关系的字段，组成的记录集。</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 join table2 on table1.id=table2.id;  
-+------+------+------+--------+  
-| id   | book | id   | author |  
-+------+------+------+--------+  
-|    2 | c++  |    2 | zhang  |  
-|    3 | php  |    3 | wang   |  
-+------+------+------+--------+
+<div class="codehilite"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span> <span class="k">join</span> <span class="n">table2</span> <span class="k">on</span> <span class="n">table1</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">table2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>  
+<span class="o">+</span><span class="c1">------+------+------+--------+  </span>
+<span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">book</span> <span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">author</span> <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+------+--------+  </span>
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="k">c</span><span class="o">++</span>  <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="n">zhang</span>  <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">php</span>  <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">wang</span>   <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+------+--------+  </span>
 </pre></div>
 <p>使用using子句</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 inner join table2 using (id);  
-+------+------+--------+  
-| id   | book | author |  
-+------+------+--------+  
-|    2 | c++  | zhang  |  
-|    3 | php  | wang   |  
-+------+------+--------+
+<div class="codehilite"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span> <span class="k">inner</span> <span class="k">join</span> <span class="n">table2</span> <span class="k">using</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>  
+<span class="o">+</span><span class="c1">------+------+--------+  </span>
+<span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">book</span> <span class="o">|</span> <span class="n">author</span> <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+--------+  </span>
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="k">c</span><span class="o">++</span>  <span class="o">|</span> <span class="n">zhang</span>  <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">php</span>  <span class="o">|</span> <span class="n">wang</span>   <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+--------+  </span>
 </pre></div>
 <p>等价于 </p>
-<div class="codehilite"><pre>mysql&gt; select table1.id as id,book,author from table1, table2 where table1.id=table2.id; 
-mysql&gt; select table1.id, book, author from table1 join table2 on table1.id=table2.id;
+<div class="codehilite"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">table1</span><span class="p">.</span><span class="n">id</span> <span class="k">as</span> <span class="n">id</span><span class="p">,</span><span class="n">book</span><span class="p">,</span><span class="n">author</span> <span class="k">from</span> <span class="n">table1</span><span class="p">,</span> <span class="n">table2</span> <span class="k">where</span> <span class="n">table1</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">table2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span> 
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">table1</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">book</span><span class="p">,</span> <span class="n">author</span> <span class="k">from</span> <span class="n">table1</span> <span class="k">join</span> <span class="n">table2</span> <span class="k">on</span> <span class="n">table1</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">table2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
 </pre></div>
 <p><strong>Cross Join(交叉连接)</strong> 求两个表的笛卡尔积，可以用逗号表示，如(table1, table 2)。不使用on或using时，和Inner Join是等价的。</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 inner join table2;  
-mysql&gt; select * from table1 cross join table2;  
-mysql&gt; select * from (table1, table2);   
-+------+------+------+--------+  
-| id   | book | id   | author |  
-+------+------+------+--------+  
-|    1 | java |    2 | zhang  |  
-|    2 | c++  |    2 | zhang  |  
-|    3 | php  |    2 | zhang  |  
-|    1 | java |    3 | wang   |  
-|    2 | c++  |    3 | wang   |  
-|    3 | php  |    3 | wang   |  
-|    1 | java |    4 | li     |  
-|    2 | c++  |    4 | li     |  
-|    3 | php  |    4 | li     |  
-+------+------+------+--------+
+<div class="codehilite"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span> <span class="k">inner</span> <span class="k">join</span> <span class="n">table2</span><span class="p">;</span>  
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span> <span class="k">cross</span> <span class="k">join</span> <span class="n">table2</span><span class="p">;</span>  
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="p">(</span><span class="n">table1</span><span class="p">,</span> <span class="n">table2</span><span class="p">);</span>   
+<span class="o">+</span><span class="c1">------+------+------+--------+  </span>
+<span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">book</span> <span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">author</span> <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+------+--------+  </span>
+<span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span> <span class="n">java</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="n">zhang</span>  <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="k">c</span><span class="o">++</span>  <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="n">zhang</span>  <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">php</span>  <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="n">zhang</span>  <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span> <span class="n">java</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">wang</span>   <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="k">c</span><span class="o">++</span>  <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">wang</span>   <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">php</span>  <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">wang</span>   <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span> <span class="n">java</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span> <span class="n">li</span>     <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="k">c</span><span class="o">++</span>  <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span> <span class="n">li</span>     <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">php</span>  <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span> <span class="n">li</span>     <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+------+--------+ </span>
 </pre></div>
 <p><strong>Natural Join 自然连接</strong> 等价于使用using子句的Inner Join。</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 natural join table2;  
-mysql&gt; select * from table1 inner join table2 using (id);   
-+------+------+--------+  
-| id   | book | author |  
-+------+------+--------+  
-|    2 | c++  | zhang  |  
-|    3 | php  | wang   |  
-+------+------+--------+
+<div class="codehilite"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span> <span class="k">natural</span> <span class="k">join</span> <span class="n">table2</span><span class="p">;</span>  
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span> <span class="k">inner</span> <span class="k">join</span> <span class="n">table2</span> <span class="k">using</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>   
+<span class="o">+</span><span class="c1">------+------+--------+  </span>
+<span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">book</span> <span class="o">|</span> <span class="n">author</span> <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+--------+  </span>
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="k">c</span><span class="o">++</span>  <span class="o">|</span> <span class="n">zhang</span>  <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">php</span>  <span class="o">|</span> <span class="n">wang</span>   <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+--------+</span>
 </pre></div>
 <p><strong>Left Join 左外连接</strong> 左外连接A、B表的意思就是将表A中的全部记录和表B中字段连接形成的记录集，这里注意的是最后出来的记录集会包括表A的全部记录。</p>
-<div class="codehilite"><pre>mysql&gt; select * from table1 left join table2 on table1.id=table2.id; 
-+------+------+------+--------+  
-| id   | book | id   | author |  
-+------+------+------+--------+
-|    1 | java | NULL | NULL   |  
-|    2 | c++  |    2 | zhang  |  
-|    3 | php  |    3 | wang   |  
-+------+------+------+--------+ 
-mysql&gt; select * from table2 right join table1 using (id);   
-+------+------+--------+  
-| id   | book | author |  
-+------+------+--------+  
-|    1 | java | NULL   |  
-|    2 | c++  | zhang  |  
-|    3 | php  | wang   |  
-+------+------+--------+
+<div class="codehilite"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table1</span> <span class="k">left</span> <span class="k">join</span> <span class="n">table2</span> <span class="k">on</span> <span class="n">table1</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">table2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span> 
+<span class="o">+</span><span class="c1">------+------+------+--------+  </span>
+<span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">book</span> <span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">author</span> <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+------+--------+</span>
+<span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span> <span class="n">java</span> <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span> <span class="k">NULL</span>   <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="k">c</span><span class="o">++</span>  <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="n">zhang</span>  <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">php</span>  <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">wang</span>   <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+------+--------+ </span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table2</span> <span class="k">right</span> <span class="k">join</span> <span class="n">table1</span> <span class="k">using</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>   
+<span class="o">+</span><span class="c1">------+------+--------+  </span>
+<span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">book</span> <span class="o">|</span> <span class="n">author</span> <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+--------+  </span>
+<span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span> <span class="n">java</span> <span class="o">|</span> <span class="k">NULL</span>   <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="k">c</span><span class="o">++</span>  <span class="o">|</span> <span class="n">zhang</span>  <span class="o">|</span>  
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">php</span>  <span class="o">|</span> <span class="n">wang</span>   <span class="o">|</span>  
+<span class="o">+</span><span class="c1">------+------+--------+</span>
 </pre></div>
 <p><strong>Right Join 右外连接</strong> 右外连接和左外连接是类似的。为了方便数据库便于访问，推荐使用左外连接代替右外连接。</p>
-<h1 id="inexists">三、in、exists</h1>
+<h3 id="inexists">三、in、exists</h3>
+<blockquote>
 <p>参考<a href="http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/">http://sunxiaqw.blog.163.com/blog/static/990654382013430105130443/</a></p>
+</blockquote>
 <p><strong>in</strong>查询相当于多个or条件的叠加</p>
-<div class="codehilite"><pre>select * from user where userId in (1, 2, 3);
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">userId</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 </pre></div>
 <p>等效于</p>
-<div class="codehilite"><pre>select * from user where userId = 1 or userId = 2 or userId = 3;
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">userId</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">or</span> <span class="n">userId</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">or</span> <span class="n">userId</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 </pre></div>
 <p>not in与in相反，如下</p>
-<div class="codehilite"><pre>select * from user where userId not in (1, 2, 3);
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">userId</span> <span class="k">not</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 </pre></div>
 <p>等效于</p>
-<div class="codehilite"><pre>select * from user where userId != 1 and userId != 2 and userId != 3;
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">userId</span> <span class="o">!=</span> <span class="mi">1</span> <span class="k">and</span> <span class="n">userId</span> <span class="o">!=</span> <span class="mi">2</span> <span class="k">and</span> <span class="n">userId</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">;</span>
 </pre></div>
 <p>总的来说，in查询就是先将子查询条件的记录全都查出来，假设结果集为B，共有m条记录，然后在将子查询条件的结果集分解成m个，再进行m次查询。</p>
 <p>in查询的子条件返回结果必须只有一个字段，例如</p>
-<div class="codehilite"><pre>select * from user where userId in (select id from B);
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">userId</span> <span class="k">in</span> <span class="p">(</span><span class="k">select</span> <span class="n">id</span> <span class="k">from</span> <span class="n">B</span><span class="p">);</span>
 </pre></div>
 <p>而不能是</p>
-<div class="codehilite"><pre>select * from user where userId in (select id, age from B);
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">userId</span> <span class="k">in</span> <span class="p">(</span><span class="k">select</span> <span class="n">id</span><span class="p">,</span> <span class="n">age</span> <span class="k">from</span> <span class="n">B</span><span class="p">);</span>
 </pre></div>
 <p><strong>exists</strong>对外表用loop逐条查询，每次查询都会查看exists的条件语句，当exists里的条件语句能够返回记录行时(无论记录行是的多少，只要能返回)，条件就为真，返回当前loop到的这条记录，反之如果exists里的条件语句不能返回记录行，则当前loop到的这条记录被丢弃，exists的条件就像一个bool条件，当能返回结果集则为true，不能返回结果集则为false。</p>
 <p>如下：</p>
-<div class="codehilite"><pre>select * from user where exists (select 1);
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="k">exists</span> <span class="p">(</span><span class="k">select</span> <span class="mi">1</span><span class="p">);</span>
 </pre></div>
 <p>对user表的记录逐条取出，由于子条件中的select 1永远能返回记录行，那么user表的所有记录都将被加入结果集，所以与 select * from user;是一样的</p>
 <p>又如下：</p>
-<div class="codehilite"><pre>select * from user where exists (select * from user where userId = 0);
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="k">exists</span> <span class="p">(</span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">userId</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </pre></div>
 <p>可以知道对user表进行loop时，检查条件语句(select * from user where userId = 0),由于userId永远不为0，所以条件语句永远返回空集，条件永远为false，那么user表的所有记录都将被丢弃</p>
 <p>not exists与exists相反，也就是当exists条件有结果集返回时，loop到的记录将被丢弃，否则将loop到的记录加入结果集</p>
@@ -233,71 +235,71 @@ mysql&gt; select * from table2 right join table1 using (id);
 <p>如果查询的两个表大小相当，那么用in和exists差别不大；如果两个表中一个较小一个较大，则子查询表大的用exists，子查询表小的用in。</p>
 <p>例如：</p>
 <p>若表A较小，表B较大</p>
-<div class="codehilite"><pre>select * from A where cc in(select cc from B)　　--&gt;效率低，用到了A表上cc列的索引；
-select * from A where exists(select cc from B where cc=A.cc)　　--&gt;效率高，用到了B表上cc列的索引。
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">A</span> <span class="k">where</span> <span class="n">cc</span> <span class="k">in</span><span class="p">(</span><span class="k">select</span> <span class="n">cc</span> <span class="k">from</span> <span class="n">B</span><span class="p">)</span>　　<span class="c1">--&gt;效率低，用到了A表上cc列的索引；</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">A</span> <span class="k">where</span> <span class="k">exists</span><span class="p">(</span><span class="k">select</span> <span class="n">cc</span> <span class="k">from</span> <span class="n">B</span> <span class="k">where</span> <span class="n">cc</span><span class="o">=</span><span class="n">A</span><span class="p">.</span><span class="n">cc</span><span class="p">)</span>　　<span class="c1">--&gt;效率高，用到了B表上cc列的索引。</span>
 </pre></div>
 <p>相反的：</p>
-<div class="codehilite"><pre>select * from B where cc in(select cc from A)　　--&gt;效率高，用到了B表上cc列的索引
-select * from B where exists(select cc from A where cc=B.cc)　　--&gt;效率低，用到了A表上cc列的索引。
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">B</span> <span class="k">where</span> <span class="n">cc</span> <span class="k">in</span><span class="p">(</span><span class="k">select</span> <span class="n">cc</span> <span class="k">from</span> <span class="n">A</span><span class="p">)</span>　　<span class="c1">--&gt;效率高，用到了B表上cc列的索引</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">B</span> <span class="k">where</span> <span class="k">exists</span><span class="p">(</span><span class="k">select</span> <span class="n">cc</span> <span class="k">from</span> <span class="n">A</span> <span class="k">where</span> <span class="n">cc</span><span class="o">=</span><span class="n">B</span><span class="p">.</span><span class="n">cc</span><span class="p">)</span>　　<span class="c1">--&gt;效率低，用到了A表上cc列的索引。</span>
 </pre></div>
 <p><strong>not in</strong>和<strong>not exists</strong></p>
 <p>not in 逻辑上不完全等同于not exists</p>
-<div class="codehilite"><pre>Table1.
-+-----+-----+
-| c1  | c2  |
-+-----+-----+
-| 1   | 2   |
-| 1   | 3   |
-+-----+-----+
-Table2.
-+-----+-----+
-| c1  | c2  |
-+-----+-----+
-| 1   | 2   |
-| 1   | null|
-+-----+-----+
-select * from Table1 where c2 not in(select c2 from Table2);　　--&gt;执行结果：无
-select * from Table1 where not exists(select 1 from Table2 where Table2.c2=Table1.c2)　　--&gt;执行结果：1　　3
+<div class="codehilite"><pre><span class="n">Table1</span><span class="p">.</span>
+<span class="o">+</span><span class="c1">-----+-----+</span>
+<span class="o">|</span> <span class="n">c1</span>  <span class="o">|</span> <span class="n">c2</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+-----+</span>
+<span class="o">|</span> <span class="mi">1</span>   <span class="o">|</span> <span class="mi">2</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span>   <span class="o">|</span> <span class="mi">3</span>   <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+-----+</span>
+<span class="n">Table2</span><span class="p">.</span>
+<span class="o">+</span><span class="c1">-----+-----+</span>
+<span class="o">|</span> <span class="n">c1</span>  <span class="o">|</span> <span class="n">c2</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+-----+</span>
+<span class="o">|</span> <span class="mi">1</span>   <span class="o">|</span> <span class="mi">2</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span>   <span class="o">|</span> <span class="k">null</span><span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+-----+</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">Table1</span> <span class="k">where</span> <span class="n">c2</span> <span class="k">not</span> <span class="k">in</span><span class="p">(</span><span class="k">select</span> <span class="n">c2</span> <span class="k">from</span> <span class="n">Table2</span><span class="p">);</span>　　<span class="c1">--&gt;执行结果：无</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">Table1</span> <span class="k">where</span> <span class="k">not</span> <span class="k">exists</span><span class="p">(</span><span class="k">select</span> <span class="mi">1</span> <span class="k">from</span> <span class="n">Table2</span> <span class="k">where</span> <span class="n">Table2</span><span class="p">.</span><span class="n">c2</span><span class="o">=</span><span class="n">Table1</span><span class="p">.</span><span class="n">c2</span><span class="p">)</span>　　<span class="c1">--&gt;执行结果：1　　3</span>
 </pre></div>
 <p>not in出现了不期望的结果集，存在逻辑错误。尽量不要使用not in(它会调用子查询)，而尽量使用not exists（它会调用关联子查询）。如果子查询中返回的任意一条记录含有空值，则not in查询将不返回任何记录。如果子查询字段有非空限制，这时可以使用not in。</p>
 <p>如果查询语句使用了not in，那么对内外表都进行全表扫描，没有用到索引；而not exists的子查询依然能用到表上的索引。所以无论哪个表大，用not exists都比not in 要快。</p>
 <p><strong>in</strong>和<strong>=</strong></p>
-<div class="codehilite"><pre>select name from student where name in('zhang','wang','zhao');
+<div class="codehilite"><pre><span class="k">select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">student</span> <span class="k">where</span> <span class="n">name</span> <span class="k">in</span><span class="p">(</span><span class="s1">'zhang'</span><span class="p">,</span><span class="s1">'wang'</span><span class="p">,</span><span class="s1">'zhao'</span><span class="p">);</span>
 </pre></div>
 <p>与</p>
-<div class="codehilite"><pre>select name from student where name='zhang' or name='wang' or name='zhao'
+<div class="codehilite"><pre><span class="k">select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">student</span> <span class="k">where</span> <span class="n">name</span><span class="o">=</span><span class="s1">'zhang'</span> <span class="k">or</span> <span class="n">name</span><span class="o">=</span><span class="s1">'wang'</span> <span class="k">or</span> <span class="n">name</span><span class="o">=</span><span class="s1">'zhao'</span>
 </pre></div>
 <p>的结果是相同的。</p>
-<h1 id="group-by">四、group by</h1>
+<h3 id="group-by">四、group by</h3>
 <p><strong>group by</strong>语法可以根据给定数据列的每个成员对查询结果进行分组统计，最终得到一个分组汇总表。一般结合avg(),count()等进行统计。</p>
 <p>例如</p>
-<div class="codehilite"><pre>Table1.
-+----+-------+
-| Id | value |
-+----+-------+
-| 1  | 2     |
-| 2  | 3     |
-| 1  | 2     |
-| 2  | 5     |
-| 3  | 4     |
-+----+-------+ 
-select Id, avg(value) from Table1 group by Id;
-+----+----------+
-| Id |avg(value)|
-+----+----------+
-| 1  | 2        |
-| 2  | 4        |
-| 3  | 4        |
-+----+----------+
+<div class="codehilite"><pre><span class="n">Table1</span><span class="p">.</span>
+<span class="o">+</span><span class="c1">----+-------+</span>
+<span class="o">|</span> <span class="n">Id</span> <span class="o">|</span> <span class="n">value</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-------+</span>
+<span class="o">|</span> <span class="mi">1</span>  <span class="o">|</span> <span class="mi">2</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span>  <span class="o">|</span> <span class="mi">3</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span>  <span class="o">|</span> <span class="mi">2</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span>  <span class="o">|</span> <span class="mi">5</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="mi">3</span>  <span class="o">|</span> <span class="mi">4</span>     <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-------+ </span>
+<span class="k">select</span> <span class="n">Id</span><span class="p">,</span> <span class="k">avg</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">from</span> <span class="n">Table1</span> <span class="k">group</span> <span class="k">by</span> <span class="n">Id</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+----------+</span>
+<span class="o">|</span> <span class="n">Id</span> <span class="o">|</span><span class="k">avg</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+</span>
+<span class="o">|</span> <span class="mi">1</span>  <span class="o">|</span> <span class="mi">2</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span>  <span class="o">|</span> <span class="mi">4</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="mi">3</span>  <span class="o">|</span> <span class="mi">4</span>        <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+</span>
 </pre></div>
 <p>还可以使用<strong>having</strong>子句测试一个统计结果，放在group by子句之后。</p>
-<div class="codehilite"><pre>select Id, avg(value) from Table1 group by Id having having count(*) &gt; 1;
-+----+----------+
-| Id |avg(value)|
-+----+----------+
-| 1  | 2        |
-| 2  | 4        |
-+----+----------+
+<div class="codehilite"><pre><span class="k">select</span> <span class="n">Id</span><span class="p">,</span> <span class="k">avg</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">from</span> <span class="n">Table1</span> <span class="k">group</span> <span class="k">by</span> <span class="n">Id</span> <span class="k">having</span> <span class="k">having</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+----------+</span>
+<span class="o">|</span> <span class="n">Id</span> <span class="o">|</span><span class="k">avg</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+</span>
+<span class="o">|</span> <span class="mi">1</span>  <span class="o">|</span> <span class="mi">2</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span>  <span class="o">|</span> <span class="mi">4</span>        <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+</span>
 </pre></div>
                 </div>
                 <div id="content-comments">
